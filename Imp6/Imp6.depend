@@ -1,0 +1,782 @@
+# depslib dependency file v1.0
+1353030767 source:d:\documents\finalyearproject\codeblocksimp\imp6\main.cpp
+	<iostream>
+	"alignment/Alignment.h"
+	"alignment/Sequence.h"
+	"general/clustalw.h"
+	"general/UserParameters.h"
+	"substitutionMatrix/SubMatrix.h"
+	"general/Utility.h"
+	"fileInput/FileReader.h"
+	"interface/InteractiveMenu.h"
+	"interface/CommandLineParser.h"
+	"general/DebugLog.h"
+	"general/ClustalWResources.h"
+	"general/Stats.h"
+
+1353923410 d:\documents\finalyearproject\codeblocksimp\imp6\stdafx.h
+	<iostream>
+	<string>
+	<fstream>
+	<vector>
+	<istream>
+	<tchar.h>
+	<stdio.h>
+	<string.h>
+	"targetver.h"
+	"string.h"
+	"conio.h"
+	"stdlib.h"
+
+1353029488 d:\documents\finalyearproject\codeblocksimp\imp6\targetver.h
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.cpp
+	"config.h"
+	<stdio.h>
+	<string>
+	<cstdlib>
+	<exception>
+	<iostream>
+	<limits>
+	<climits>
+	<iomanip>
+	<fstream>
+	"UserParameters.h"
+	"../clustalw_version.h"
+	"config.h"
+
+1285075020 d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.h
+	<string>
+	<iostream>
+	"utils.h"
+	"general.h"
+	"clustalw.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\utils.h
+	"Utility.h"
+
+1286319868 d:\documents\finalyearproject\codeblocksimp\src\general\utility.h
+	<cstdlib>
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdarg.h>
+	<ctype.h>
+	"clustalw.h"
+
+1353019597 d:\documents\finalyearproject\codeblocksimp\src\general\clustalw.h
+	"general.h"
+	"Array2D.h"
+	"SquareMat.h"
+	"SymMatrix.h"
+	<vector>
+	<string>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\general.h
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\array2d.h
+	<iostream>
+	<vector>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\squaremat.h
+	<iostream>
+	<vector>
+	<iomanip>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\symmatrix.h
+	<iostream>
+	<vector>
+	<iomanip>
+	<cmath>
+	<stdexcept>
+	<new>
+	<cstdlib>
+
+1289580562 d:\documents\finalyearproject\codeblocksimp\src\clustalw_version.h
+
+1353929296 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
+	"config.h"
+	<iostream>
+	<fstream>
+	<cstdio>
+	"Clustal.h"
+	"pairwise/FullPairwiseAlign.h"
+	"pairwise/FastPairwiseAlign.h"
+	"multipleAlign/MSA.h"
+	"multipleAlign/LowScoreSegProfile.h"
+	"multipleAlign/Iteration.h"
+	"tree/TreeInterface.h"
+	"general/debuglogObject.h"
+	"general/statsObject.h"
+	"alignment/ObjectiveScore.h"
+	"general/ClustalWResources.h"
+	"Help.h"
+	<ctime>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\clustal.h
+	<string>
+	"general/clustalw.h"
+	"general/utils.h"
+	"general/userparams.h"
+	"fileInput/FileReader.h"
+	"alignment/Alignment.h"
+	"alignment/AlignmentOutput.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\userparams.h
+	"UserParameters.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.h
+	<vector>
+	<string>
+	<memory>
+	"../alignment/Alignment.h"
+	"../alignment/Sequence.h"
+	"../general/userparams.h"
+	"../general/utils.h"
+	"FileParser.h"
+	"ClustalFileParser.h"
+	"PearsonFileParser.h"
+	"PIRFileParser.h"
+	"GDEFileParser.h"
+	"MSFFileParser.h"
+	"RSFFileParser.h"
+	"EMBLFileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\alignment\alignment.h
+	<vector>
+	<string>
+	<iomanip>
+	<exception>
+	<stdexcept>
+	"Sequence.h"
+	"../substitutionMatrix/globalmatrix.h"
+	"../general/userparams.h"
+	"../general/VectorOutOfRange.h"
+	"../general/SequenceNotFoundException.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\alignment\sequence.h
+	<vector>
+	<string>
+	"../general/userparams.h"
+	"../general/utils.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\substitutionmatrix\globalmatrix.h
+	"SubMatrix.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\substitutionmatrix\submatrix.h
+	<vector>
+	<string>
+	"../general/clustalw.h"
+	"../general/userparams.h"
+	"../general/utils.h"
+	"../general/Array2D.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\vectoroutofrange.h
+	<stdexcept>
+	<exception>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\sequencenotfoundexception.h
+	<iostream>
+	<exception>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\fileparser.h
+	<ctype.h>
+	"../alignment/Sequence.h"
+	"../general/userparams.h"
+	<iostream>
+	"InFileStream.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\infilestream.h
+	<string>
+	<fstream>
+	<iostream>
+	<memory>
+
+1285081270 d:\documents\finalyearproject\codeblocksimp\src\fileinput\clustalfileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\pearsonfileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\pirfileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\gdefileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\msffileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\fileinput\rsffileparser.h
+	<string>
+	"FileParser.h"
+
+1285081274 d:\documents\finalyearproject\codeblocksimp\src\fileinput\emblfileparser.h
+	<string>
+	"FileParser.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.h
+	<string>
+	<vector>
+	<fstream>
+	<memory>
+	<sstream>
+	<exception>
+	<cassert>
+	"Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.h
+	"PairwiseAlignBase.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\pairwise\pairwisealignbase.h
+	<vector>
+	"../alignment/Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.h
+	"PairwiseAlignBase.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\msa.h
+	<iomanip>
+	"ProfileBase.h"
+	"../alignment/Alignment.h"
+	"../tree/AlignmentSteps.h"
+	"ProfileAlignAlgorithm.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilebase.h
+	"../alignment/Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\alignmentsteps.h
+	<vector>
+	<string>
+	<iostream>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilealignalgorithm.h
+	<vector>
+	"../alignment/Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\lowscoresegprofile.h
+	"../alignment/Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\iteration.h
+	"../alignment/Alignment.h"
+	"../general/clustalw.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\treeinterface.h
+	<vector>
+	<string>
+	<memory>
+	"AlignmentSteps.h"
+	"../alignment/Alignment.h"
+	"../general/clustalw.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\debuglogobject.h
+	"DebugLog.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\debuglog.h
+	<string>
+	<fstream>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\statsobject.h
+	"Stats.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\stats.h
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\alignment\objectivescore.h
+	"../general/clustalw.h"
+	"../substitutionMatrix/globalmatrix.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\clustalwresources.h
+	<string>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\help.h
+	<string>
+	<iostream>
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\help.cpp
+	"config.h"
+	<iostream>
+	<vector>
+	"clustalw_version.h"
+	"Help.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignment.cpp
+	"config.h"
+	<exception>
+	<cmath>
+	<sstream>
+	"Alignment.h"
+
+1353932158 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.cpp
+	"config.h"
+	"AlignmentOutput.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\objectivescore.cpp
+	"config.h"
+	<sstream>
+	"ObjectiveScore.h"
+	"Alignment.h"
+	"../general/userparams.h"
+	"../general/debuglogObject.h"
+
+1351010558 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\sequence.cpp
+	"config.h"
+	<algorithm>
+	"Sequence.h"
+
+1351253998 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\clustalfileparser.cpp
+	"config.h"
+	"ClustalFileParser.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\emblfileparser.cpp
+	"config.h"
+	"EMBLFileParser.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\fileparser.cpp
+	"config.h"
+	"FileParser.h"
+
+1353928826 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.cpp
+	"config.h"
+	"FileReader.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\gdefileparser.cpp
+	"config.h"
+	"GDEFileParser.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\infilestream.cpp
+	"config.h"
+	<string>
+	<fstream>
+	<iostream>
+	"InFileStream.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\msffileparser.cpp
+	"config.h"
+	"MSFFileParser.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\pirfileparser.cpp
+	"config.h"
+	"PIRFileParser.h"
+
+1351254795 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\pearsonfileparser.cpp
+	"config.h"
+	"PearsonFileParser.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\rsffileparser.cpp
+	"config.h"
+	"RSFFileParser.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\general\clustalwresources.cpp
+	"config.h"
+	"ClustalWResources.h"
+	<iostream>
+	"clustalw.h"
+	<fstream>
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\general\debuglog.cpp
+	"config.h"
+	"DebugLog.h"
+	<sstream>
+	<iostream>
+
+1350472970 source:d:\documents\finalyearproject\codeblocksimp\src\general\invalidcombination.cpp
+	"config.h"
+	<ostream>
+	<iostream>
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\general\outputfile.cpp
+	"config.h"
+	"OutputFile.h"
+	"utils.h"
+	"userparams.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\outputfile.h
+	<memory>
+	<fstream>
+
+1353031447 source:d:\documents\finalyearproject\codeblocksimp\src\general\stats.cpp
+	"config.h"
+	<stdio.h>
+	<cstdlib>
+	<iostream>
+	<algorithm>
+	<string>
+	<stdio.h>
+	<ctime>
+	"../alignment/Alignment.h"
+	"mhash.h"
+	"Stats.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\general\symmatrix.cpp
+	"config.h"
+	"SymMatrix.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\general\utility.cpp
+	"config.h"
+	<iostream>
+	<algorithm>
+	"Utility.h"
+	"userparams.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\general\vectoroutofrange.cpp
+	"config.h"
+	"VectorOutOfRange.h"
+	<string>
+	<sstream>
+	<iostream>
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\interface\commandlineparser.cpp
+	"config.h"
+	<cctype>
+	<cstdio>
+	<iostream>
+	<fstream>
+	"CommandLineParser.h"
+	"../substitutionMatrix/globalmatrix.h"
+	"../general/Utility.h"
+	"../general/statsObject.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\interface\commandlineparser.h
+	<vector>
+	<string>
+	"../Clustal.h"
+	"../general/clustalw.h"
+	"../general/userparams.h"
+	"../general/utils.h"
+	"../general/debuglogObject.h"
+	"../general/statsObject.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\interface\interactivemenu.cpp
+	"config.h"
+	<stdio.h>
+	<string>
+	<ctype.h>
+	<cstdlib>
+	<iostream>
+	<iomanip>
+	<stdarg.h>
+	"InteractiveMenu.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\interface\interactivemenu.h
+	<string>
+	"../Clustal.h"
+	"../general/clustalw.h"
+	"../general/userparams.h"
+	"../general/utils.h"
+	"../substitutionMatrix/globalmatrix.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\main.cpp
+	"config.h"
+	<iostream>
+	"alignment/Alignment.h"
+	"alignment/Sequence.h"
+	"general/clustalw.h"
+	"general/UserParameters.h"
+	"substitutionMatrix/SubMatrix.h"
+	"general/Utility.h"
+	"fileInput/FileReader.h"
+	"interface/InteractiveMenu.h"
+	"interface/CommandLineParser.h"
+	"general/DebugLog.h"
+	"general/ClustalWResources.h"
+	"general/Stats.h"
+	<ctime>
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\iteration.cpp
+	"config.h"
+	"Iteration.h"
+	"../alignment/ObjectiveScore.h"
+	"../general/utils.h"
+	"../general/userparams.h"
+	"../tree/TreeInterface.h"
+	"../clustalw_version.h"
+	"MSA.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\lowscoresegprofile.cpp
+	"config.h"
+	"LowScoreSegProfile.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\msa.cpp
+	"config.h"
+	"MSA.h"
+	"MyersMillerProfileAlign.h"
+	"../general/debuglogObject.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\myersmillerprofilealign.h
+	<vector>
+	"ProfileAlignAlgorithm.h"
+	"ProfileStandard.h"
+	"ProfileWithSub.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilestandard.h
+	"../alignment/Alignment.h"
+	"ProfileBase.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilewithsub.h
+	"../alignment/Alignment.h"
+	"ProfileBase.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\myersmillerprofilealign.cpp
+	"config.h"
+	"MyersMillerProfileAlign.h"
+	"Iteration.h"
+	<math.h>
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilebase.cpp
+	"config.h"
+	"ProfileBase.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilestandard.cpp
+	"config.h"
+	"ProfileStandard.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\profilewithsub.cpp
+	"config.h"
+	"ProfileWithSub.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.cpp
+	"config.h"
+	<math.h>
+	"FastPairwiseAlign.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
+	"config.h"
+	"FullPairwiseAlign.h"
+	<math.h>
+
+1353018124 source:d:\documents\finalyearproject\codeblocksimp\src\substitutionmatrix\submatrix.cpp
+	"config.h"
+	<stdio.h>
+	<string>
+	<cstdlib>
+	<exception>
+	<iostream>
+	<sstream>
+	"SubMatrix.h"
+	"matrices.h"
+	"../general/InvalidCombination.cpp"
+	"../general/debuglogObject.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\substitutionmatrix\matrices.h
+
+1350472970 d:\documents\finalyearproject\codeblocksimp\src\general\invalidcombination.cpp
+	"config.h"
+	<ostream>
+	<iostream>
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\tree\alignmentsteps.cpp
+	"config.h"
+	"AlignmentSteps.h"
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\tree\clustertree.cpp
+	"config.h"
+	"ClusterTree.h"
+	"../general/utils.h"
+	"dayhoff.h"
+	"RandomGenerator.h"
+	<math.h>
+	<sstream>
+	"../general/OutputFile.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\clustertree.h
+	<fstream>
+	<memory>
+	<iostream>
+	<vector>
+	<exception>
+	"../alignment/Alignment.h"
+	"NJTree.h"
+	"ClusterTreeOutput.h"
+	"../general/OutputFile.h"
+	"ClusterTreeAlgorithm.h"
+	<string>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\njtree.h
+	<vector>
+	<iomanip>
+	"ClusterTreeAlgorithm.h"
+	"../general/userparams.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\clustertreealgorithm.h
+	<memory>
+	<fstream>
+	<iostream>
+	"../general/clustalw.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\clustertreeoutput.h
+	<memory>
+	<fstream>
+	"../alignment/Alignment.h"
+	"../general/clustalw.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\dayhoff.h
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\randomgenerator.h
+
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\tree\clustertreeoutput.cpp
+	"config.h"
+	"ClusterTreeOutput.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\njtree.cpp
+	"config.h"
+	<math.h>
+	"NJTree.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\randomgenerator.cpp
+	"config.h"
+	"RandomGenerator.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\tree.cpp
+	"config.h"
+	<sstream>
+	"Tree.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\tree.h
+	<vector>
+	<string>
+	<iostream>
+	<fstream>
+	"../alignment/Alignment.h"
+	"AlignmentSteps.h"
+	<memory>
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\treeinterface.cpp
+	"config.h"
+	"TreeInterface.h"
+	<sstream>
+	"UnRootedClusterTree.h"
+	"Tree.h"
+	"../multipleAlign/MSA.h"
+	"../general/userparams.h"
+	"../general/debuglogObject.h"
+	"UPGMA/RootedGuideTree.h"
+	"UPGMA/RootedClusterTree.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\unrootedclustertree.h
+	"ClusterTree.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedguidetree.h
+	"Node.h"
+	<fstream>
+	"../../alignment/Alignment.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\node.h
+	<limits>
+	<vector>
+	<string>
+	"upgmadata.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\upgmadata.h
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedclustertree.h
+	"../ClusterTree.h"
+	"RootedGuideTree.h"
+	"../AlignmentSteps.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\node.cpp
+	"config.h"
+	"Node.h"
+	"../../general/VectorUtility.h"
+	"../../general/debuglogObject.h"
+	"../../general/clustalw.h"
+	<iostream>
+	<sstream>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\vectorutility.h
+	<vector>
+
+1353931350 source:d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedclustertree.cpp
+	"config.h"
+	"RootedClusterTree.h"
+	"../../general/OutputFile.h"
+	"UPGMAAlgorithm.h"
+	"RootedTreeOutput.h"
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\upgmaalgorithm.h
+	"Node.h"
+	<limits>
+	"../../general/clustalw.h"
+	"../AlignmentSteps.h"
+	"RootedGuideTree.h"
+	<list>
+	<memory>
+
+1284038762 d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedtreeoutput.h
+	<fstream>
+	"RootedGuideTree.h"
+	"../../general/clustalw.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedguidetree.cpp
+	"config.h"
+	<iostream>
+	"RootedGuideTree.h"
+	"../../general/userparams.h"
+
+1350469386 source:d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\rootedtreeoutput.cpp
+	"config.h"
+	"RootedTreeOutput.h"
+
+1350469425 source:d:\documents\finalyearproject\codeblocksimp\src\tree\upgma\upgmaalgorithm.cpp
+	"config.h"
+	"UPGMAAlgorithm.h"
+	<cmath>
+	<ctime>
+	<iomanip>
+	<sstream>
+	"../../general/SymMatrix.h"
+	"../../general/debuglogObject.h"
+	"../../general/clustalw.h"
+	"upgmadata.h"
+
+1353932140 source:d:\documents\finalyearproject\codeblocksimp\src\tree\unrootedclustertree.cpp
+	"config.h"
+	"UnRootedClusterTree.h"
+	"../general/utils.h"
+	"RandomGenerator.h"
+	<math.h>
+	<sstream>
+	"../general/OutputFile.h"
+
+1355149476 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
+	"stdafx.h"
+	"conio.h"
+	"alignment/Alignment.h"
+	"alignment/Sequence.h"
+	"general/clustalw.h"
+	"general/UserParameters.h"
+	"substitutionMatrix/SubMatrix.h"
+	"general/Utility.h"
+	"fileInput/FileReader.h"
+	"interface/InteractiveMenu.h"
+	"interface/CommandLineParser.h"
+	"general/DebugLog.h"
+	"general/ClustalWResources.h"
+	"general/Stats.h"
+	"../include/InputFile.h"
+	"../include/ProteinSequence.h"
+
+1353061135 source:d:\documents\finalyearproject\codeblocksimp\src\inputfile.cpp
+	"../include/InputFile.h"
+
+1355872423 d:\documents\finalyearproject\codeblocksimp\include\inputfile.h
+	"stdafx.h"
+	<iostream>
+
+1355874054 source:d:\documents\finalyearproject\codeblocksimp\imp6\inputfile.cpp
+	"../include/InputFile.h"
+	"../include/ProteinSequence.h"
+
+1353667432 source:d:\documents\finalyearproject\codeblocksimp\src\proteinsequence.cpp
+	"../include/ProteinSequence.h"
+
+1353667492 d:\documents\finalyearproject\codeblocksimp\include\proteinsequence.h
+	"stdafx.h"
+
+1353667432 source:d:\documents\finalyearproject\codeblocksimp\imp6\proteinsequence.cpp
+	"../include/ProteinSequence.h"
+

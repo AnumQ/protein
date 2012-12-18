@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Imp6" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\Imp6" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="..\..\Implementation\FinalYearProject2012\Debug\ClustalWLIB.lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\Imp6" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Imp6.cpp" />
+		<Unit filename="InputFile.cpp" />
+		<Unit filename="ProteinSequence.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="targetver.h" />
+		<Unit filename="..\include\InputFile.h" />
+		<Unit filename="..\include\ProteinSequence.h" />
+		<Unit filename="..\src\Clustal.cpp" />
+		<Unit filename="..\src\Clustal.h" />
+		<Unit filename="..\src\Help.cpp" />
+		<Unit filename="..\src\Help.h" />
+		<Unit filename="..\src\alignment\Alignment.cpp" />
+		<Unit filename="..\src\alignment\Alignment.h" />
+		<Unit filename="..\src\alignment\AlignmentOutput.cpp" />
+		<Unit filename="..\src\alignment\AlignmentOutput.h" />
+		<Unit filename="..\src\alignment\ObjectiveScore.cpp" />
+		<Unit filename="..\src\alignment\ObjectiveScore.h" />
+		<Unit filename="..\src\alignment\Sequence.cpp" />
+		<Unit filename="..\src\alignment\Sequence.h" />
+		<Unit filename="..\src\clustalw_version.h" />
+		<Unit filename="..\src\fileInput\ClustalFileParser.cpp" />
+		<Unit filename="..\src\fileInput\ClustalFileParser.h" />
+		<Unit filename="..\src\fileInput\EMBLFileParser.cpp" />
+		<Unit filename="..\src\fileInput\EMBLFileParser.h" />
+		<Unit filename="..\src\fileInput\FileParser.cpp" />
+		<Unit filename="..\src\fileInput\FileParser.h" />
+		<Unit filename="..\src\fileInput\FileReader.cpp" />
+		<Unit filename="..\src\fileInput\FileReader.h" />
+		<Unit filename="..\src\fileInput\GDEFileParser.cpp" />
+		<Unit filename="..\src\fileInput\GDEFileParser.h" />
+		<Unit filename="..\src\fileInput\InFileStream.cpp" />
+		<Unit filename="..\src\fileInput\InFileStream.h" />
+		<Unit filename="..\src\fileInput\MSFFileParser.cpp" />
+		<Unit filename="..\src\fileInput\MSFFileParser.h" />
+		<Unit filename="..\src\fileInput\PIRFileParser.cpp" />
+		<Unit filename="..\src\fileInput\PIRFileParser.h" />
+		<Unit filename="..\src\fileInput\PearsonFileParser.cpp" />
+		<Unit filename="..\src\fileInput\PearsonFileParser.h" />
+		<Unit filename="..\src\fileInput\RSFFileParser.cpp" />
+		<Unit filename="..\src\fileInput\RSFFileParser.h" />
+		<Unit filename="..\src\general\Array2D.h" />
+		<Unit filename="..\src\general\ClustalWResources.cpp" />
+		<Unit filename="..\src\general\ClustalWResources.h" />
+		<Unit filename="..\src\general\DebugLog.cpp" />
+		<Unit filename="..\src\general\DebugLog.h" />
+		<Unit filename="..\src\general\InvalidCombination.cpp" />
+		<Unit filename="..\src\general\OutputFile.cpp" />
+		<Unit filename="..\src\general\OutputFile.h" />
+		<Unit filename="..\src\general\RandomAccessLList.h" />
+		<Unit filename="..\src\general\SequenceNotFoundException.h" />
+		<Unit filename="..\src\general\SquareMat.h" />
+		<Unit filename="..\src\general\Stats.cpp" />
+		<Unit filename="..\src\general\Stats.h" />
+		<Unit filename="..\src\general\SymMatrix.cpp" />
+		<Unit filename="..\src\general\SymMatrix.h" />
+		<Unit filename="..\src\general\UserParameters.cpp" />
+		<Unit filename="..\src\general\UserParameters.h" />
+		<Unit filename="..\src\general\Utility.cpp" />
+		<Unit filename="..\src\general\Utility.h" />
+		<Unit filename="..\src\general\VectorOutOfRange.cpp" />
+		<Unit filename="..\src\general\VectorOutOfRange.h" />
+		<Unit filename="..\src\general\VectorUtility.h" />
+		<Unit filename="..\src\general\clustalw.h" />
+		<Unit filename="..\src\general\debuglogObject.h" />
+		<Unit filename="..\src\general\general.h" />
+		<Unit filename="..\src\general\param.h" />
+		<Unit filename="..\src\general\statsObject.h" />
+		<Unit filename="..\src\general\userparams.h" />
+		<Unit filename="..\src\general\utils.h" />
+		<Unit filename="..\src\interface\CommandLineParser.cpp" />
+		<Unit filename="..\src\interface\CommandLineParser.h" />
+		<Unit filename="..\src\interface\InteractiveMenu.cpp" />
+		<Unit filename="..\src\interface\InteractiveMenu.h" />
+		<Unit filename="..\src\multipleAlign\Iteration.cpp" />
+		<Unit filename="..\src\multipleAlign\Iteration.h" />
+		<Unit filename="..\src\multipleAlign\LowScoreSegProfile.cpp" />
+		<Unit filename="..\src\multipleAlign\LowScoreSegProfile.h" />
+		<Unit filename="..\src\multipleAlign\MSA.cpp" />
+		<Unit filename="..\src\multipleAlign\MSA.h" />
+		<Unit filename="..\src\multipleAlign\MyersMillerProfileAlign.cpp" />
+		<Unit filename="..\src\multipleAlign\MyersMillerProfileAlign.h" />
+		<Unit filename="..\src\multipleAlign\ProfileAlignAlgorithm.h" />
+		<Unit filename="..\src\multipleAlign\ProfileBase.cpp" />
+		<Unit filename="..\src\multipleAlign\ProfileBase.h" />
+		<Unit filename="..\src\multipleAlign\ProfileStandard.cpp" />
+		<Unit filename="..\src\multipleAlign\ProfileStandard.h" />
+		<Unit filename="..\src\multipleAlign\ProfileWithSub.cpp" />
+		<Unit filename="..\src\multipleAlign\ProfileWithSub.h" />
+		<Unit filename="..\src\pairwise\FastPairwiseAlign.cpp" />
+		<Unit filename="..\src\pairwise\FastPairwiseAlign.h" />
+		<Unit filename="..\src\pairwise\FullPairwiseAlign.cpp" />
+		<Unit filename="..\src\pairwise\FullPairwiseAlign.h" />
+		<Unit filename="..\src\pairwise\PairwiseAlignBase.h" />
+		<Unit filename="..\src\substitutionMatrix\SubMatrix.cpp" />
+		<Unit filename="..\src\substitutionMatrix\SubMatrix.h" />
+		<Unit filename="..\src\substitutionMatrix\globalmatrix.h" />
+		<Unit filename="..\src\substitutionMatrix\matrices.h" />
+		<Unit filename="..\src\tree\AlignmentSteps.cpp" />
+		<Unit filename="..\src\tree\AlignmentSteps.h" />
+		<Unit filename="..\src\tree\ClusterTree.cpp" />
+		<Unit filename="..\src\tree\ClusterTree.h" />
+		<Unit filename="..\src\tree\ClusterTreeAlgorithm.h" />
+		<Unit filename="..\src\tree\ClusterTreeOutput.cpp" />
+		<Unit filename="..\src\tree\ClusterTreeOutput.h" />
+		<Unit filename="..\src\tree\NJTree.cpp" />
+		<Unit filename="..\src\tree\NJTree.h" />
+		<Unit filename="..\src\tree\RandomGenerator.cpp" />
+		<Unit filename="..\src\tree\RandomGenerator.h" />
+		<Unit filename="..\src\tree\Tree.cpp" />
+		<Unit filename="..\src\tree\Tree.h" />
+		<Unit filename="..\src\tree\TreeInterface.cpp" />
+		<Unit filename="..\src\tree\TreeInterface.h" />
+		<Unit filename="..\src\tree\UPGMA\Node.cpp" />
+		<Unit filename="..\src\tree\UPGMA\Node.h" />
+		<Unit filename="..\src\tree\UPGMA\RootedClusterTree.cpp" />
+		<Unit filename="..\src\tree\UPGMA\RootedClusterTree.h" />
+		<Unit filename="..\src\tree\UPGMA\RootedGuideTree.cpp" />
+		<Unit filename="..\src\tree\UPGMA\RootedGuideTree.h" />
+		<Unit filename="..\src\tree\UPGMA\RootedTreeOutput.cpp" />
+		<Unit filename="..\src\tree\UPGMA\RootedTreeOutput.h" />
+		<Unit filename="..\src\tree\UPGMA\UPGMAAlgorithm.cpp" />
+		<Unit filename="..\src\tree\UPGMA\UPGMAAlgorithm.h" />
+		<Unit filename="..\src\tree\UPGMA\upgmadata.h" />
+		<Unit filename="..\src\tree\UnRootedClusterTree.cpp" />
+		<Unit filename="..\src\tree\UnRootedClusterTree.h" />
+		<Unit filename="..\src\tree\dayhoff.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
