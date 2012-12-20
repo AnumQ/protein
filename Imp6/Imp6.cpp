@@ -14,6 +14,7 @@
 #include "general/Stats.h"
 #include "../include/InputFile.h"
 #include "../include/ProteinSequence.h"
+#include "../include/ScoreMatrix.h"
 
 namespace clustalw
 {
@@ -67,10 +68,7 @@ void defineverbose()
 int main(int argc, char **argv)
 {
     defineverbose();
-    InputFile i;
-    bool f = true;
-    i.checkToProceed(f);
-    /*
+
     ClustalWInitializers();
     clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
     resources->setPathToExecutable(string(argv[0]));
@@ -85,7 +83,7 @@ int main(int argc, char **argv)
 	clustalObj = new clustalw::Clustal();
 	int u = clustalObj->sequenceInput(false, &offendingSeq);
 	string phylipName;
-	clustalObj->align(&phylipName); */
+	clustalObj->align(&phylipName);
 
     return 0;
 }

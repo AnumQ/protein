@@ -215,6 +215,8 @@ bool InputFile::openFile( string file )
 
 void InputFile::closeFile()
 {
+    if(verbose)
+    cout << "Closing file .. " << endl;
     fileInput.close();
 }
 
@@ -229,7 +231,7 @@ void InputFile::writeInputFileForRepresentatives()
     ProteinSequence currentSequence;
 
     seqC = 0;
-    filename = "InputFile1.txt";
+    filename = "InputFile.txt";
     infile.open(filename.c_str());
 
     ifstream& File = fileInput;
@@ -296,7 +298,6 @@ void InputFile::writeInputFileForRepresentatives()
                     }
                     string n = currentSequence.getPDB();
                     count = seqC;
-                    //cout << "currentsequence PDB is " << n.size() << endl;
                     for( size_t i = 0; i < pdblist.size(); i++ )
                     {
                         if ( pdblist[i] == n )
@@ -329,7 +330,6 @@ void InputFile::writeInputFileForRepresentatives()
                     }
                     seq.clear();
                 }
-                //cout << LINE << endl;
                 LINE.clear();
             }
         }

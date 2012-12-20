@@ -1,12 +1,17 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 #ifndef FULLPAIRWISEALIGN_H
 #define FULLPAIRWISEALIGN_H
 
 #include "PairwiseAlignBase.h"
+#include "../../include/ScoreMatrix.h"
+
+using namespace std;
+
+//extern vector<ScoreMatrix> sample;
 
 namespace clustalw
 {
@@ -18,14 +23,14 @@ class FullPairwiseAlign : public PairwiseAlignBase
         FullPairwiseAlign();
 	virtual ~FullPairwiseAlign(){};
 
-        virtual void pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart, 
-                                   int iEnd, int jStart, int jEnd); 
+        virtual void pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart,
+                                   int iEnd, int jStart, int jEnd);
         /* Attributes */
 
     private:
         /* Functions */
         void add(int v);
-        int calcScore(int iat, int jat, int v1, int v2); 
+        int calcScore(int iat, int jat, int v1, int v2);
         float tracePath(int tsb1, int tsb2);
         void forwardPass(const vector<int>* seq1, const vector<int>* seq2, int n, int m);
         void reversePass(const vector<int>* ia, const vector<int>* ib);

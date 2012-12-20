@@ -19,6 +19,7 @@
 #include "string.h"
 #include "conio.h"
 #include "stdlib.h"
+#include "../include/ScoreMatrix.h"
 
 extern bool verbose;
 
