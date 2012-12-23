@@ -140,7 +140,6 @@ void FastPairwiseAlign::pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, 
     }
 }
 
-
 /*
  * Note: There is a problem with the treatment of DNA/RNA.
  * During file reading all residues are encoded as AminoAcids,

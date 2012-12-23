@@ -12,6 +12,7 @@
 #include "general/DebugLog.h"
 #include "general/ClustalWResources.h"
 #include "general/Stats.h"
+#include "pairwise/FullPairwiseAlign.h"
 #include "../include/InputFile.h"
 #include "../include/ProteinSequence.h"
 #include "../include/ScoreMatrix.h"
@@ -64,7 +65,6 @@ void defineverbose()
             break;
     }
 }
-
 int main(int argc, char **argv)
 {
     defineverbose();
@@ -84,6 +84,11 @@ int main(int argc, char **argv)
 	int u = clustalObj->sequenceInput(false, &offendingSeq);
 	string phylipName;
 	clustalObj->align(&phylipName);
+
+    cout << "Line" << endl;
+    //FullPairwiseAlign* fpaObj;
+    //fpaObj = new clustalw::FullPairwiseAlign(y);
+    //cout << "SIze of matrix is " << Matrix.size() << endl;
 
     return 0;
 }

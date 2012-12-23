@@ -5,27 +5,33 @@
  */
 #ifndef FULLPAIRWISEALIGN_H
 #define FULLPAIRWISEALIGN_H
-
 #include "PairwiseAlignBase.h"
+#include "stdafx.h"
 #include "../../include/ScoreMatrix.h"
 
 using namespace std;
 
-//extern vector<ScoreMatrix> sample;
-
 namespace clustalw
 {
-
 class FullPairwiseAlign : public PairwiseAlignBase
 {
     public:
         /* Functions */
         FullPairwiseAlign();
+        /* Anum's Function */
+        FullPairwiseAlign( int y );
+        void setScoringVector( vector<ScoreMatrix> s );
+        vector<ScoreMatrix> getScoringVector();
+
+
 	virtual ~FullPairwiseAlign(){};
 
         virtual void pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart,
                                    int iEnd, int jStart, int jEnd);
         /* Attributes */
+        /* Anum's Attributes */
+        vector<ScoreMatrix> ScoringMatrix1;
+
 
     private:
         /* Functions */
@@ -65,6 +71,8 @@ class FullPairwiseAlign : public PairwiseAlignBase
         int se1;
         int se2;
 
+        /* Anum's attribute */
+        vector<ScoreMatrix> ScoringMatrix;
 };
 
 }

@@ -1,12 +1,12 @@
 /**
  * Author: Mark Larkin
  *
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * The class Clustal is the main class in the program. It is used by the interactive
  * menu, command line parser and clustal x to perform the algorithmic part of the
- * program. 
+ * program.
  */
 #ifndef CLUSTAL_H
 #define CLUSTAL_H
@@ -18,6 +18,7 @@
 #include "fileInput/FileReader.h"
 #include "alignment/Alignment.h"
 #include "alignment/AlignmentOutput.h"
+#include "pairwise/FastPairwiseAlign.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ class Clustal
         void sequencesAlignToProfile(string* phylipName);
         void profileAlign(string* p1TreeName, string* p2TreeName);
         void doGuideTreeOnly(string* phylipName);
-        void doAlignUseOldTree(string* phylipName);        
+        void doAlignUseOldTree(string* phylipName);
         void getHelp(string helpPointer, bool printTitle = false);
         void getHelp(char helpPointer, bool printTitle = false);
         void getFullHelp();
@@ -45,7 +46,7 @@ class Clustal
         void phylogeneticTree(string* phylip_name, string* clustal_name, string* dist_name,
                               string* nexus_name, string pimName);
         void bootstrapTree(string* phylip_name, string* clustal_name, string* nexus_name);
-        Alignment* getAlignmentPtr(){return &alignmentObj;} 
+        Alignment* getAlignmentPtr(){return &alignmentObj;}
         void QTcalcLowScoreSegments(LowScoreSegParams* params);
         void QTcalcWeightsForLowScoreSeg(LowScoreSegParams* params);
         void QTremoveShortSegments(LowScoreSegParams* params);
@@ -66,7 +67,7 @@ class Clustal
         enum{Sequences, Profile1, Profile2};
         string sequencesMsg, profile1Msg, profile2Msg;
         string newProfile1TreePrompt, newProfile2TreePrompt;
-        
+
         Alignment alignmentObj;
         string helpFileName;
         int newSeq;

@@ -14,7 +14,7 @@
 	"general/ClustalWResources.h"
 	"general/Stats.h"
 
-1355929169 d:\documents\finalyearproject\codeblocksimp\imp6\stdafx.h
+1356135497 d:\documents\finalyearproject\codeblocksimp\imp6\stdafx.h
 	<iostream>
 	<string>
 	<fstream>
@@ -95,7 +95,7 @@
 
 1289580562 d:\documents\finalyearproject\codeblocksimp\src\clustalw_version.h
 
-1353929296 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
+1350469387 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
 	"config.h"
 	<iostream>
 	<fstream>
@@ -114,7 +114,7 @@
 	"Help.h"
 	<ctime>
 
-1284038762 d:\documents\finalyearproject\codeblocksimp\src\clustal.h
+1356212014 d:\documents\finalyearproject\codeblocksimp\src\clustal.h
 	<string>
 	"general/clustalw.h"
 	"general/utils.h"
@@ -122,6 +122,7 @@
 	"fileInput/FileReader.h"
 	"alignment/Alignment.h"
 	"alignment/AlignmentOutput.h"
+	"pairwise/FastPairwiseAlign.h"
 
 1284038762 d:\documents\finalyearproject\codeblocksimp\src\general\userparams.h
 	"UserParameters.h"
@@ -231,15 +232,16 @@
 	<cassert>
 	"Alignment.h"
 
-1355930161 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.h
+1356150318 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.h
 	"PairwiseAlignBase.h"
+	"stdafx.h"
 	"../../include/ScoreMatrix.h"
 
-1284038762 d:\documents\finalyearproject\codeblocksimp\src\pairwise\pairwisealignbase.h
+1356201252 d:\documents\finalyearproject\codeblocksimp\src\pairwise\pairwisealignbase.h
 	<vector>
 	"../alignment/Alignment.h"
 
-1284038762 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.h
+1356207104 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.h
 	"PairwiseAlignBase.h"
 
 1284038762 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\msa.h
@@ -541,12 +543,12 @@
 	"config.h"
 	"ProfileWithSub.h"
 
-1355922065 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.cpp
+1356201279 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.cpp
 	"config.h"
 	<math.h>
 	"FastPairwiseAlign.h"
 
-1355930181 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
+1356297996 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
 	"config.h"
 	"FullPairwiseAlign.h"
 	<math.h>
@@ -744,7 +746,7 @@
 	<sstream>
 	"../general/OutputFile.h"
 
-1355927676 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
+1356209840 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
 	"stdafx.h"
 	"conio.h"
 	"alignment/Alignment.h"
@@ -759,6 +761,7 @@
 	"general/DebugLog.h"
 	"general/ClustalWResources.h"
 	"general/Stats.h"
+	"pairwise/FullPairwiseAlign.h"
 	"../include/InputFile.h"
 	"../include/ProteinSequence.h"
 	"../include/ScoreMatrix.h"
@@ -770,7 +773,7 @@
 	"stdafx.h"
 	<iostream>
 
-1355922049 source:d:\documents\finalyearproject\codeblocksimp\imp6\inputfile.cpp
+1356285017 source:d:\documents\finalyearproject\codeblocksimp\imp6\inputfile.cpp
 	"../include/InputFile.h"
 	"../include/ProteinSequence.h"
 
@@ -783,16 +786,16 @@
 1353667432 source:d:\documents\finalyearproject\codeblocksimp\imp6\proteinsequence.cpp
 	"../include/ProteinSequence.h"
 
-1355930167 source:d:\documents\finalyearproject\codeblocksimp\imp6\scorematrix.cpp
+1356298107 source:d:\documents\finalyearproject\codeblocksimp\imp6\scorematrix.cpp
 	"../include/ScoreMatrix.h"
 
-1355930090 d:\documents\finalyearproject\codeblocksimp\include\scorematrix.h
+1356298034 d:\documents\finalyearproject\codeblocksimp\include\scorematrix.h
 	"stdafx.h"
-	"../src/pairwise/FullPairwiseAlign.h"
+	<sstream>
 
-1355928741 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
+1356109751 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
 	"config.h"
 	"FullPairwiseAlign.h"
-	<math.h>
 	"../../include/ScoreMatrix.h"
+	<math.h>
 

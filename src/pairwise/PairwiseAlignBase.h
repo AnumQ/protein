@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 #ifndef PAIRWISEALIGNBASE_H
 #define PAIRWISEALIGNBASE_H
@@ -15,10 +15,11 @@ namespace clustalw
 class PairwiseAlignBase
 {
     public:
+
   virtual ~PairwiseAlignBase(){};
         /* Functions */
-        virtual void pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart, 
-                                   int iEnd, int jStart, int jEnd) = 0; 
+        virtual void pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart,
+                                   int iEnd, int jStart, int jEnd) = 0;
         /* Attributes */
 
     private:

@@ -41,19 +41,19 @@ InputFile::InputFile()
 
 void InputFile::getSearchInput()
 {
-    cout << "Please enter the CathCode: ";
+    cout << "   Please enter the CathCode: ";
     cin >> SearchCathCode;
     //getline( cin, SearchCathCode );
 }
 
 void InputFile::defineLevelOfHierarchy()
 {
-    cout << "Please define the level of CATH hierarchy nodes: \n"
-            "1. 35 %\n"
-            "2. 60 %\n"
-            "3. 95 %\n"
-            "4. 100 %\n"
-            "5. No representatives\n" << endl;
+    cout << "   Please define the level of CATH hierarchy nodes: \n"
+            "\t1. 35 %\n"
+            "\t2. 60 %\n"
+            "\t3. 95 %\n"
+            "\t4. 100 %\n"
+            "\t5. No representatives\n" << endl;
     int x;
     cin >> x;
 
@@ -165,11 +165,11 @@ string InputFile::getFileInput()
 
 void InputFile::determineSourceFile()
 {
-    cout << "Which source file do you wish to use? \n"
-            "1. Input2 (Test file )\n"
-            "2. Cath Domain Description File V3.3.0 (Downloaded from Cath Database)\n"
-            "3. Cath Domain Description File V3.5.0 (Downloaded from Cath Database)\n"
-            "4. Cath Domain Description File V3.5.0 (Simplified version)\n" << endl;
+    cout << "   Which source file do you wish to use? \n"
+            "\t1. Input2 (Test file )\n"
+            "\t2. Cath Domain Description File V3.3.0 (Cath Database)\n"
+            "\t3. Cath Domain Description File V3.5.0 (Cath Database)\n"
+            "\t4. Cath Domain Description File V3.5.0 (Simplified version)\n" << endl;
     int x;
     cin >> x;
 
@@ -215,7 +215,7 @@ bool InputFile::openFile( string file )
 
 void InputFile::closeFile()
 {
-    if(verbose)
+    if( verbose )
     cout << "Closing file .. " << endl;
     fileInput.close();
 }

@@ -10,10 +10,7 @@
 #include "FullPairwiseAlign.h"
 #include <math.h>
 
-//#include "../../include/ScoreMatrix.h"
-
 using namespace std;
-vector<ScoreMatrix> Scores;
 
 namespace clustalw
 {
@@ -35,6 +32,20 @@ FullPairwiseAlign::FullPairwiseAlign()
   se2(0)
 {
 
+}
+
+FullPairwiseAlign::FullPairwiseAlign( int y )
+{
+    //sample = &ScoringMatrix;
+    //vector<ScoreMatrix> s   = getScoringVector();
+    cout << "Size of the Scoringmatrix " << ScoringMatrix.size() << endl;
+    for ( size_t i = 0; i < ScoringMatrix1.size(); i++ )
+    {
+        cout << "Setting x: " << ScoringMatrix1[i].getSequenceX()
+        << " y: " << ScoringMatrix1[i].getSequenceY()
+        << " Score is : " << ScoringMatrix1[i].getScore() << endl;
+
+    }
 }
 
 void FullPairwiseAlign::pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart, int iEnd, int jStart, int jEnd)
@@ -195,18 +206,26 @@ void FullPairwiseAlign::pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, 
                     int x = si+1;
                     int y = sj+1;
                     int score = (int)mmScore;
-                    ScoreMatrix current = ScoreMatrix(x, y, score);
-                  //  sample = 8;
-                    //Scores.push_back(current);
+
+                    ScoreMatrix current;
+
+                    current.setSequenceX(x);
+                    current.setSequenceY(y);
+                    current.setScore(score);
+
+                    ScoringMatrix.push_back(current);
                 }
             }
         }
+        ScoreMatrix i;
+        i.generateScoreMatrix(ScoringMatrix);
 
         displ.clear();
         HH.clear();
         DD.clear();
         RR.clear();
         SS.clear();
+
     }
     catch(const exception& e)
     {
@@ -214,6 +233,19 @@ void FullPairwiseAlign::pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, 
              << e.what() << "\n";
         exit(1);
     }
+
+
+}
+
+void FullPairwiseAlign::setScoringVector( vector<ScoreMatrix> s )
+{
+    //ScoringMatrix1.clear();
+
+}
+
+vector<ScoreMatrix> FullPairwiseAlign::getScoringVector()
+{
+    return ScoringMatrix;
 }
 
 void FullPairwiseAlign::add(int v)
