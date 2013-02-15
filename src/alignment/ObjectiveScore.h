@@ -1,18 +1,18 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
- * This ObjectiveScore class is used to provide an objective function to score 
+ * This ObjectiveScore class is used to provide an objective function to score
  * an alignment.
  * It is used with iteration to improve an alignment.
  */
- 
+
 #ifndef OBJECTIVESCORE_H
 #define OBJECTIVESCORE_H
 #include "../general/clustalw.h"
-#include "../substitutionMatrix/globalmatrix.h" 
+#include "../substitutionMatrix/globalmatrix.h"
 namespace clustalw
 {
 
@@ -20,19 +20,19 @@ class Alignment;
 typedef struct
 {
     int first;
-    int second; 
-} Pair;  
+    int second;
+} Pair;
 
 class ObjectiveScore
-{   
+{
     public:
         ObjectiveScore();
-        long getScore(const Alignment* alnToScore);    
+        long getScore(const Alignment* alnToScore);
     private:
-        
+
         float scoreLetters(int seq1, int seq2);
         float scoreGaps(int seq1, int seq2);
-        void calcNormalisedSeqWeights(const vector<int>* seqWeight, 
+        void calcNormalisedSeqWeights(const vector<int>* seqWeight,
                                       vector<float>* normSeqWeight);
         long score;
         int matrix[NUMRES][NUMRES];

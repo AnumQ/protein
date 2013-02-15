@@ -179,10 +179,10 @@ void InputFile::determineSourceFile()
             sourceFile = "D:/Documents/FinalYearProject/Input2.txt";
             break;
         case 2:
-            sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.5.0.c";
+            sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.c";
             break;
         case 3:
-            sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.c";
+            sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.5.c";
             break;
         case 4:
             sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.Simplified.c";
@@ -227,12 +227,15 @@ void InputFile::closeInputFile()
 
 void InputFile::writeInputFileForRepresentatives()
 {
-    vector<ProteinSequence> p;
-    ProteinSequence currentSequence;
+    p.clear();
 
     seqC = 0;
     filename = "InputFile.txt";
     infile.open(filename.c_str());
+
+    fsearch = "SearchResults.txt";
+    searchResults.open(fsearch.c_str());
+
 
     ifstream& File = fileInput;
     string LINE;
@@ -303,7 +306,12 @@ void InputFile::writeInputFileForRepresentatives()
                         if ( pdblist[i] == n )
                         {
                             infile.write( (n.c_str()), n.size() );
+
                             seqC++;
+
+                            writeSearchResults(seqC, n );
+
+
                         }
                     }
                     pdb.clear();
@@ -326,7 +334,9 @@ void InputFile::writeInputFileForRepresentatives()
                     string o = currentSequence.getSeq();
                     if ( seqC > count )
                     {
+                        string c = o;
                         infile.write( (o.c_str()), o.size() );
+                        p.push_back(currentSequence);
                     }
                     seq.clear();
                 }
@@ -339,12 +349,15 @@ void InputFile::writeInputFileForRepresentatives()
 
 void InputFile::writeInputFile()
 {
-    vector<ProteinSequence> p;
-    ProteinSequence currentSequence;
+    p.clear();
 
     seqC = 0;
     filename = "InputFile.txt";
     infile.open(filename.c_str());
+
+    fsearch = "SearchResults.txt";
+    searchResults.open(fsearch.c_str());
+
 
     ifstream& File = fileInput;
     string LINE;
@@ -391,8 +404,6 @@ void InputFile::writeInputFile()
                  //   if ( cathCode == SearchCathCode )
                     {
                         currentSequence.setCathCode(cathCode);
-
-                        string m = currentSequence.getCathCode();
                     }
                     cathCode.clear();
                 }
@@ -416,7 +427,12 @@ void InputFile::writeInputFile()
                     {
                         //cout << currentSequence->getCathCode() << endl;
                         infile.write( (n.c_str()), n.size() );
+
+
                         seqC++;
+                        //convert.clear();
+                        //convert << seqC;
+                        writeSearchResults( seqC, n );
                     }
                     pdb.clear();
                     //cout << LINE << endl;
@@ -437,10 +453,13 @@ void InputFile::writeInputFile()
                         }
                     }
                     string o = currentSequence.getSeq();
+
                     if ( (currentSequence.getCathCode()) == SearchCathCode )
                     {
-                       // cout << o << endl;
+
                         infile.write( (o.c_str()), o.size() );
+                        string c = o;
+                        p.push_back(currentSequence);
                         //seqC++;
                     }
 
@@ -456,6 +475,11 @@ void InputFile::writeInputFile()
 int InputFile::getSeqC()
 {
     return seqC;
+}
+
+vector<ProteinSequence> InputFile::getProteinData()
+{
+    return p;
 }
 
 void InputFile::checkToProceed( bool f )
@@ -567,6 +591,16 @@ void InputFile::createSimplifiedSourceFile()
             }
         }
     }
+}
+
+void InputFile::writeSearchResults(int seqC, string n )
+{
+
+    ScoreMatrix l;
+    string i = l.number_to_string(seqC);
+    string k = n.substr(5,7);
+    string final = k + "-" + i + "\n";
+    searchResults.write( final.c_str(), final.size() );
 }
 
 InputFile::~InputFile()

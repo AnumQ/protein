@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+extern vector<ProteinSequence> p;
+
 class InputFile
 {
     public:
@@ -11,21 +13,24 @@ class InputFile
         void getSearchInput();
         void defineLevelOfHierarchy();
         void getPDBfromClassifiedList();
-        void setCathCode( string CathC );
+        void setCathCode( string );
+        string getCathCode();
         string getFileInput();
         void closeInputFile();
         void closeFile();
         bool openFile( string file );
-        string getCathCode();
         void writeInputFile();
         int getSeqC();
         void checkToProceed(bool f);
         void processInput();
         void determineSourceFile();
-        bool flag;
         void createSimplifiedSourceFile();
         void writeInputFileForRepresentatives();
-        void deleteProteinObjects();
+        vector<ProteinSequence> getProteinData();
+        void writeSearchResults(int, string );
+
+        /* Attributes */
+        bool flag;
 
         virtual ~InputFile();
     protected:
@@ -39,8 +44,12 @@ class InputFile
     ifstream fileInput;
     vector<string> pdblist;
     vector<string> Lines;
+    string fsearch;
     ofstream infile;
-
+    ofstream searchResults;
+    stringstream convert;
+    ProteinSequence currentSequence;
+    vector<ProteinSequence> p;
 };
 
 

@@ -42,6 +42,8 @@ const bool DEBUGLOG = false;
 #include "Array2D.h"
 #include "SquareMat.h"
 #include "SymMatrix.h"
+
+#include <stdio.h>
 #include <vector>
 #include <string>
 using namespace std;
@@ -226,7 +228,7 @@ const string VALID_COMMAND_SEP = "-/";
     const int INT_SCALE_FACTOR = 1000; /* Scaling factor to convert float to integer
         for profile scores */
 #endif
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
   #define snprintf _snprintf
   #define vsnprintf _vsnprintf
   #define strcasecmp _stricmp

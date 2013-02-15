@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="..\Imp6" />
+					<Add directory="D:\Documents\FinalYearProject\CodeBlocksIMP\src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,13 +34,24 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AminoAcidCode.cpp" />
+		<Unit filename="AminoAcidFrequency.cpp" />
+		<Unit filename="DistanceMatrix.cpp" />
+		<Unit filename="FileCreator.cpp" />
+		<Unit filename="FileReader.cpp" />
 		<Unit filename="Imp6.cpp" />
 		<Unit filename="InputFile.cpp" />
 		<Unit filename="ProteinSequence.cpp" />
+		<Unit filename="ScoreMatrix.cpp" />
 		<Unit filename="stdafx.h" />
 		<Unit filename="targetver.h" />
+		<Unit filename="..\include\AminoAcidCode.h" />
+		<Unit filename="..\include\AminoAcidFrequency.h" />
+		<Unit filename="..\include\DistanceMatrix.h" />
+		<Unit filename="..\include\FileReader.h" />
 		<Unit filename="..\include\InputFile.h" />
 		<Unit filename="..\include\ProteinSequence.h" />
+		<Unit filename="..\include\ScoreMatrix.h" />
 		<Unit filename="..\src\Clustal.cpp" />
 		<Unit filename="..\src\Clustal.h" />
 		<Unit filename="..\src\Help.cpp" />

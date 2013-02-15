@@ -16,6 +16,11 @@
 #include "../include/InputFile.h"
 #include "../include/ProteinSequence.h"
 #include "../include/ScoreMatrix.h"
+#include "../include/AminoAcidFrequency.h"
+#include "../include/AminoAcidCode.h"
+#include "../include/DistanceMatrix.h"
+#include "../include/VerticalPosition.h"
+
 
 namespace clustalw
 {
@@ -65,9 +70,11 @@ void defineverbose()
             break;
     }
 }
+
 int main(int argc, char **argv)
 {
     defineverbose();
+
 
     ClustalWInitializers();
     clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
@@ -85,10 +92,25 @@ int main(int argc, char **argv)
 	string phylipName;
 	clustalObj->align(&phylipName);
 
-    cout << "Line" << endl;
-    //FullPairwiseAlign* fpaObj;
-    //fpaObj = new clustalw::FullPairwiseAlign(y);
-    //cout << "SIze of matrix is " << Matrix.size() << endl;
+    AminoAcidFrequency Table;
+    Table.openFile("TEST-OutputFile.aln");
+
+    vector<ProteinSequence> p1;
+    p1 = start.getProteinData();
+    Table.generateAminoAcidTables(p1);
+
+    p1.clear();
+    p1 = Table.getFinalSeqs();
+
+    DistanceMatrix dm;
+    dm.createDistanceTableCodes(p1);
+    dm.createSimilarityMatrixCodes(p1);
+    dm.createDistanceTableColours(p1);
+    dm.createSimilarityMatrixColours(p1);
+
+    VerticalPosition vp;
+    vp.createSomething(p1);
+
 
     return 0;
 }

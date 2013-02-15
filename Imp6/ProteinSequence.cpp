@@ -1,4 +1,5 @@
 #include "../include/ProteinSequence.h"
+#include "../include/AminoAcidCode.h"
 
 using namespace std;
 
@@ -22,6 +23,40 @@ void ProteinSequence::setSeq( string s )
     seq = s;
 }
 
+void ProteinSequence::setSeqLength( int l )
+{
+    seqLength = l;
+}
+
+void ProteinSequence::setAminoAcidCounts( vector<AminoAcidCode> a )
+{
+    AminoAcidCount.clear();
+    for ( size_t i = 0; i < a.size(); i++ )
+    {
+        AminoAcidCount.push_back(a[i]);
+
+    }
+}
+
+vector<AminoAcidCode> ProteinSequence::getAminoAcidCount()
+{
+    return AminoAcidCount;
+}
+
+void ProteinSequence::setAminoAcidColourCount( vector<AminoAcidColourCode> p )
+{
+    AminoAcidColourCount.clear();
+    for ( size_t i = 0; i < p.size(); i++ )
+    {
+        AminoAcidColourCount.push_back(p[i]);
+    }
+
+}
+vector<AminoAcidColourCode> ProteinSequence::getAminoAcidColourCount()
+{
+    return AminoAcidColourCount;
+}
+
 string ProteinSequence::getCathCode()
 
 {
@@ -36,6 +71,11 @@ string ProteinSequence::getPDB()
 string ProteinSequence::getSeq()
 {
     return seq;
+}
+
+int ProteinSequence::getSeqLength()
+{
+    return seqLength;
 }
 
 ProteinSequence::~ProteinSequence()

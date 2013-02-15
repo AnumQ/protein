@@ -37,6 +37,35 @@ int ScoreMatrix::getScore()
     return SequenceScore;
 }
 
+void ScoreMatrix::setDistanceScore( double d )
+{
+    DistanceScore = d;
+}
+
+double ScoreMatrix::getDistanceScore()
+{
+    return DistanceScore;
+}
+/* Convert an int to a string */
+string ScoreMatrix::number_to_string(int number)
+{
+	return dynamic_cast<std::stringstream *> (&(std::stringstream() << number))->str();
+}
+
+string ScoreMatrix::double_to_string(double number)
+{
+	return dynamic_cast<std::stringstream *> (&(std::stringstream() << number))->str();
+}
+
+string ScoreMatrix::RoundToString(int precision, double val )
+{
+   // cout << setprecision(precision) << val << endl;
+    //return dynamic_cast<std::stringstream *> (&(std::stringstream() setprecision(presicion) << value;
+    std::stringstream s;
+    s << std::setprecision(precision) << val;
+    std::string num = s.str();
+    return num;
+}
 /* Generate score matrix from the results of the alignment */
 void ScoreMatrix::generateScoreMatrix( vector<ScoreMatrix> m )
 {
@@ -44,11 +73,9 @@ void ScoreMatrix::generateScoreMatrix( vector<ScoreMatrix> m )
     ofstream outfile;
     outfile.open(filename.c_str()); // open the file "ScoreMatrix.txt"
 
-    string a = "ScoreMatrix\n";
-    outfile.write(a.c_str(), a.size()); // write the headline
-
     int maxY = 0;
     int x, y, s;
+    int x2, y2, s2;
     stringstream out;
 
     for ( size_t i = 0; i < m.size(); i++ )
@@ -61,63 +88,73 @@ void ScoreMatrix::generateScoreMatrix( vector<ScoreMatrix> m )
         }
     }
 
+    string max = number_to_string(maxY);
+    outfile.write( max.c_str(), max.size() );
+
     string tab = "\t";
     string lbreak = "\n";
 
-    for ( int i = 1; i <= maxY; i++ )
-    {
-        out.clear();
-        out << i;
-        outfile << tab;
-        outfile << out.rdbuf(); // Write the horisontal count of the grid
-    }
-
-    outfile.write( lbreak.c_str(), lbreak.size() ); // add a line break
+    //outfile.write( lbreak.c_str(), lbreak.size() ); // add a line break
 
     bool b = false;
 
     int counter = 0;
+    int counter2 = 0;
     for ( int i = 1; i <= maxY; i++ )
     {
-        out.clear();
-        out << i;
-        outfile << out.rdbuf(); // Write the vertical count of the grid
+        outfile.write( lbreak.c_str(), lbreak.size() );
 
         for ( int j = 1; j <= maxY; j++ )
         {
-            x = m[counter].getSequenceX();
-            y = m[counter].getSequenceY();
+            x = m[counter].getSequenceX(); // x = 1
+            y = m[counter].getSequenceY();  // y = 2
 
-            outfile << tab;
+
+
             if ( j == i )
             {
                 b = true;
                 int fullscore = 100;
-                out << fullscore;
-                outfile << out.rdbuf();
+
+                string f = number_to_string(fullscore);
+                outfile.write(f.c_str(), f.size() );
             }
-            if ( j > i ) // i = 1, j = 2
+            if ( j > i ) // i = 1, j = 2 --- i = 2, j = 3
             {
-                //cout << endl;
-                //cout << "i is " << i << endl;
-                //cout << "j is " << j << endl;
                 s = m[counter].getScore();
 
                 if ( j == y )
                 {
-                    //cout << "score is " << s << endl;
-                    out.clear();
-                    out << s;
-                    outfile << out.rdbuf();
-
+                    string t = number_to_string(s);
+                    outfile.write(t.c_str(), t.size() );
                     // increment the count for the objects for the ScoringMatrix
                     counter++;
                 }
+            }
+
+            if ( i > j ) // i = 2, j = 1   --- i = 3, j = 2
+            {
+               // A[i,j]=A[j,i] when i>j
+               for ( size_t k = 0; k < m.size(); k++ )
+               {
+                    x2 = m[k].getSequenceX(); // x = 1
+                    y2 = m[k].getSequenceY();  // y = 2
+
+                    s2 = m[k].getScore();
+
+                    if ( i == y2 && j == x2 ) //
+                    {
+                        string t = number_to_string(s2);
+                        outfile.write(t.c_str(), t.size() );
+                    }
+
+               }
+
+
 
             }
+            outfile.write( tab.c_str(), tab.size() );
         }
-        outfile.write( lbreak.c_str(), lbreak.size() );
-
     }
 }
 

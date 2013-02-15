@@ -10,6 +10,10 @@
 #include <fstream>
 #include <vector>
 #include <istream>
+#include <stdarg.h>
+#include  <wchar.h>
+#include <sstream>
+#include <iomanip>
 
 #include <tchar.h>
 #include <stdio.h>
@@ -20,9 +24,15 @@
 #include "conio.h"
 #include "stdlib.h"
 #include "../include/ScoreMatrix.h"
+#include "../include/ProteinSequence.h"
 
+#include <memory>
+#include <ctime>
+
+#include <string.h>
+#include <sys/stat.h>
+#include <dirent.h>
 extern bool verbose;
-
 
 
 
