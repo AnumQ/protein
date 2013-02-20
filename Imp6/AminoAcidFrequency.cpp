@@ -251,7 +251,6 @@ vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence>
     string Seq;
     int count = 0;
 
-
     cout << "Assembling the sequences ... " << endl;
 
     for ( size_t i = 0; i < p.size(); i++ )
@@ -290,11 +289,27 @@ vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence>
             }
 
         }
-        p[i].setSeq(Seq);
-        //cout << "" << p[i].getSeq() << endl;
-        Seq.clear();
-    }
 
+        string mergedSeq = Seq;
+        Seq.clear(); // clear Seq for so the new sequence is not added in the same line as the previous one
+
+        string finalSeq;
+
+        //Remove spaces
+        for ( size_t i = 0; i < mergedSeq.size(); i++ )
+        {
+            char c = mergedSeq[i];
+            if ( c != '\0' )
+            {
+                finalSeq.push_back(c);
+            }
+        }
+
+        p[i].setSeq(finalSeq);
+        // string gSeq = p[i].getSeq();
+        // cout << gSeq << endl;
+
+    }
     return p;
 }
 
@@ -339,6 +354,7 @@ vector<ProteinSequence> AminoAcidFrequency::processSeq( vector<ProteinSequence> 
         Codes = j.createAminoAcidCounters();
         c.createColourCodes();
         Colours = c.getColourCodes();
+
         string p = processedP[i].getPDB();
         string s = processedP[i].getSeq();
 
@@ -380,7 +396,6 @@ vector<ProteinSequence> AminoAcidFrequency::processSeq( vector<ProteinSequence> 
                     // loop through the sequence and get the colour count
                     for( size_t n = 0; n < Colours.size(); n++ )
                     {
-
                         int count = 0;
 
                         string k = Colours[n].getColour();
@@ -396,15 +411,12 @@ vector<ProteinSequence> AminoAcidFrequency::processSeq( vector<ProteinSequence> 
                         }
                         Colours[n].setCount(count);
                     }
-
-
                 }
-
             }
-            processedP[i].setAminoAcidCounts(Codes);
-            processedP[i].setAminoAcidColourCount(Colours);
-            processedP[i].setSeqLength(total);
-            //cout << "Total is " << total << endl;
+        processedP[i].setAminoAcidCounts(Codes);
+        processedP[i].setAminoAcidColourCount(Colours);
+        processedP[i].setSeqLength(total);
+        //cout << "Total is " << total << endl;
     }
 
     return processedP;
@@ -417,7 +429,7 @@ string AminoAcidFrequency::RemoveSpaces( string s )
     string line = s;
     for ( size_t i = 0; i < line.size(); i++)
         {
-            if ( line[i] == ' ' )
+            if ( line[i] == ' ')
               {
                      for ( size_t j = i; j < line.size(); j++ )
                      {
@@ -427,6 +439,24 @@ string AminoAcidFrequency::RemoveSpaces( string s )
               }
         }
     return line;
+}
+
+string AminoAcidFrequency::RemoveSpaces2( string s )
+{
+    string finalLine;
+    char c;
+
+        //Remove spaces
+    for ( size_t i = 0; i < s.size(); i++ )
+    {
+        c = s[i];
+        if ( c != '\0')
+        {
+            finalLine.push_back(c);
+        }
+    }
+    return finalLine;
+
 }
 
 /* RemoveTabs() removes tabs in a string */

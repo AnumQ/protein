@@ -1,0 +1,75 @@
+ColumnCalculations.txt
+---R		R = 0.25	Total: 1
+---K		K = 0.25	Total: 1
+---I		I = 0.25	Total: 1
+---W		W = 0.25	Total: 1
+---S		S = 0.25	Total: 1
+---L		L = 0.25	Total: 1
+---I		I = 0.25	Total: 1
+---R		R = 0.25	Total: 1
+---D		D = 0.25	Total: 1
+---C		C = 0.25	Total: 1
+---S		S = 0.25	Total: 1
+---G		G = 0.25	Total: 1
+P--K		K = 0.25		P = 0.25	Total: 1
+T--L		L = 0.25		T = 0.25	Total: 1
+L--E		E = 0.25		L = 0.25	Total: 1
+S--G		G = 0.25		S = 0.25	Total: 1
+P--V		P = 0.25		V = 0.25	Total: 1
+EAPT		A = 0.25		E = 0.25		P = 0.25		T = 0.25	Total: 1
+QSEE		E = 0.5		Q = 0.25		S = 0.25	Total: 1
+QRQT		Q = 0.5		R = 0.25		T = 0.25	Total: 1
+ESYS		E = 0.25		S = 0.5		Y = 0.25	Total: 1
+MVAV		A = 0.25		M = 0.25		V = 0.5	Total: 1
+LIVL		I = 0.25		L = 0.5		V = 0.25	Total: 1
+QRTE		E = 0.25		Q = 0.25		R = 0.25		T = 0.25	Total: 1
+ASWV		A = 0.25		S = 0.25		V = 0.25		W = 0.25	Total: 1
+FILL		F = 0.25		I = 0.25		L = 0.5	Total: 1
+SISL		I = 0.25		L = 0.25		S = 0.5	Total: 1
+TKRI		I = 0.25		K = 0.25		R = 0.25		T = 0.25	Total: 1
+QSEV		E = 0.25		Q = 0.25		S = 0.25		V = 0.25	Total: 1
+SSVS		S = 0.75		V = 0.25	Total: 1
+GRTR		G = 0.25		R = 0.5		T = 0.25	Total: 1
+MLMV		L = 0.25		M = 0.5		V = 0.25	Total: 1
+NESL		E = 0.25		L = 0.25		N = 0.25		S = 0.25	Total: 1
+-E-G		E = 0.25		G = 0.25	Total: 1
+LD-I		D = 0.25		I = 0.25		L = 0.25	Total: 1
+ER-R		E = 0.25		R = 0.5	Total: 1
+WK-K		K = 0.5		W = 0.25	Total: 1
+SRQE		E = 0.25		Q = 0.25		R = 0.25		S = 0.25	Total: 1
+QYDD		D = 0.5		Q = 0.25		Y = 0.25	Total: 1
+KLAL		A = 0.25		K = 0.25		L = 0.5	Total: 1
+CTLF		C = 0.25		F = 0.25		L = 0.25		T = 0.25	Total: 1
+LLLL		L = 1	Total: 1
+QLAK		A = 0.25		K = 0.25		L = 0.25		Q = 0.25	Total: 1
+DDAD		A = 0.25		D = 0.75	Total: 1
+NDLL		D = 0.25		L = 0.5		N = 0.25	Total: 1
+NIRG		G = 0.25		I = 0.25		N = 0.25		R = 0.25	Total: 1
+WKLV		K = 0.25		L = 0.25		V = 0.25		W = 0.25	Total: 1
+DGSS		D = 0.25		G = 0.25		S = 0.5	Total: 1
+YAAP		A = 0.5		P = 0.25		Y = 0.25	Total: 1
+TNGT		G = 0.25		N = 0.25		T = 0.5	Total: 1
+RDSE		D = 0.25		E = 0.25		R = 0.25		S = 0.25	Total: 1
+SLPE		E = 0.25		L = 0.25		P = 0.25		S = 0.25	Total: 1
+AAGK		A = 0.5		G = 0.25		K = 0.25	Total: 1
+QKAR		A = 0.25		K = 0.25		Q = 0.25		R = 0.25	Total: 1
+AFAI		A = 0.5		F = 0.25		I = 0.25	Total: 1
+FHLL		F = 0.25		H = 0.25		L = 0.5	Total: 1
+TQAE		A = 0.25		E = 0.25		Q = 0.25		T = 0.25	Total: 1
+HLLL		H = 0.25		L = 0.75	Total: 1
+LVFV		F = 0.25		L = 0.25		V = 0.5	Total: 1
+KKQE		E = 0.25		K = 0.5		Q = 0.25	Total: 1
+AIGK		A = 0.25		G = 0.25		I = 0.25		K = 0.25	Total: 1
+KI-R		I = 0.25		K = 0.25		R = 0.25	Total: 1
+GK-A		A = 0.25		G = 0.25		K = 0.25	Total: 1
+EH-S		E = 0.25		H = 0.25		S = 0.25	Total: 1
+IH-G		G = 0.25		H = 0.25		I = 0.25	Total: 1
+PH-Y		H = 0.25		P = 0.25		Y = 0.25	Total: 1
+E--P		E = 0.25		P = 0.25	Total: 1
+V--L		L = 0.25		V = 0.25	Total: 1
+AH-H		A = 0.25		H = 0.5	Total: 1
+FH-Y		F = 0.25		H = 0.25		Y = 0.25	Total: 1
+M--I		I = 0.25		M = 0.25	Total: 1
+K--L		K = 0.25		L = 0.25	Total: 1
+---G		G = 0.25	Total: 1
+---E		E = 0.25	Total: 1

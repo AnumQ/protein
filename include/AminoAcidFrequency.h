@@ -1,9 +1,14 @@
 #ifndef AMINOACIDFREQUENCY_H
 #define AMINOACIDFREQUENCY_H
 #include "stdafx.h"
+#include "../include/FileCreator.h"
 #include "../include/AminoAcidCode.h"
 #include "../include/AminoAcidColourCode.h"
+
 using namespace std;
+
+class AminoAcidCode;
+class AminoAcidColourCode;
 
 class AminoAcidFrequency
 {
@@ -19,6 +24,7 @@ class AminoAcidFrequency
         vector<ProteinSequence> processSeq( vector<ProteinSequence> );
         vector<ProteinSequence> getFinalSeqs();
         string RemoveSpaces(string);
+        string RemoveSpaces2(string);
         string RemoveTabs( string );
 
         /* Attributes */

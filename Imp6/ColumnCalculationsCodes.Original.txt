@@ -1,0 +1,75 @@
+ColumnCalculationsCodes.txt
+---R	R = 1	Total = 1
+---K	K = 1	Total = 1
+---I	I = 1	Total = 1
+---W	W = 1	Total = 1
+---S	S = 1	Total = 1
+---L	L = 1	Total = 1
+---I	I = 1	Total = 1
+---R	R = 1	Total = 1
+---D	D = 1	Total = 1
+---C	C = 1	Total = 1
+---S	S = 1	Total = 1
+---G	G = 1	Total = 1
+P--K	P = 1	K = 1	Total = 2
+T--L	T = 1	L = 1	Total = 2
+L--E	L = 1	E = 1	Total = 2
+S--G	S = 1	G = 1	Total = 2
+P--V	P = 1	V = 1	Total = 2
+EAPT	E = 1	A = 1	P = 1	T = 1	Total = 4
+QSEE
+QRQT
+ESYS
+MVAV
+LIVL
+QRTE
+ASWV
+FILL
+SISL
+TKRI
+QSEV
+SSVS
+GRTR
+MLMV
+NESL
+-E-G
+LD-I
+ER-R
+WK-K
+SRQE
+QYDD
+KLAL
+CTLF
+LLLL
+QLAK
+DDAD
+NDLL
+NIRG
+WKLV
+DGSS
+YAAP
+TNGT
+RDSE
+SLPE
+AAGK
+QKAR
+AFAI
+FHLL
+TQAE
+HLLL
+LVFV
+KKQE
+AIGK
+KI-R
+GK-A
+EH-S
+IH-G
+PH-Y
+E--P
+V--L
+AH-H
+FH-Y
+M--I
+K--L
+---G
+---E

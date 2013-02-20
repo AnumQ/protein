@@ -21,7 +21,6 @@
 #include "../include/DistanceMatrix.h"
 #include "../include/VerticalPosition.h"
 
-
 namespace clustalw
 {
     UserParameters* userParameters;
@@ -109,7 +108,7 @@ int main(int argc, char **argv)
     dm.createSimilarityMatrixColours(p1);
 
     VerticalPosition vp;
-    vp.createSomething(p1);
+    vp.run(p1);
 
 
     return 0;

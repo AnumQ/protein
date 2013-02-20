@@ -757,7 +757,7 @@
 	<sstream>
 	"../general/OutputFile.h"
 
-1360933879 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
+1360959117 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
 	"stdafx.h"
 	"conio.h"
 	"alignment/Alignment.h"
@@ -816,13 +816,14 @@
 	"../../include/ScoreMatrix.h"
 	<math.h>
 
-1360929479 source:d:\documents\finalyearproject\codeblocksimp\imp6\aminoacidfrequency.cpp
+1361337563 source:d:\documents\finalyearproject\codeblocksimp\imp6\aminoacidfrequency.cpp
 	"../include/AminoAcidFrequency.h"
 	<stdio.h>
 	<math.h>
 
-1360928973 d:\documents\finalyearproject\codeblocksimp\include\aminoacidfrequency.h
+1360954294 d:\documents\finalyearproject\codeblocksimp\include\aminoacidfrequency.h
 	"stdafx.h"
+	"../include/FileCreator.h"
 	"../include/AminoAcidCode.h"
 	"../include/AminoAcidColourCode.h"
 
@@ -864,11 +865,26 @@
 1360928947 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcolourcode.h
 	"stdafx.h"
 
-1360933544 source:d:\documents\finalyearproject\codeblocksimp\imp6\verticalposition.cpp
+1361339604 source:d:\documents\finalyearproject\codeblocksimp\imp6\verticalposition.cpp
 	"../include/VerticalPosition.h"
 
-1360933760 d:\documents\finalyearproject\codeblocksimp\include\verticalposition.h
+1361343496 d:\documents\finalyearproject\codeblocksimp\include\verticalposition.h
 	"stdafx.h"
 	"../include/FileCreator.h"
+	"../include/ScoreMatrix.h"
 	"../include/ProteinSequence.h"
+	"../include/AlignmentColumn.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1361335900 d:\documents\finalyearproject\codeblocksimp\include\alignmentcolumn.h
+	"stdafx.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1360939661 source:d:\documents\finalyearproject\codeblocksimp\src\alignmentcolumn.cpp
+	"../include/AlignmentColumn.h"
+
+1361335934 source:d:\documents\finalyearproject\codeblocksimp\imp6\alignmentcolumn.cpp
+	"../include/AlignmentColumn.h"
 

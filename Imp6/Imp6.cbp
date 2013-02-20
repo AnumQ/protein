@@ -34,7 +34,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AlignmentColumn.cpp" />
 		<Unit filename="AminoAcidCode.cpp" />
+		<Unit filename="AminoAcidColourCode.cpp" />
 		<Unit filename="AminoAcidFrequency.cpp" />
 		<Unit filename="DistanceMatrix.cpp" />
 		<Unit filename="FileCreator.cpp" />
@@ -43,15 +45,19 @@
 		<Unit filename="InputFile.cpp" />
 		<Unit filename="ProteinSequence.cpp" />
 		<Unit filename="ScoreMatrix.cpp" />
+		<Unit filename="VerticalPosition.cpp" />
 		<Unit filename="stdafx.h" />
 		<Unit filename="targetver.h" />
+		<Unit filename="..\include\AlignmentColumn.h" />
 		<Unit filename="..\include\AminoAcidCode.h" />
+		<Unit filename="..\include\AminoAcidColourCode.h" />
 		<Unit filename="..\include\AminoAcidFrequency.h" />
 		<Unit filename="..\include\DistanceMatrix.h" />
 		<Unit filename="..\include\FileReader.h" />
 		<Unit filename="..\include\InputFile.h" />
 		<Unit filename="..\include\ProteinSequence.h" />
 		<Unit filename="..\include\ScoreMatrix.h" />
+		<Unit filename="..\include\VerticalPosition.h" />
 		<Unit filename="..\src\Clustal.cpp" />
 		<Unit filename="..\src\Clustal.h" />
 		<Unit filename="..\src\Help.cpp" />

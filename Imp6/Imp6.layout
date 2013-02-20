@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="AminoAcidCode.cpp" open="0" top="0" tabpos="6">
+	<File name="AlignmentColumn.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="626" topLine="22" />
+	</File>
+	<File name="AminoAcidCode.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="477" topLine="0" />
 	</File>
-	<File name="AminoAcidColourCode.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="856" topLine="27" />
+	<File name="AminoAcidColourCode.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="385" topLine="33" />
 	</File>
-	<File name="AminoAcidFrequency.cpp" open="1" top="0" tabpos="5">
-		<Cursor position="8780" topLine="270" />
+	<File name="AminoAcidFrequency.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="9963" topLine="328" />
 	</File>
-	<File name="DistanceMatrix.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="432" topLine="14" />
+	<File name="DistanceMatrix.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="715" topLine="20" />
 	</File>
 	<File name="FileReader.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="621" topLine="14" />
 	</File>
-	<File name="Imp6.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="3082" topLine="86" />
+	<File name="Imp6.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="3075" topLine="73" />
 	</File>
 	<File name="InputFile.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="16775" topLine="566" />
 	</File>
-	<File name="ProteinSequence.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="637" topLine="0" />
+	<File name="ProteinSequence.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="210" topLine="0" />
 	</File>
 	<File name="ScoreMatrix.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="3749" topLine="69" />
 	</File>
-	<File name="VerticalPosition.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="516" topLine="8" />
+	<File name="VerticalPosition.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="8182" topLine="267" />
 	</File>
 	<File name="stdafx.h" open="0" top="0" tabpos="3">
 		<Cursor position="471" topLine="7" />
 	</File>
+	<File name="..\include\AlignmentColumn.h" open="1" top="0" tabpos="2">
+		<Cursor position="634" topLine="0" />
+	</File>
 	<File name="..\include\AminoAcidCode.h" open="0" top="0" tabpos="8">
-		<Cursor position="525" topLine="0" />
+		<Cursor position="242" topLine="0" />
 	</File>
-	<File name="..\include\AminoAcidColourCode.h" open="0" top="0" tabpos="0">
-		<Cursor position="335" topLine="0" />
+	<File name="..\include\AminoAcidColourCode.h" open="1" top="0" tabpos="4">
+		<Cursor position="392" topLine="0" />
 	</File>
-	<File name="..\include\AminoAcidFrequency.h" open="0" top="0" tabpos="2">
-		<Cursor position="978" topLine="6" />
+	<File name="..\include\AminoAcidFrequency.h" open="0" top="0" tabpos="7">
+		<Cursor position="591" topLine="0" />
 	</File>
 	<File name="..\include\DistanceMatrix.h" open="0" top="0" tabpos="13">
 		<Cursor position="1000" topLine="9" />
@@ -53,13 +59,13 @@
 		<Cursor position="866" topLine="6" />
 	</File>
 	<File name="..\include\ProteinSequence.h" open="0" top="0" tabpos="5">
-		<Cursor position="701" topLine="6" />
+		<Cursor position="187" topLine="6" />
 	</File>
 	<File name="..\include\ScoreMatrix.h" open="0" top="0" tabpos="7">
-		<Cursor position="365" topLine="0" />
+		<Cursor position="561" topLine="0" />
 	</File>
-	<File name="..\include\VerticalPosition.h" open="1" top="0" tabpos="3">
-		<Cursor position="150" topLine="0" />
+	<File name="..\include\VerticalPosition.h" open="1" top="0" tabpos="5">
+		<Cursor position="839" topLine="0" />
 	</File>
 	<File name="..\src\Clustal.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="3563" topLine="114" />
