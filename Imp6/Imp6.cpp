@@ -69,20 +69,32 @@ void defineverbose()
             break;
     }
 }
+void welcome()
+{
+    cout << "/*****************************************************************************/\n"
+            "/* ##     ## ##### ##     ####   ####  ###  ### ####                         */\n"
+            "/*  ## # ##  ##    ##    ##     ##  ## ## ## ## ##                           */\n"
+            "/*   ## ##   ##### #####  ####   ####  ##    ## ####                         */\n"
+            "/*                                                                           */\n"
+            "/*                                                                           */\n"
+            "/*****************************************************************************/" << endl;
+}
 
+vector<string> filenames;
 int main(int argc, char **argv)
 {
+    welcome();
     defineverbose();
 
+    filenames.clear();
 
     ClustalWInitializers();
     clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
     resources->setPathToExecutable(string(argv[0]));
     setUserParameters();
 
-    InputFile start; // object reads from an input file and creates a new file
-    bool f = true;
-    start.checkToProceed(f);
+    InputFile start;// object reads from an input file and creates a new file
+    start.run();
 
 	string offendingSeq;
 	Clustal* clustalObj;
@@ -110,6 +122,10 @@ int main(int argc, char **argv)
     VerticalPosition vp;
     vp.run(p1);
 
-
+    cout<< "\nPROCESS COMPLETED!\nThe following files were created:\n" << endl;
+    for ( size_t i = 0; i < filenames.size(); i++ )
+    {
+        cout << "\t" << i+1 << ". " << filenames[i] << endl;
+    }
     return 0;
 }

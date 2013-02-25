@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * 10-02-07,Nigel Brown(EMBL): Removed delimiter and findDelimiter()
@@ -52,7 +52,7 @@ void FileParser::freeFileResources(InFileStream* filePtr)
     {
         filePtr->close();
         delete filePtr;
-        filePtr = 0;    
+        filePtr = 0;
     }
 }
 

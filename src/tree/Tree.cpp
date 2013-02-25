@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #define OS_WINDOWS 1
@@ -15,19 +15,19 @@ namespace clustalw
 {
 
 /**
- * 
- * @param firstSeq 
- * @param lastSeq 
- * @param sweight 
+ *
+ * @param firstSeq
+ * @param lastSeq
+ * @param sweight
  */
- 
+
 void Tree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* sweight)
 {
     if((int)sweight->size() < lastSeq - 1)
     {
         sweight->resize(lastSeq - 1);
     }
-    
+
     int i, _nSeqs;
     int temp, sum;
     int *weight;
@@ -35,7 +35,7 @@ void Tree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* sweight)
      * If there are more than three sequences....
      */
     _nSeqs = lastSeq - firstSeq;
-    if ((_nSeqs >= 2) && (clustalw::userParameters->getDistanceTree() == true) && 
+    if ((_nSeqs >= 2) && (clustalw::userParameters->getDistanceTree() == true) &&
         (clustalw::userParameters->getNoWeights() == false))
     {
         /*
@@ -43,7 +43,7 @@ void Tree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* sweight)
          */
 
         weight = new int[lastSeq + 1];
-        
+
         for (i = firstSeq; i < lastSeq; i++)
         {
             weight[i] = calcWeight(i);
@@ -76,7 +76,7 @@ void Tree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* sweight)
                 (*sweight)[i] = 1;
             }
         }
-        
+
         delete []weight;
         weight = NULL;
     }
@@ -101,12 +101,12 @@ void Tree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* sweight)
 }
 
 /**
- * 
- * @param alignPtr 
- * @param treeFileName 
- * @param firstSeq 
- * @param lastSeq 
- * @return 
+ *
+ * @param alignPtr
+ * @param treeFileName
+ * @param firstSeq
+ * @param lastSeq
+ * @return
  */
 int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, int firstSeq, int lastSeq)
 {
@@ -141,7 +141,7 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
 
     skipSpace(&file);
     charFromFile = file.get();
-    
+
     if (charFromFile != '(')
     {
         clustalw::utilityObject->error("Wrong format in tree file %s\n", treeFileName.c_str());
@@ -151,15 +151,15 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
 
     clustalw::userParameters->setDistanceTree(true);
 
-    
+
     // Allocate memory for tree
-    
+
     // Allocate memory.
     nptr = new TreeNode*[3 * (lastSeq - firstSeq + 1)];
     ptrs = new TreeNode*[3 * (lastSeq - firstSeq + 1)];
     lptr = new TreeNode*[lastSeq - firstSeq + 1];
     olptr = new TreeNode*[lastSeq + 1];
-    
+
     seqTree = avail();
     setInfo(seqTree, NULL, 0, string(""), 0.0);
 
@@ -169,17 +169,17 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
     if (numSeq != lastSeq - firstSeq)
     {
         stringstream ss;
-        ss << "tree not compatible with alignment\n(" << lastSeq - firstSeq 
+        ss << "tree not compatible with alignment\n(" << lastSeq - firstSeq
         << " sequences in alignment and "<< numSeq <<" in tree\n";
         string errorMes;
         ss >> errorMes;
         clustalw::utilityObject->error(errorMes.c_str());
         return 0;
     }
-   
+
     // If the tree is unrooted, reroot the tree - ie. minimise the difference
     // between the mean root->leaf distances for the left and right branches of
-    // the tree.     
+    // the tree.
 
     if (clustalw::userParameters->getDistanceTree() == false)
     {
@@ -198,7 +198,7 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
     {
         root = seqTree;
     }
-   
+
     // calculate the 'order' of each node.
     int nameLength;
     string nameSeq;
@@ -217,17 +217,17 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
             if (nameLength > clustalw::MAXNAMES)
             {
                 stringstream ss;
-                ss << "name " << nameSeq << " is too long for PHYLIP tree format (max " 
+                ss << "name " << nameSeq << " is too long for PHYLIP tree format (max "
                    << clustalw::MAXNAMES << " chars)";
-                string msg; 
-                ss >> msg; 
+                string msg;
+                ss >> msg;
                 clustalw::utilityObject->warning(msg.c_str());// Mark change 17-5-07
             }
 
             for (k = 0; k < nameLength && k < clustalw::MAXNAMES; k++)
             {
                 c = nameSeq[k];
-                if ((c > 0x40) && (c < 0x5b)) 
+                if ((c > 0x40) && (c < 0x5b))
                 {
                     c = c | 0x20;
                 }
@@ -272,16 +272,16 @@ int Tree::readTree(clustalw::Alignment* alignPtr, const string& treeFileName, in
 }
 
 /**
- * 
- * @param firstSeq 
- * @param lastSeq 
- * @return 
+ *
+ * @param firstSeq
+ * @param lastSeq
+ * @return
  */
 auto_ptr<AlignmentSteps> Tree::createSets(int firstSeq, int lastSeq)
 {
     auto_ptr<AlignmentSteps> progAlignSteps;
     progAlignSteps.reset(new AlignmentSteps);
-    
+
     int i, j, _nSeqs;
 
     numSets = 0;
@@ -320,16 +320,16 @@ auto_ptr<AlignmentSteps> Tree::createSets(int firstSeq, int lastSeq)
         }
         delete []groups;
         groups  = NULL;
-    }    
-    
+    }
+
     return progAlignSteps;
 }
 
 /**
  * calcSimilarities changes the distMat.
- * @param alignPtr 
- * @param distMat 
- * @return 
+ * @param alignPtr
+ * @param distMat
+ * @return
  */
 int Tree::calcSimilarities(clustalw::Alignment* alignPtr, clustalw::DistMatrix* distMat)
 {
@@ -343,7 +343,7 @@ int Tree::calcSimilarities(clustalw::Alignment* alignPtr, clustalw::DistMatrix* 
     ostringstream err1;
     char reply;
     int nSeqs = alignPtr->getNumSeqs();
-    
+
     pathToRoot = new TreeNode*[nSeqs];
     distToNode = new float[nSeqs];
     dmat = new double*[nSeqs];
@@ -426,18 +426,18 @@ int Tree::calcSimilarities(clustalw::Alignment* alignPtr, clustalw::DistMatrix* 
         if (nerrs > 0 && !userParameters->getGui())
         {
             string errMess = "The following sequences are too divergent to be aligned:\n";
-            
+
             for (i = 0; i < nerrs && i < 5; i++)
             {
-                err1 << "           " << alignPtr->getName(seq1[i] + 1) << " and " 
-                     << alignPtr->getName(seq2[i] + 1) << " (distance " 
-                     << setprecision(3) << badDist[i] << ")\n"; 
+                err1 << "           " << alignPtr->getName(seq1[i] + 1) << " and "
+                     << alignPtr->getName(seq2[i] + 1) << " (distance "
+                     << setprecision(3) << badDist[i] << ")\n";
             }
             errMess += err1.str();
             errMess += "(All distances should be between 0.0 and 1.0)\n";
             errMess += "This may not be fatal but you have been warned!\n";
             errMess += "SUGGESTION: Remove one or more problem sequences and try again";
-            
+
             if (clustalw::userParameters->getInteractive())
             {
                 reply = clustalw::utilityObject->promptForYesNo(errMess.c_str(), "Continue ");
@@ -464,7 +464,7 @@ int Tree::calcSimilarities(clustalw::Alignment* alignPtr, clustalw::DistMatrix* 
     }
     delete []pathToRoot;
     delete []distToNode;
-    
+
     double value;
     for (i = 0; i < nSeqs; i++)
     {
@@ -485,18 +485,18 @@ int Tree::calcSimilarities(clustalw::Alignment* alignPtr, clustalw::DistMatrix* 
     delete []dmat;
 
     return 1;
-    
+
 }
 
 /** *************************************************************************
  * Private functions!!!!!!!!!!!!!!!                                         *
  ****************************************************************************/
- 
+
 /**
- * 
- * @param ptree 
- * @param parent 
- * @param file 
+ *
+ * @param ptree
+ * @param parent
+ * @param file
  */
 void Tree::createTree(clustalw::TreeNode* ptree, clustalw::TreeNode* parent, ifstream* file)
 {
@@ -506,7 +506,7 @@ void Tree::createTree(clustalw::TreeNode* ptree, clustalw::TreeNode* parent, ifs
     float dist;
     string name;
 
-    
+
     // is this a node or a leaf ?
     skipSpace(file);
     charFromFile = file->get();
@@ -543,18 +543,18 @@ void Tree::createTree(clustalw::TreeNode* ptree, clustalw::TreeNode* parent, ifs
         skipSpace(file);
         charFromFile = file->get();
     }
-    
+
     // ...otherwise, this is a leaf
-    
+
     else
     {
         type = LEAF;
-        ptrs[ntotal++] = lptr[numSeq++] = ptree;        
+        ptrs[ntotal++] = lptr[numSeq++] = ptree;
         // get the sequence name
         name = "";
         name += charFromFile;
         charFromFile = file->get();
-        
+
         i = 1;
         while ((charFromFile != ':') && (charFromFile != ',') && (charFromFile != ')'))
         {
@@ -572,9 +572,9 @@ void Tree::createTree(clustalw::TreeNode* ptree, clustalw::TreeNode* parent, ifs
             dist = 0.0;
         }
     }
-    
+
     // get the distance information
-    
+
     dist = 0.0;
     if (charFromFile == ':')
     {
@@ -587,9 +587,9 @@ void Tree::createTree(clustalw::TreeNode* ptree, clustalw::TreeNode* parent, ifs
 }
 
 /**
- * 
- * @param pptr 
- * @param parent 
+ *
+ * @param pptr
+ * @param parent
  */
 void Tree::createNode(TreeNode* pptr, TreeNode* parent)
 {
@@ -602,9 +602,9 @@ void Tree::createNode(TreeNode* pptr, TreeNode* parent)
 }
 
 /**
- * 
- * @param pptr 
- * @return 
+ *
+ * @param pptr
+ * @return
  */
 TreeNode* Tree::insertNode(TreeNode* pptr)
 {
@@ -623,8 +623,8 @@ TreeNode* Tree::insertNode(TreeNode* pptr)
 }
 
 /**
- * 
- * @param p 
+ *
+ * @param p
  */
 void Tree::clearTree(clustalw::TreeNode* p)
 {
@@ -640,8 +640,8 @@ void Tree::clearTree(clustalw::TreeNode* p)
 }
 
 /**
- * 
- * @param p 
+ *
+ * @param p
  */
 void Tree::clearTreeNodes(clustalw::TreeNode* p)
 {
@@ -659,7 +659,7 @@ void Tree::clearTreeNodes(clustalw::TreeNode* p)
     }
     p->left = NULL;
     p->right = NULL;
-    
+
     delete p;
     p  = NULL;
 }
@@ -668,17 +668,17 @@ void Tree::clearTreeNodes(clustalw::TreeNode* p)
 
 
 /**
- * 
- * @param 
- * @param 
- * @return 
+ *
+ * @param
+ * @param
+ * @return
  */
 void Tree::debugPrintAllNodes(int nseqs)
 {
   clustalw::TreeNode *p;
   int i;
    float diff, maxDist;
- 
+
     cerr << "\nDEBUG: reportAllNodes\n";
     for (i = 0; i < ntotal; i++) {
         p = ptrs[i];
@@ -701,10 +701,10 @@ void Tree::debugPrintAllNodes(int nseqs)
 
 
 /**
- * 
- * @param ptree 
- * @param nseqs 
- * @return 
+ *
+ * @param ptree
+ * @param nseqs
+ * @return
  */
 clustalw::TreeNode* Tree::reRoot(clustalw::TreeNode* ptree, int nseqs)
 {
@@ -750,7 +750,7 @@ clustalw::TreeNode* Tree::reRoot(clustalw::TreeNode* ptree, int nseqs)
 
     }
 
-    
+
     // insert a new node as the ancestor of the node which produces the shallowest
     // tree.
     /* AW Bug 94: could also be prevented here */
@@ -767,10 +767,10 @@ clustalw::TreeNode* Tree::reRoot(clustalw::TreeNode* ptree, int nseqs)
 }
 
 /**
- * 
- * @param p 
- * @param diff 
- * @return 
+ *
+ * @param p
+ * @param diff
+ * @return
  */
 clustalw::TreeNode* Tree::insertRoot(clustalw::TreeNode* p, float diff)
 {
@@ -896,10 +896,10 @@ clustalw::TreeNode* Tree::insertRoot(clustalw::TreeNode* p, float diff)
 }
 
 /**
- * 
- * @param root 
- * @param maxDist 
- * @return 
+ *
+ * @param root
+ * @param maxDist
+ * @return
  */
 float Tree::calcRootMean(clustalw::TreeNode* root, float *maxDist)
 {
@@ -908,7 +908,7 @@ float Tree::calcRootMean(clustalw::TreeNode* root, float *maxDist)
     int i;
     int numLeft, numRight;
     int direction;
-    
+
     // for each leaf, determine whether the leaf is left or right of the root.
 
     dist = (*maxDist) = 0;
@@ -958,16 +958,16 @@ float Tree::calcRootMean(clustalw::TreeNode* root, float *maxDist)
 }
 
 /**
- * 
- * @param nptr 
- * @param maxDist 
- * @param nSeqs 
- * @return 
+ *
+ * @param nptr
+ * @param maxDist
+ * @param nSeqs
+ * @return
  */
 float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
 {
     float dist, leftSum = 0.0, rightSum = 0.0, leftMean, rightMean, diff;
-    clustalw::TreeNode* p;  
+    clustalw::TreeNode* p;
     clustalw::TreeNode** pathToRoot;
     float *distToNode;
     int depth = 0, i, j, n = 0;
@@ -978,7 +978,7 @@ float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
     pathToRoot = new clustalw::TreeNode*[nSeqs];
     distToNode = new float[nSeqs];
     // determine all nodes between the selected node and the root;
-  
+
     depth = 0;
     (*maxDist) = dist = 0.0;
     numLeft = numRight = 0;
@@ -994,7 +994,7 @@ float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
 
     // for each leaf, determine whether the leaf is left or right of the node.
     // (RIGHT = descendant, LEFT = not descendant)
- 
+
     for (i = 0; i < numSeq; i++)
     {
         p = lptr[i];
@@ -1007,9 +1007,9 @@ float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
         {
             direction = LEFT;
             dist = 0.0;
-            
-            // find the common ancestor. 
-            
+
+            // find the common ancestor.
+
             found = false;
             n = 0;
             while ((found == false) && (p->parent != NULL))
@@ -1052,7 +1052,7 @@ float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
     distToNode = NULL;
     delete [] pathToRoot;
     pathToRoot = NULL;
-    
+
     leftMean = leftSum / numLeft;
     rightMean = rightSum / numRight;
 
@@ -1061,7 +1061,7 @@ float Tree::calcMean(clustalw::TreeNode* nptr, float *maxDist, int nSeqs)
 }
 
 /**
- * 
+ *
  */
 void Tree::orderNodes()
 {
@@ -1080,9 +1080,9 @@ void Tree::orderNodes()
 }
 
 /**
- * 
- * @param leaf 
- * @return 
+ *
+ * @param leaf
+ * @return
  */
 int Tree::calcWeight(int leaf)
 {
@@ -1104,7 +1104,7 @@ int Tree::calcWeight(int leaf)
 /**
  * skipSpace is used to skip all the spaces at the begining of a file. The next read
  * will give a character other than a space.
- * @param file 
+ * @param file
  */
 void Tree::skipSpace(ifstream* file)
 {
@@ -1120,11 +1120,11 @@ void Tree::skipSpace(ifstream* file)
 }
 
 /**
- * 
- * @param p 
- * @param nextGroups 
- * @param nSeqs 
- * @param stepsPtr 
+ *
+ * @param p
+ * @param nextGroups
+ * @param nSeqs
+ * @param stepsPtr
  */
 void Tree::groupSeqs(clustalw::TreeNode* p, int *nextGroups, int nSeqs, AlignmentSteps* stepsPtr)
 {
@@ -1184,10 +1184,10 @@ void Tree::groupSeqs(clustalw::TreeNode* p, int *nextGroups, int nSeqs, Alignmen
 }
 
 /**
- * 
- * @param p 
- * @param groups 
- * @param n 
+ *
+ * @param p
+ * @param groups
+ * @param n
  */
 void Tree::markGroup1(clustalw::TreeNode* p, int *groups, int n)
 {
@@ -1207,10 +1207,10 @@ void Tree::markGroup1(clustalw::TreeNode* p, int *groups, int n)
 }
 
 /**
- * 
- * @param p 
- * @param groups 
- * @param n 
+ *
+ * @param p
+ * @param groups
+ * @param n
  */
 void Tree::markGroup2(clustalw::TreeNode* p, int *groups, int n)
 {
@@ -1230,13 +1230,13 @@ void Tree::markGroup2(clustalw::TreeNode* p, int *groups, int n)
 }
 
 /**
- * 
- * @return 
+ *
+ * @return
  */
 clustalw::TreeNode* Tree::avail()
 {
     clustalw::TreeNode* p;
-    p = new TreeNode; 
+    p = new TreeNode;
     p->left = NULL;
     p->right = NULL;
     p->parent = NULL;
@@ -1247,12 +1247,12 @@ clustalw::TreeNode* Tree::avail()
 }
 
 /**
- * 
- * @param p 
- * @param parent 
- * @param pleaf 
- * @param pname 
- * @param pdist 
+ *
+ * @param p
+ * @param parent
+ * @param pleaf
+ * @param pname
+ * @param pdist
  */
 void Tree::setInfo(TreeNode* p, TreeNode* parent, int pleaf, string pname, float
                      pdist)
@@ -1268,5 +1268,5 @@ void Tree::setInfo(TreeNode* p, TreeNode* parent, int pleaf, string pname, float
         p->right = NULL;
     }
 }
-          
+
 }

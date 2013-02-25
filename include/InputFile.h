@@ -10,7 +10,9 @@ class InputFile
 {
     public:
         InputFile();
+        void run();
         void getSearchInput();
+        void checkToStartAgain();
         void defineLevelOfHierarchy();
         void getPDBfromClassifiedList();
         void setCathCode( string );
@@ -24,6 +26,7 @@ class InputFile
         void checkToProceed(bool f);
         void processInput();
         void determineSourceFile();
+        void determineSourceFile2();
         void createSimplifiedSourceFile();
         void writeInputFileForRepresentatives();
         vector<ProteinSequence> getProteinData();

@@ -1,11 +1,11 @@
 /**
  * Author: Mark Larkin
- * 
+ *
  * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  *
  * Changes:
  * Mark 30-5-2007: Changed iterationOnTreeNode function as it was adding in extra gaps
- * at the end of an alignment.  
+ * at the end of an alignment.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -32,12 +32,12 @@ bool Iteration::iterationOnTreeNode(int numSeqsProf1, int numSeqsProf2, int& prf
     {
         return false;
     }
-        
-    SeqArray profileSeqs; 
+
+    SeqArray profileSeqs;
     profileSeqs.resize(numSeqsInProfiles + 1);
 
     // Copy the SeqArray!
-    for (int j = 0; ((j < numSeqsProf1 + numSeqsProf2) && 
+    for (int j = 0; ((j < numSeqsProf1 + numSeqsProf2) &&
 		     (j < (int)seqArray->size())); j++)
     {
         profileSeqs[j + 1].clear();
@@ -47,24 +47,24 @@ bool Iteration::iterationOnTreeNode(int numSeqsProf1, int numSeqsProf2, int& prf
             profileSeqs[j + 1][i + 1] = (*seqArray)[j][i];
         }
     }
-        
+
     alignmentToIterate.addSequences(&profileSeqs);
     //userParameters->setNumIterations(numSeqsInProfiles * 2);
-        
+
     bool changed = false;
     changed = removeFirstIterate(&alignmentToIterate);
-        
+
     if(changed)
-    {          
+    {
         SeqArray* iteratedSeqs = alignmentToIterate.getSeqArrayForRealloc();
         string aaCodes = userParameters->getAminoAcidCodes();
-        
-        int newPrf1Length = 0, newPrf2Length = 0;    
-        
+
+        int newPrf1Length = 0, newPrf2Length = 0;
+
         for (int j = 0; j < numSeqsProf1 + numSeqsProf2; j++)
-        {            
+        {
             if(j < numSeqsProf1)
-            { 
+            {
                 if(alignmentToIterate.getSeqLength(j + 1) > newPrf1Length)
                 {
                     newPrf1Length = alignmentToIterate.getSeqLength(j + 1);
@@ -76,22 +76,22 @@ bool Iteration::iterationOnTreeNode(int numSeqsProf1, int numSeqsProf2, int& prf
                 {
                     newPrf2Length = alignmentToIterate.getSeqLength(j + 1);
                 }
-            }              
+            }
         }
-        
+
         prfLength1 = newPrf1Length; // mark 30-5-2007
         prfLength2 = newPrf2Length; // mark 30-5-2007
 
         for (int j = 0; j < numSeqsProf1 + numSeqsProf2; j++)
-        {        
+        {
             // I need to recalculate the prfLength1 and prfLength2
             (*seqArray)[j].clear();
-            (*seqArray)[j].assign((*iteratedSeqs)[j + 1].begin() + 1, 
-                                  (*iteratedSeqs)[j + 1].end()); 
+            (*seqArray)[j].assign((*iteratedSeqs)[j + 1].begin() + 1,
+                                  (*iteratedSeqs)[j + 1].end());
             (*seqArray)[j].resize(prfLength1 + extraEndElemNum, 31);
             (*seqArray)[j][prfLength1] = ENDALN;
         }
-    }   
+    }
 
     return true;
 }
@@ -104,7 +104,7 @@ void Iteration::printSeqArray(SeqArray* arrayToPrint)
     SeqArray::iterator mainEndIt = arrayToPrint->end();
     vector<int>::iterator begin, end;
     string aaCodes = userParameters->getAminoAcidCodes();
-    
+
     for(; mainBeginIt != mainEndIt; mainBeginIt++)
     {
         if(mainBeginIt->size() > 0)
@@ -136,33 +136,33 @@ void Iteration::printSeqArray(SeqArray* arrayToPrint)
  *         remove seq i
  *         if either of the profiles has all gaps, remove this column.
  *         realign using profileAlign
- *         if its better, keep it. If its not better, dont keep it. 
+ *         if its better, keep it. If its not better, dont keep it.
  * @param alnPtr The alignment object.
  * @return true if it has been successful, false if it has not been successful.
  */
 bool Iteration::removeFirstIterate(Alignment* alnPtr)
-{   
+{
     if(!alnPtr)
     {
         return false;
     }
-    
+
     string p1TreeName;
     p1TreeName = "";
     string p2TreeName;
     int nSeqs = alnPtr->getNumSeqs();
-    
+
     if(nSeqs <= 2)
     {
         return false;
     }
-    DistMatrix distMat;    
+    DistMatrix distMat;
     distMat.ResizeRect(nSeqs + 1);
-    
+
     ObjectiveScore scoreObj;
     int iterate = userParameters->getDoRemoveFirstIteration();
     userParameters->setDoRemoveFirstIteration(NONE);
-           
+
     double firstScore = scoreObj.getScore(alnPtr);
     //cout << "firstScore = " << firstScore << "\n";
     double score = 0;
@@ -172,7 +172,7 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
     bool scoreImproved = false;
     bool scoreImprovedAnyIteration = false;
     int prof1NumSeqs = 1;
-    
+
     // This will be used for removing gaps!!!
     vector<int> profile1;
     vector<int> profile2;
@@ -212,11 +212,11 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
             iterateAlign.removeGapOnlyColsFromSelectedSeqs(&profile2);
 
             // Calculate a simple distance matrix.
-            if(nSeqs - 1 >= 2) 
+            if(nSeqs - 1 >= 2)
             {
-                for (int i = 1; i <= nSeqs; i++) 
+                for (int i = 1; i <= nSeqs; i++)
                 {
-                    for (int j = i + 1; j <= nSeqs; j++) 
+                    for (int j = i + 1; j <= nSeqs; j++)
                     {
                         dscore = iterateAlign.countid(i, j);
                         distMat(i, j) = (100.0 - dscore)/100.0;
@@ -224,7 +224,7 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
                 }
 
                 /* temporary tree file
-                 *  
+                 *
                  * can't use the safer mkstemp function here, because
                  * we just pass down the filename :(
                  */
@@ -269,19 +269,19 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
                     return false;
                 }
             }
-                        
+
             MSA* msaObj = new MSA();
 
             iterateAlign.resetProfile1();
             iterateAlign.resetProfile2();
             // Do the profile alignment.
-            count = msaObj->doProfileAlign(&iterateAlign, &distMat, 
-                                            &prof1Weight, &prof2Weight);   
+            count = msaObj->doProfileAlign(&iterateAlign, &distMat,
+                                            &prof1Weight, &prof2Weight);
             delete msaObj;
             // Check if its better
             score = scoreObj.getScore(&iterateAlign);
             iterateAlign.setProfile1NumSeqs(0);
-            
+
             if(score < bestScore) // Might be a problem with this.
             {
                 //cout << "**********************************************\n";
@@ -293,7 +293,7 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
                 scoreImprovedAnyIteration = true;
             }
             distMat.clearArray();
-            distMat.ResizeRect(nSeqs + 1);   
+            distMat.ResizeRect(nSeqs + 1);
         }
         if(scoreImproved == false)
         {
@@ -301,7 +301,7 @@ bool Iteration::removeFirstIterate(Alignment* alnPtr)
             break;
         }
     }
-    
+
     //
     // NOTE if we have improved it, then we need to update the sequences in alnPtr
     // 1) get the unique id of seq i

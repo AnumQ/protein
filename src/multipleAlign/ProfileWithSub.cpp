@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -13,11 +13,11 @@ namespace clustalw
 {
 
 /**
- * 
- * @param prfLen 
- * @param firstS 
- * @param lastS 
- * @return 
+ *
+ * @param prfLen
+ * @param firstS
+ * @param lastS
+ * @return
  */
 ProfileWithSub::ProfileWithSub(int prfLen, int firstS, int lastS)
  : ProfileBase(prfLen, firstS, lastS)
@@ -25,7 +25,7 @@ ProfileWithSub::ProfileWithSub(int prfLen, int firstS, int lastS)
 }
 
 /**
- * 
+ *
  */
 void ProfileWithSub::resetPrf1()
 {
@@ -34,13 +34,13 @@ void ProfileWithSub::resetPrf1()
 
 
 /**
- * 
- * @param seqArray 
- * @param gaps 
- * @param matrix[][] 
- * @param seqWeight 
+ *
+ * @param seqArray
+ * @param gaps
+ * @param matrix[][]
+ * @param seqWeight
  */
-void ProfileWithSub::calcProfileWithSub(SeqArray* seqArray, vector<int>* gaps, 
+void ProfileWithSub::calcProfileWithSub(SeqArray* seqArray, vector<int>* gaps,
                               int matrix[NUMRES][NUMRES], vector<int>* seqWeight)
 {
     vector<vector<int> > weighting;
@@ -52,9 +52,9 @@ void ProfileWithSub::calcProfileWithSub(SeqArray* seqArray, vector<int>* gaps,
     int _maxAA = userParameters->getMaxAA();
     int _gapPos1 = userParameters->getGapPos1();
     int _gapPos2 = userParameters->getGapPos2();
-    
+
     weighting.resize(NUMRES + 2, vector<int>(prfLength + 2));
-    
+
     _numSeq = lastSeq - firstSeq;
 
     sum2 = 0;
@@ -146,6 +146,6 @@ void ProfileWithSub::calcProfileWithSub(SeqArray* seqArray, vector<int>* gaps,
         }
     }
 }
-                      
+
 
 }

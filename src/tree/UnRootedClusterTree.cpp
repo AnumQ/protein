@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
-////#include "stdafx.h"
+#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
     #include "config.h"
 #endif
@@ -205,6 +205,7 @@ void UnRootedClusterTree::treeFromDistMatrix(DistMatrix* distMat,
         if(nSeqs >= 2)
         {
             phylipName = "TEST-OutputGUIDETREE";
+            filenames.push_back(phylipName);
             string name = phylipName;
           /*  if(!phylipPhyTreeFile.openFile(&name,
                              "\nEnter name for new GUIDE TREE           file  ", &path, "dnd",

@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -161,7 +161,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
     {
         verbose = false;
     }
-    
+
     register int i;
     int l[4], nude, k;
     int nc, mini, minj, j, ii, jj;
@@ -174,14 +174,14 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
     int firstSeq = seqInfo->firstSeq;
     int lastSeq = seqInfo->lastSeq;
     int numSeqs = seqInfo->numSeqs;
-    
+
     /* IMPROVEMENT 1, STEP 0 : declare  variables */
     double *sumCols,  *sumRows,  *join;
 
     sumCols = new double[numSeqs + 1];
     sumRows = new double[numSeqs + 1];
     join = new double[numSeqs + 1];
-    
+
     /* IMPROVEMENT 2, STEP 0 : declare  variables */
     int loop_limit;
     typedef struct _ValidNodeID
@@ -215,10 +215,10 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
     {
         if (verbose)
         {
-            (*log) << "Cycle   1     =  SEQ:   1 (" << setw(9) << setprecision(5) 
-                    << (*distMat)(firstSeq, firstSeq + 1) 
+            (*log) << "Cycle   1     =  SEQ:   1 (" << setw(9) << setprecision(5)
+                    << (*distMat)(firstSeq, firstSeq + 1)
                     << ") joins  SEQ:   2 ("
-                    << setw(9) << setprecision(5) 
+                    << setw(9) << setprecision(5)
                     << (*distMat)(firstSeq, firstSeq + 1) << ")";
         }
         return ;
@@ -232,11 +232,11 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
     phyTree->rightBranch.resize(numSeqs + 2, 0.0);
     tkill.resize(numSeqs + 1, 0);
     av.resize(numSeqs + 1, 0.0);
-    
+
     /* IMPROVEMENT 2, STEP 1 : Allocate memory */
 
     tvalid = new ValidNodeID[numSeqs + 1];
-    
+
     /* tvalid[0] is special entry in array. it points a header of valid entry list */
     tvalid[0].n = 0;
     tvalid[0].prev = NULL;
@@ -259,7 +259,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
      * IMPROVEMENT 1, STEP 3 : Calculate the sum of score value that
      * is sequence[i] to others.
      */
-    double matValue; 
+    double matValue;
     sumd = 0.0;
     for (lpj = tvalid[0].next; lpj != NULL; lpj = lpj->next)
     {
@@ -388,7 +388,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
         bj = dmin - bi;
         bi = bi - av[mini];
         bj = bj - av[minj];
-        
+
 #if 0
         (*log) << endl << "***  cycle " << nc << endl;
         (*log) << "dmin     = " << setw(9) << right << setprecision(9) << dmin << endl;
@@ -440,7 +440,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
         {
             if (typei == 0)
             {
-                (*log) <<  "Node:" << setw(4) << mini << " (" << setw(9) << setprecision(5) 
+                (*log) <<  "Node:" << setw(4) << mini << " (" << setw(9) << setprecision(5)
                         << bi << ") joins ";
             }
             else
@@ -709,7 +709,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
         {
             if (verbose)
             {
-                (*log) << "\n\t\t Node:" << setw(4) << l[i] <<" (" << setw(9) 
+                (*log) << "\n\t\t Node:" << setw(4) << l[i] <<" (" << setw(9)
                         << setprecision(5) << branch[i] << ") ";
             }
             for (k = lastSeq - firstSeq + 1-3; k >= 1; k--)
@@ -727,7 +727,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
         {
             if (verbose)
             {
-                (*log) << "\n\t\t  SEQ:" << setw(4) << l[i] << " (" << setw(9) 
+                (*log) << "\n\t\t  SEQ:" << setw(4) << l[i] << " (" << setw(9)
                         << setprecision(5) << branch[i] << ") ";
             }
             phyTree->treeDesc[lastSeq - firstSeq + 1-2][l[i]] = i;
@@ -752,7 +752,7 @@ void NJTree::generateTree(clustalw::PhyloTree* phyTree,
     delete [] sumCols;
     delete [] sumRows;
     delete [] join;
-    
+
 
 }
 }

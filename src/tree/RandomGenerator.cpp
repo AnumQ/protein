@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -14,8 +14,8 @@ namespace clustalw
 
 /**
  * The contructor initialises the random algorithm.
- * @param s 
- * @return 
+ * @param s
+ * @return
  */
 RandomGenerator::RandomGenerator(unsigned long s)
  : m(100000000), m1(10000)
@@ -32,7 +32,7 @@ RandomGenerator::RandomGenerator(unsigned long s)
 
 /**
  * additive congruential method.
- * @param r 
+ * @param r
  * @return unsigned long random number in the range 0 to r-1
  */
 unsigned long RandomGenerator::addRand(unsigned long r)
@@ -47,10 +47,10 @@ unsigned long RandomGenerator::addRand(unsigned long r)
 }
 
 /**
- * 
- * @param p 
- * @param q 
- * @return 
+ *
+ * @param p
+ * @param q
+ * @return
  */
 unsigned long RandomGenerator::mult(unsigned long p, unsigned long q)
 {

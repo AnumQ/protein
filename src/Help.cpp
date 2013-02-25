@@ -28,7 +28,7 @@ Help::Help()
 
     // all sections were added in order of appearance in original
     // clustalw_help
-    
+
     // To add new entries use the template below.
     // Paste content as text,
     // escape all " with \",
@@ -39,10 +39,10 @@ Help::Help()
     //  s.title = "";
     //  s.content = "";
     //  sections.push_back(s);
-    
+
     s.marker = "NEW";
     s.title = "NEW FEATURES/OPTIONS";
-    s.content = "==UPGMA=="        
+    s.content = "==UPGMA=="
 " \n"
 " The UPGMA algorithm has been added to allow faster tree construction. The user now\n"
 " has the choice of using Neighbour Joining or UPGMA. The default is still NJ, but the\n"
@@ -67,20 +67,20 @@ Help::Help()
 " -NUMITER=n     :Maximum number of iterations to perform\n"
 " \n"
 "==HELP==\n"
-" \n"        
+" \n"
 " -FULLHELP      :Print out the complete help content\n"
 " \n"
 "==MISC==\n"
 "\n"
 " -MAXSEQLEN=n   :Maximum allowed sequence length\n"
-" \n"        
+" \n"
 " -QUIET         :Reduce console output to minimum\n"
 " \n"
 " -STATS=file    :Log some alignents statistics to file\n"
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "1";
     s.title = "General help for CLUSTAL W (" + version + ")";
     s.content = "Clustal W is a general purpose multiple alignment program for DNA or proteins.\n"
@@ -134,7 +134,7 @@ Help::Help()
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "2";
     s.title = "Help for multiple alignments";
     s.content = "If you have already loaded sequences, use menu item 1 to do the complete\n"
@@ -317,7 +317,7 @@ Help::Help()
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "5";
     s.title = "Help for output format options.";
     s.content = "Several output formats are offered. You can choose any (or all 6 if you wish).  \n"
@@ -367,7 +367,7 @@ Help::Help()
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "6";
     s.title = "Help for profile and structure alignments";
     s.content = "By PROFILE ALIGNMENT, we mean alignment using existing alignments. Profile \n"
@@ -416,7 +416,7 @@ Help::Help()
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "B";
     s.title = "Help for secondary structure - gap penalty masks";
     s.content = "The use of secondary structure-based penalties has been shown to improve the\n"
@@ -481,7 +481,7 @@ Help::Help()
 "";
     sections.push_back(s);
 
-    
+
     s.marker = "C";
     s.title = "Help for secondary structure - gap penalty mask output options";
     s.content = "The options in this menu let you choose whether or not to include the masks\n"
@@ -656,7 +656,7 @@ Help::Help()
 "-SEQNO_RANGE=:OFF or ON (NEW: for all output formats)\n"
 "-RANGE=m,n   :sequence range to write starting m to m+n\n"
 "-MAXSEQLEN=n :maximum allowed input sequence length\n"
-"-QUIET       :Reduce console output to minimum\n"        
+"-QUIET       :Reduce console output to minimum\n"
 "-STATS=      :Log some alignents statistics to file\n"
 "\n"
 "***Fast Pairwise Alignments:***\n"
@@ -790,7 +790,7 @@ Help::Help()
     // replace-string " \"
     // replace-regexp ^ "
     // replace-regexp $ \\n"
-    
+
     // std::cout << "exiting Help::Help" << "\n";
 }
 Help::~Help()
@@ -803,9 +803,9 @@ vector<string> Help::ListSectionMarkers()
 {
     vector<string> markers;
     for (unsigned int i=0; i<this->sections.size(); i++) {
-        markers.push_back(this->sections[i].marker);        
+        markers.push_back(this->sections[i].marker);
     }
-    
+
     return markers;
 }
 
@@ -822,7 +822,7 @@ string Help::GetSection(string marker)
         if (this->sections[i].marker == marker) {
             return this->sections[i].content;
         }
-    }   
+    }
     return "";
 }
 
@@ -837,6 +837,6 @@ string Help::GetSectionTitle(string marker)
         if (this->sections[i].marker == marker) {
             return this->sections[i].title;
         }
-    }   
+    }
     return "";
 }

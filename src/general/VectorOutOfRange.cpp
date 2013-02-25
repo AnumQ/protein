@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -23,7 +23,7 @@ VectorOutOfRange::~VectorOutOfRange() throw()
 const char* VectorOutOfRange::what() const throw()
 {
     std::ostringstream message;
-    message << "\nIn Vector "<< _name << ", vector index " << _index << " exceeds bounds 1-" 
+    message << "\nIn Vector "<< _name << ", vector index " << _index << " exceeds bounds 1-"
             << _max << "\n";
     std::string outputMessage = message.str();
     return outputMessage.c_str();
@@ -32,7 +32,7 @@ const char* VectorOutOfRange::what() const throw()
 const char* VectorOutOfRange::what()
 {
     std::ostringstream message;
-    message << "\nIn Vector "<< _name << ", vector index " << _index << " exceeds bounds 1-" 
+    message << "\nIn Vector "<< _name << ", vector index " << _index << " exceeds bounds 1-"
             << _max << "\n";
     std::string outputMessage = message.str();
     return outputMessage.c_str();

@@ -4,7 +4,7 @@
  *     Resources *res = Resources::Instance();
  *
  * 24-05-07,Nigel Brown(EMBL): created.
- * 3-7-07, Mark Larkin, modified this class for clustalw 
+ * 3-7-07, Mark Larkin, modified this class for clustalw
  */
 //#include "stdafx.h"
 #define OS_WINDOWS 1
@@ -16,7 +16,7 @@
 #include "clustalw.h"
 #include <fstream>
 using namespace std;
- 
+
 namespace clustalw
 {
 
@@ -36,11 +36,11 @@ ClustalWResources::ClustalWResources()
 
     //executablePath
     executablePath = ".";
-    
+
     //installPath
     installPath = ".";
     char *env;
-    if ((env = getenv(CLUW_INSTALL_DIR)) != 0) 
+    if ((env = getenv(CLUW_INSTALL_DIR)) != 0)
     {
         installPath = string(env);
     }
@@ -48,20 +48,20 @@ ClustalWResources::ClustalWResources()
     homePath = "";
 }
 
-void ClustalWResources::setPathToExecutable(string path) 
+void ClustalWResources::setPathToExecutable(string path)
 {
     executablePath = dirname(path);
 }
 
-string ClustalWResources::dirname(string path) 
+string ClustalWResources::dirname(string path)
 {
     string tempString;
     int size = path.size();
     tempString = path;
-    for (int i = size - 1; i > 0; i--) 
+    for (int i = size - 1; i > 0; i--)
     {
         if (tempString[i] == DIRDELIM) // Mark, no standard function in c++
-        { 
+        {
             tempString.erase(i);
             break;
         }
@@ -69,7 +69,7 @@ string ClustalWResources::dirname(string path)
     return tempString;
 }
 
-void ClustalWResources::dump() 
+void ClustalWResources::dump()
 {
     printf("%s => %s [%s]\n%s => %s\n%s => %s\n",
            "installPath", installPath.c_str(), CLUW_INSTALL_DIR,
@@ -78,17 +78,17 @@ void ClustalWResources::dump()
            );
 }
 
-string ClustalWResources::findFile(const char *file, const ClustalWResourcePathType where) const 
+string ClustalWResources::findFile(const char *file, const ClustalWResourcePathType where) const
 {
     return findFile(string(file), where);
 }
 
-string ClustalWResources::findFile(const string file, const ClustalWResourcePathType where) const 
+string ClustalWResources::findFile(const string file, const ClustalWResourcePathType where) const
 {
     const string *path;
     ifstream ifs;
 
-    switch (where) 
+    switch (where)
     {
         case InstallPath:
             path = &installPath;
@@ -106,15 +106,15 @@ string ClustalWResources::findFile(const string file, const ClustalWResourcePath
     char delim[1];
     delim[0] = DIRDELIM;
     delim[1] = 0;
-    
+
     string fileName = *path + string(delim) + file;
 
     ifs.open(fileName.c_str(), ifstream::in);
     if (ifs.fail()) {
         return string();
     }
-    
-    if (ifs.is_open() && ifs.good()) 
+
+    if (ifs.is_open() && ifs.good())
     {
         ifs.close();
         return fileName;
@@ -125,22 +125,22 @@ string ClustalWResources::findFile(const string file, const ClustalWResourcePath
 // Search for a (string) file in a succession of likely locations and
 // return the full path as (string).
 //
-string ClustalWResources::searchPathsForFile(const string fileName) const 
+string ClustalWResources::searchPathsForFile(const string fileName) const
 {
     string file;
     while (1) {
         file = findFile(fileName, InstallPath);
         if (file != "") break;
-        
+
         file = findFile(fileName, ExecutablePath);
         if (file != "") break;
-        
+
         file = findFile(fileName, HomePath);
         if (file != "") break;
-        
+
         file = findFile(fileName);
         if (file != "") break;
-        
+
         file = fileName; // give up
         break;
     }

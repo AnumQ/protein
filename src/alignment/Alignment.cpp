@@ -1,10 +1,10 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
- * Changes: 
+ * Changes:
  *
  * 16-02-07,Nigel Brown(EMBL): Added friend NameIterator to allow a caller to
  * process the name vector.
@@ -50,18 +50,18 @@ void Alignment::resetProfile1()
     int _gapPos2 = userParameters->getGapPos2();
     bool _resetAlignNew = userParameters->getResetAlignmentsNew();
     bool _resetAlignAll = userParameters->getResetAlignmentsAll();
-    
-    if (userParameters->getStructPenalties1() != NONE) 
+
+    if (userParameters->getStructPenalties1() != NONE)
     {
         sl = 0;
-        for (j = 0; j < (int)gapPenaltyMask1.size(); ++j) 
+        for (j = 0; j < (int)gapPenaltyMask1.size(); ++j)
         {
             if (gapPenaltyMask1[j] == _gapPos1 && (_resetAlignNew ||
-                           _resetAlignAll)) 
+                           _resetAlignAll))
             {
                 continue;
             }
-            if (gapPenaltyMask1[j] == _gapPos2 && (_resetAlignAll)) 
+            if (gapPenaltyMask1[j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -69,18 +69,18 @@ void Alignment::resetProfile1()
             ++sl;
         }
     }
-  
-    if (userParameters->getStructPenalties1() == SECST) 
+
+    if (userParameters->getStructPenalties1() == SECST)
     {
         sl = 0;
-        for (j = 0; j < (int)secStructMask1.size(); ++j) 
+        for (j = 0; j < (int)secStructMask1.size(); ++j)
         {
             if (secStructMask1[j] == _gapPos1 && (_resetAlignNew ||
-                          _resetAlignAll)) 
+                          _resetAlignAll))
             {
                 continue;
             }
-            if (secStructMask1[j] == _gapPos2 && (_resetAlignAll)) 
+            if (secStructMask1[j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -88,17 +88,17 @@ void Alignment::resetProfile1()
             ++sl;
         }
     }
-  
-    for(i = 1; i <= profile1NumSeqs; ++i) 
+
+    for(i = 1; i <= profile1NumSeqs; ++i)
     {
         sl = 0;
-        for(j = 1; j <= getSeqLength(i); ++j) 
+        for(j = 1; j <= getSeqLength(i); ++j)
         {
-            if(seqArray[i][j] == _gapPos1 && (_resetAlignNew || _resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos1 && (_resetAlignNew || _resetAlignAll))
             {
                 continue;
             }
-            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -127,17 +127,17 @@ void Alignment::resetProfile2()
     bool _resetAlignAll = userParameters->getResetAlignmentsAll();
     int _profile1NumSeqs = profile1NumSeqs;
 
-    
-    if (userParameters->getStructPenalties2() != NONE) 
+
+    if (userParameters->getStructPenalties2() != NONE)
     {
         sl = 0;
-        for (j = 0; j < (int)gapPenaltyMask2.size(); ++j) 
+        for (j = 0; j < (int)gapPenaltyMask2.size(); ++j)
         {
-            if (gapPenaltyMask2[j] == _gapPos1 && (_resetAlignNew || _resetAlignAll)) 
+            if (gapPenaltyMask2[j] == _gapPos1 && (_resetAlignNew || _resetAlignAll))
             {
                 continue;
             }
-            if (gapPenaltyMask2[j] == _gapPos2 && (_resetAlignAll)) 
+            if (gapPenaltyMask2[j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -145,18 +145,18 @@ void Alignment::resetProfile2()
             ++sl;
         }
     }
-  
-    if (userParameters->getStructPenalties2() == SECST) 
+
+    if (userParameters->getStructPenalties2() == SECST)
     {
         sl = 0;
-        for (j = 0; j < (int)secStructMask2.size(); ++j) 
+        for (j = 0; j < (int)secStructMask2.size(); ++j)
         {
             if (secStructMask2[j] == _gapPos1 && (_resetAlignNew ||
-                         _resetAlignAll)) 
+                         _resetAlignAll))
             {
                 continue;
             }
-            if (secStructMask2[j] == _gapPos2 && (_resetAlignAll)) 
+            if (secStructMask2[j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -164,17 +164,17 @@ void Alignment::resetProfile2()
             ++sl;
         }
     }
-  
-    for(i = _profile1NumSeqs + 1; i <= numSeqs; ++i) 
+
+    for(i = _profile1NumSeqs + 1; i <= numSeqs; ++i)
     {
         sl = 0;
-        for(j = 1; j <= getSeqLength(i); ++j) 
+        for(j = 1; j <= getSeqLength(i); ++j)
         {
-            if(seqArray[i][j] == _gapPos1 && (_resetAlignNew || _resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos1 && (_resetAlignNew || _resetAlignAll))
             {
                 continue;
             }
-            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -199,7 +199,7 @@ void Alignment::resetAllSeqWeights()
     seqWeight.clear();
     seqWeight.resize(numSeqs + 1, 100);
 }
- 
+
 /*
  * The function addOutputIndex must check that the number of outputindex
  * Not sure what to do with this one.
@@ -219,8 +219,8 @@ bool Alignment::addOutputIndex(vector<int>* outputIndexToAdd)
     {
         clearAlignment();
         return false; // Could not add them
-    }    
-    
+    }
+
 }
 
 /*
@@ -265,23 +265,23 @@ bool Alignment::appendOutputIndex(vector<int>* outputIndexToAppend)
 void Alignment::addSequences(vector<Sequence>* seqVector)
 {
     clearAlignment();
-    
+
     numSeqs = seqVector->size();
     vector<int> emptyVec;
-    
+
     // NOTE push dummy sequences on first!
     /********************************************************
      * It was decided to stay with the seqs and seqArray    *
-     * index begining at 1. This is because it is difficult * 
+     * index begining at 1. This is because it is difficult *
      * to change in the code, so we push dummy seqs on      *
      ********************************************************/
     seqArray.push_back(emptyVec); // EMPTY sequence
     names.push_back(string(""));
     titles.push_back(string(""));
     sequenceIds.push_back(0);
-    
+
     addSequencesToVector(seqVector);
-    
+
     calculateMaxLengths();
     seqWeight.resize(numSeqs + 1, 100);
 }
@@ -299,14 +299,14 @@ void Alignment::appendSequences(vector<Sequence>* seqVector)
     calculateMaxLengths();
 }
 
-void Alignment::pasteSequencesIntoPosition(vector<Sequence>* seqVector, int pos, 
+void Alignment::pasteSequencesIntoPosition(vector<Sequence>* seqVector, int pos,
                                            bool explicitPasteToProfile2)
 {
     SeqArray::iterator seqArrayIterator;
     vector<string>::iterator namesIterator;
     vector<string>::iterator titlesIterator;
     vector<unsigned long>::iterator sequenceIdsIterator;
-    
+
     int profNum = userParameters->getProfileNum();
     int numSeqsToInsert = seqVector->size();
     if(numSeqsToInsert == 0 || pos < 0)
@@ -325,9 +325,9 @@ void Alignment::pasteSequencesIntoPosition(vector<Sequence>* seqVector, int pos,
         seqArrayIterator = seqArray.begin() + pos + 1;
         namesIterator = names.begin() + pos + 1;
         titlesIterator = titles.begin() + pos + 1;
-        sequenceIdsIterator = sequenceIds.begin() + pos + 1;            
+        sequenceIdsIterator = sequenceIds.begin() + pos + 1;
     }
-    
+
     int prof1NumSeqs = profile1NumSeqs;
 
     for(int i = numSeqsToInsert - 1; i >= 0; i--)
@@ -336,21 +336,21 @@ void Alignment::pasteSequencesIntoPosition(vector<Sequence>* seqVector, int pos,
         names.insert(namesIterator, (*seqVector)[i].getName());
         titles.insert(titlesIterator, (*seqVector)[i].getTitle());
         sequenceIds.insert(sequenceIdsIterator, (*seqVector)[i].getIdentifier());
-        
+
         numSeqs++;
         if(profNum != 0 && !explicitPasteToProfile2 && pos <= prof1NumSeqs)
         {
             prof1NumSeqs++;
         }
     }
-    
+
     if(profNum != 0 && pos <= prof1NumSeqs)
     {
         profile1NumSeqs = prof1NumSeqs;
     }
-    
+
     resetAllSeqWeights();
-    setDefaultOutputIndex();    
+    setDefaultOutputIndex();
 }
 
 void Alignment::debugPrintAllNames()
@@ -395,7 +395,7 @@ bool Alignment::testUniqueNames(vector<Sequence>* seqVector, string *offendingSe
     vector<string>::iterator   oldName;
     vector<Sequence>::iterator newName;
     bool unique = true;
-    
+
     //iterate over new candidate names
     for (newName = seqVector->begin(); unique && newName != seqVector->end(); newName++) {
         //iterate over old stored names
@@ -417,8 +417,8 @@ bool Alignment::testUniqueNames(vector<Sequence>* seqVector, string *offendingSe
  */
 void Alignment::addSequencesToVector(vector<Sequence>* seqVector)
 {
-    std::vector<Sequence>::iterator itSeq; 
-    
+    std::vector<Sequence>::iterator itSeq;
+
     for(itSeq = seqVector->begin(); itSeq != seqVector->end(); ++itSeq)
     {
         seqArray.push_back(*(*itSeq).getSequence());
@@ -426,7 +426,7 @@ void Alignment::addSequencesToVector(vector<Sequence>* seqVector)
         titles.push_back((*itSeq).getTitle());
         sequenceIds.push_back((*itSeq).getIdentifier());
     }
-    
+
     if(!(((int)seqArray.size() == numSeqs + 1) && ((int)names.size() == numSeqs + 1)
           && ((int)titles.size() == numSeqs + 1) && ((int)sequenceIds.size() == numSeqs + 1)))
     {
@@ -450,10 +450,10 @@ void Alignment::clearAlignment()
     maxNames = 0;
     numSeqs = 0;
     maxAlignmentLength = 0;
-    lengthLongestSequence = 0; 
+    lengthLongestSequence = 0;
     userParameters->setProfileNum(0);
     userParameters->setProfile1Empty(true);
-    userParameters->setProfile2Empty(true);   
+    userParameters->setProfile2Empty(true);
 }
 
 void Alignment::clearSeqArray()
@@ -493,7 +493,7 @@ int Alignment::alignScore(void)
     int _maxAA = userParameters->getMaxAA();
     float _gapOpen = userParameters->getGapOpen();
     int matrix[NUMRES][NUMRES];
-    
+
     //
     // calculate an overall score for the alignment by summing the
     // scores for each pairwise alignment
@@ -506,12 +506,12 @@ int Alignment::alignScore(void)
     }
 
     score = 0;
-    for (seq1 = 1; seq1 <= numSeqs; seq1++) 
+    for (seq1 = 1; seq1 <= numSeqs; seq1++)
     {
         for (seq2 = 1; seq2 < seq1; seq2++)
         {
-            len1 = seqArray[seq1].size() - 1; 
-            len2 = seqArray[seq2].size() - 1; 
+            len1 = seqArray[seq1].size() - 1;
+            len2 = seqArray[seq2].size() - 1;
             for (i = 1; i < len1 && i < len2; i++)
             {
                 res1 = seqArray[seq1][i];
@@ -532,7 +532,7 @@ int Alignment::alignScore(void)
 
     score /= 100;
 
-    utilityObject->info("Alignment Score %d\n", score);    
+    utilityObject->info("Alignment Score %d\n", score);
     return score;
 }
 
@@ -540,13 +540,13 @@ int Alignment::countGaps(int seq1, int seq2, int len)
 {
     int i, g;
     int q, r;//,  *Q,  *R;
- 
+
     vector<int> Q, R;
     Q.resize(len + 2, 0);
     R.resize(len + 2, 0);
-    
+
     int _maxAA = userParameters->getMaxAA();
-    
+
     try
     {
         Q[0] = R[0] = g = 0;
@@ -570,9 +570,9 @@ int Alignment::countGaps(int seq1, int seq2, int len)
             {
                 r = 0;
             }
-        
+
             // NOTE I havent a clue what this does!!!!
-            if (((Q[i - 1] <= R[i - 1]) && (q != 0) && (1-r != 0)) || 
+            if (((Q[i - 1] <= R[i - 1]) && (q != 0) && (1-r != 0)) ||
                 ((Q[i - 1] >= R[i - 1]) && (1-q != 0) && (r != 0)))
             {
                 g += 1;
@@ -601,7 +601,7 @@ int Alignment::countGaps(int seq1, int seq2, int len)
     {
         cerr << ex.what() << endl;
         cerr << "Terminating program. Cannot continue. Function = countGaps\n";
-        exit(1);    
+        exit(1);
     }
 
     return (g);
@@ -613,7 +613,7 @@ void Alignment::resetAlign()
        gaps that were INPUT with the seqs.  which have code =
        gap_pos2
     */
-    
+
     register int sl;
     int i, j;
     int _gapPos1 = userParameters->getGapPos1();
@@ -621,17 +621,17 @@ void Alignment::resetAlign()
     bool _resetAlignNew = userParameters->getResetAlignmentsNew();
     bool _resetAlignAll = userParameters->getResetAlignmentsAll();
 
-    
-    for(i = 1; i <= numSeqs;++i) 
+
+    for(i = 1; i <= numSeqs;++i)
     {
         sl = 0;
-        for(j = 1; j <= getSeqLength(i); ++j) 
+        for(j = 1; j <= getSeqLength(i); ++j)
         {
-            if(seqArray[i][j] == _gapPos1 && ( _resetAlignNew || _resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos1 && ( _resetAlignNew || _resetAlignAll))
             {
                 continue;
             }
-            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll)) 
+            if(seqArray[i][j] == _gapPos2 && (_resetAlignAll))
             {
                 continue;
             }
@@ -639,7 +639,7 @@ void Alignment::resetAlign()
             seqArray[i][sl] = seqArray[i][j];
         }
 
-        
+
         // Andreas Wilm (UCD) added 2008-03-07:
         // Remove excess bit at end of sequence
         int numExtraElements = seqArray[i].size() - 1 - sl;
@@ -653,10 +653,10 @@ void Alignment::resetAlign()
 void Alignment::fixGaps()
 {
     int i,j;
-  
-    if (userParameters->getStructPenalties1() != NONE) 
+
+    if (userParameters->getStructPenalties1() != NONE)
     {
-        for (j = 0; j < getSeqLength(1); ++j) 
+        for (j = 0; j < getSeqLength(1); ++j)
         {
             if (gapPenaltyMask1[j] == userParameters->getGapPos1())
             {
@@ -664,10 +664,10 @@ void Alignment::fixGaps()
             }
         }
     }
-  
-    if (userParameters->getStructPenalties1() == SECST) 
+
+    if (userParameters->getStructPenalties1() == SECST)
     {
-        for (j = 0; j < getSeqLength(1); ++j) 
+        for (j = 0; j < getSeqLength(1); ++j)
         {
             if (secStructMask1[j] == userParameters->getGapPos1())
             {
@@ -675,10 +675,10 @@ void Alignment::fixGaps()
             }
         }
     }
-  
-    for(i = 1; i <= numSeqs; ++i) 
+
+    for(i = 1; i <= numSeqs; ++i)
     {
-        for(j = 1; j <= getSeqLength(i); ++j) 
+        for(j = 1; j <= getSeqLength(i); ++j)
         {
             if(seqArray[i][j] == userParameters->getGapPos1())
             {
@@ -738,13 +738,13 @@ void Alignment::debugPrintSequences()
                 cout << "  " << seqArray[i][j];
         }
         cout << std::endl;
-    } 
+    }
 }
 
 /*
  * Note the max_aln_length is now called maxAlignmentLength, and it will be stored
  * and calculated in this class. Mostly it is used for allocating arrays. But not always.
- */        
+ */
 void Alignment::calculateMaxLengths()
 {
     maxAlignmentLength = 0;
@@ -752,7 +752,7 @@ void Alignment::calculateMaxLengths()
     if(seqArray.size() > 0)
     {
         SeqArray::iterator seqArrayIter = seqArray.begin();
-        
+
         while(seqArrayIter != seqArray.end())
         {
             // NOTE I needed to change this to >= for a bug I had!!!!!!!
@@ -766,7 +766,7 @@ void Alignment::calculateMaxLengths()
         if(lengthLongestSequence > 0)
         {
             maxAlignmentLength = (lengthLongestSequence * 2) - 2;
-            lengthLongestSequence -= 1; // MADE A CHANGE HERE AS WELL!! 
+            lengthLongestSequence -= 1; // MADE A CHANGE HERE AS WELL!!
         }
         else
         {
@@ -783,7 +783,7 @@ void Alignment::calculateMaxLengths()
     if(names.size() > 0)
     {
         vector<string>::iterator nameVecIter = names.begin();
-        
+
         while(nameVecIter != names.end())
         {
             if((int)(*nameVecIter).size() > maxNames)
@@ -818,7 +818,7 @@ bool Alignment::checkAllNamesDifferent(string *offendingSeq)
     int counter1 = 1;
     int counter2 = 2;
 
-    
+
     while(namesIter1 != names.end())
     {
         namesIter2 = namesIter1 + 1;
@@ -826,7 +826,7 @@ bool Alignment::checkAllNamesDifferent(string *offendingSeq)
         {
             if((*namesIter1).compare(*namesIter2) == 0) // If we have 2 strings the same.
             {
-                different = false;     
+                different = false;
                 /* 23-03-2007,nige: let someone up the stack deal with this - GUI is too deeply entangled.
                  * utilityObject->error("Multiple sequences found with same name '%s' (first %d chars are significant)\n", namesIter1->c_str(), MAXNAMES);
                  */
@@ -885,7 +885,7 @@ void Alignment::addSeqWeight(vector<int>* _seqWeight)
     if(seqWeight.size() == _seqWeight->size())
     {
         int size = seqWeight.size();
-        
+
         for(int i = 0; i < size; i++)
         {
             seqWeight[i] = (*_seqWeight)[i];
@@ -902,11 +902,11 @@ void Alignment::printSequencesAddedInfo()
         string dnaFlag = userParameters->getDNAFlag() ? "bp" : "aa";
 
 
-        for(int i = startSeq; i <= numSeqs; i++) 
+        for(int i = startSeq; i <= numSeqs; i++)
         {
-            cout << "Sequence " << i << ": " 
-                 << std::left << setw(maxNames) << names.at(i) 
-                 << std::right << setw(6) << getSequenceLength(i) 
+            cout << "Sequence " << i << ": "
+                 << std::left << setw(maxNames) << names.at(i)
+                 << std::right << setw(6) << getSequenceLength(i)
                  << " " << dnaFlag << std::endl;
         }
     }
@@ -914,12 +914,12 @@ void Alignment::printSequencesAddedInfo()
 
 void Alignment::debugPrintOutAlignInfo()
 {
-    for(int i = 1; i <= numSeqs; i++) 
+    for(int i = 1; i <= numSeqs; i++)
     {
-        cout << "seq-no=" << i << ": name=" 
+        cout << "seq-no=" << i << ": name="
              << std::left << setw(maxNames) << names.at(i)
-             << " length=" 
-             << std::right << setw(6) << getSequenceLength(i) 
+             << " length="
+             << std::right << setw(6) << getSequenceLength(i)
              << std::endl;
     }
 }
@@ -939,7 +939,7 @@ int Alignment::getLengthLongestSequence()
         {
             _lengthLongestSequence = getSeqLength(i);
         }
-    }    
+    }
     return _lengthLongestSequence;
 }
 
@@ -949,7 +949,7 @@ int Alignment::getLengthLongestSequence()
 int Alignment::getLengthLongestSequence(int firstSeq, int lastSeq)
 {
     int _lengthLongestSequence = 0;
-    
+
     if(firstSeq >= 1 && lastSeq <= numSeqs)
     {
         for(int i = firstSeq; i <= lastSeq; i++)
@@ -959,7 +959,7 @@ int Alignment::getLengthLongestSequence(int firstSeq, int lastSeq)
                 _lengthLongestSequence = getSeqLength(i);
             }
         }
-    }    
+    }
     return _lengthLongestSequence; // Will return 0 if cant check seqs
 }
 
@@ -1008,7 +1008,7 @@ int Alignment::getSecStructMask1Element(int index)
     else
     {
         throw VectorOutOfRange(string("secStructMask1"), index, secStructMask1.size() - 1);
-    }    
+    }
 }
 
 int Alignment::getSecStructMask2Element(int index)
@@ -1020,7 +1020,7 @@ int Alignment::getSecStructMask2Element(int index)
     else
     {
         throw VectorOutOfRange(string("secStructMask2"), index, secStructMask2.size() - 1);
-    } 
+    }
 }
 
 int Alignment::getGapPenaltyMask1Element(int index)
@@ -1032,7 +1032,7 @@ int Alignment::getGapPenaltyMask1Element(int index)
     else
     {
         throw VectorOutOfRange(string("gapPenaltyMask1"), index, gapPenaltyMask1.size() - 1);
-    }   
+    }
 }
 
 int Alignment::getGapPenaltyMask2Element(int index)
@@ -1044,7 +1044,7 @@ int Alignment::getGapPenaltyMask2Element(int index)
     else
     {
         throw VectorOutOfRange(string("gapPenaltyMask2"), index, gapPenaltyMask2.size() - 1);
-    }   
+    }
 }
 
 string Alignment::getName(int index)
@@ -1056,7 +1056,7 @@ string Alignment::getName(int index)
     else
     {
         throw VectorOutOfRange(string("names"), index, names.size() - 1);
-    } 
+    }
 }
 
 /**
@@ -1072,7 +1072,7 @@ unsigned long Alignment::getUniqueId(int seq)
     else
     {
         throw VectorOutOfRange(string("sequenceIds"), seq, sequenceIds.size() - 1);
-    } 
+    }
 }
 
 string Alignment::getTitle(int index)
@@ -1084,7 +1084,7 @@ string Alignment::getTitle(int index)
     else
     {
         throw VectorOutOfRange(string("titles"), index, titles.size() - 1);
-    } 
+    }
 }
 
 int Alignment::getOutputIndex(int index)
@@ -1096,7 +1096,7 @@ int Alignment::getOutputIndex(int index)
     else
     {
         throw VectorOutOfRange(string("outputIndex"), index, outputIndex.size() - 1);
-    } 
+    }
 }
 
 int Alignment::getSeqWeight(int index) const
@@ -1108,7 +1108,7 @@ int Alignment::getSeqWeight(int index) const
     else
     {
         throw VectorOutOfRange(string("seqWeight"), index, seqWeight.size() - 1);
-    } 
+    }
 }
 
 
@@ -1141,16 +1141,16 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
     histogramColumnHeights.resize(numColumns);
     //panel_data data1;
     subMatrix->getQTMatrixForHistogram(matrix);
-    
+
     profile.resize(numColumns + 2, vector<int>(_maxAA + 2));
     freq.resize(_maxAA + 2);
- 
+
     for(p = 0; p < numColumns; p++)
     {
         for(r = 0; r < _maxAA; r++)
         {
             freq[r] = 0;
-        }        
+        }
         for(s = firstSeq; s < firstSeq + nSeqs; s++)
         {
             if(p < getSeqLength(s + 1) && seqArray[s + 1][p + 1] >= 0 &&
@@ -1166,7 +1166,7 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
             {
                 profile[p][r] += freq[r1] * matrix[r1][r];
             }
-            profile[p][r] = static_cast<int>(profile[p][r] / 
+            profile[p][r] = static_cast<int>(profile[p][r] /
                              static_cast<float>(nSeqs)); // Mark change 17-5-07
         }
     }
@@ -1222,7 +1222,7 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
         {
             n = 0;
             for(s = firstSeq; s < firstSeq + nSeqs; s++)
-            {    
+            {
                 if(p < getSeqLength(s + 1) && seqArray[s + 1][p + 1] >= 0 &&
                    seqArray[s + 1][p + 1] < _maxAA)
                 {
@@ -1230,7 +1230,7 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
                     n++;
                 }
             }
-            if(n > 0) 
+            if(n > 0)
             {
                 mean /= n;
             }
@@ -1258,18 +1258,18 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
         {
             median = sorteddist[n / 2];
         }
-        
+
         if(scoreScale <= 5)
         {
             histogramColumnHeights[p] = static_cast<int>(exp((double)(-mean *
                                         (6 - scoreScale) / 4.0)) * 100.0 * n / nSeqs);
         }
         else
-        {    
-            histogramColumnHeights[p] = static_cast<int>(exp((double)(-mean / 
+        {
+            histogramColumnHeights[p] = static_cast<int>(exp((double)(-mean /
                                         (4.0 * (scoreScale - 4)))) * 100.0 * n / nSeqs);
         }
-        
+
         if(n == 0)
         {
             ul = 0;
@@ -1287,7 +1287,7 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
                 q3 = sorteddist[(int)t + 1];
                 q1 = sorteddist[n - (int)t - 1];
             }
-            else 
+            else
             {
                 q3 = sorteddist[(int)t];
                 q1 = sorteddist[n - (int)t];
@@ -1297,18 +1297,18 @@ vector<int>* Alignment::QTcalcHistColumnHeights(int firstSeq, int nSeqs,
                 ul = sorteddist[0];
             }
             else
-            { 
+            {
                 ul = q3 + (q3 - q1) * ((float)scoreCutOff / 2.0);
             }
         }
-        
+
         if((exceptionalRes->getRowSize() >= nSeqs) &&
             exceptionalRes->getColSize() >= numColumns)
         {
             for(int s = firstSeq; s < firstSeq + nSeqs; s++)
             {
-                if(seqdist[s - firstSeq] > ul && p < getSeqLength(s + 1) && 
-                   seqArray[s + 1][p + 1] >= 0 && 
+                if(seqdist[s - firstSeq] > ul && p < getSeqLength(s + 1) &&
+                   seqArray[s + 1][p + 1] >= 0 &&
                    seqArray[s + 1][p + 1] < userParameters->getMaxAA())
                 {
                     (*exceptionalRes)[s - firstSeq][p] = 1;
@@ -1327,7 +1327,7 @@ void Alignment::sortScores(vector<float>* scores, int f, int l)
 {
     int i,last;
 
-    if(f >= l) 
+    if(f >= l)
         return;
 
     swap(scores, f, (f + l) / 2);
@@ -1361,9 +1361,9 @@ int Alignment::searchForString(bool* found, int seq, int beginRes, string search
         *found = false;
         return beginRes;
     }
-    
+
     int res = beginRes;
-    
+
     // First need to convert search into a vector of ints!
     vector<int> codedSearch;
     int size = search.size();
@@ -1425,7 +1425,7 @@ void Alignment::removeGapsFromSelectedSeqs(vector<int>* selected)
     int gapPos1 = userParameters->getGapPos1();
     int gapPos2 = userParameters->getGapPos2();
     int s1;
-    
+
     for(int i = 1; i <= getNumSeqs() && i < size; i++)
     {
         if((*selected)[i] == 1)
@@ -1444,7 +1444,7 @@ void Alignment::removeGapsFromSelectedSeqs(vector<int>* selected)
             }
             // Then remove the excess bit at the end of the array
             int numExtraElements = lengthOfSelectedSeq - s1;
-            
+
             if((int)seqArray[i].size() > numExtraElements)
             {
                 for(int k = 0; k < numExtraElements; k++)
@@ -1466,8 +1466,8 @@ void Alignment::removeGapOnlyColsFromSelectedSeqs(vector<int>* selected)
     int firstSeqSelected = NoneSelected;
     int gapPos1 = userParameters->getGapPos1();
     int gapPos2 = userParameters->getGapPos2();
-    int k; 
-      
+    int k;
+
     for(int i = 1; i < sizeSelected; i++)
     {
         if((*selected)[i] == 1)
@@ -1479,13 +1479,13 @@ void Alignment::removeGapOnlyColsFromSelectedSeqs(vector<int>* selected)
             }
         }
     }
-    
+
     if(firstSeqSelected == NoneSelected)
     {
         cout << "No Sequences have been selected\n";
         return;
     }
-    
+
     for(int i = 1; i <= getSeqLength(firstSeqSelected);)
     {
         numGaps = 0;
@@ -1509,11 +1509,11 @@ void Alignment::removeGapOnlyColsFromSelectedSeqs(vector<int>* selected)
                     seqArray[j][k - 1] = seqArray[j][k];
                 }
                 seqArray[j].pop_back(); // Remove the last element!!
-                
+
                 if(getSeqLength(firstSeqSelected) <= 0)
                 {
                     break;
-                }                
+                }
             }
         }
         else
@@ -1521,7 +1521,7 @@ void Alignment::removeGapOnlyColsFromSelectedSeqs(vector<int>* selected)
             i++;
         }
     }
-    
+
 }
 
 void Alignment::removeAllGapOnlyColumns(int fSeq, int lSeq, int profileNum)
@@ -1532,7 +1532,7 @@ void Alignment::removeAllGapOnlyColumns(int fSeq, int lSeq, int profileNum)
     }
     int gapPos1 = userParameters->getGapPos1();
     int gapPos2 = userParameters->getGapPos2();
-    
+
     int numGaps = 0;
     int numColumns = lSeq - fSeq + 1;
     int k;
@@ -1559,12 +1559,12 @@ void Alignment::removeAllGapOnlyColumns(int fSeq, int lSeq, int profileNum)
                     seqArray[j][k - 1] = seqArray[j][k];
                 }
                 seqArray[j].pop_back(); // Remove the last element!!
-                
+
                 if(profileNum == 1)
                 {
                     int lengthSecStruct = secStructMask1.size();
                     int lengthGapMask = gapPenaltyMask1.size();
-                    
+
                     for(k = i; k <= getSeqLength(fSeq) && k < lengthSecStruct; k++)
                     {
                         secStructMask1[k - 1] = secStructMask1[k];
@@ -1572,14 +1572,14 @@ void Alignment::removeAllGapOnlyColumns(int fSeq, int lSeq, int profileNum)
                     for(k = i; k <= getSeqLength(fSeq) && k < lengthGapMask; k++)
                     {
                         gapPenaltyMask1[k - 1] = gapPenaltyMask1[k];
-                    }                    
+                    }
                 }
-                
+
                 if(profileNum == 2)
                 {
                     int lengthSecStruct = secStructMask2.size();
                     int lengthGapMask = gapPenaltyMask2.size();
-                    
+
                     for(k = i; k <= getSeqLength(fSeq) && k < lengthSecStruct; k++)
                     {
                         secStructMask2[k - 1] = secStructMask2[k];
@@ -1587,12 +1587,12 @@ void Alignment::removeAllGapOnlyColumns(int fSeq, int lSeq, int profileNum)
                     for(k = i; k <= getSeqLength(fSeq) && k < lengthGapMask; k++)
                     {
                         gapPenaltyMask2[k - 1] = gapPenaltyMask2[k];
-                    }                    
+                    }
                 }
                 if(getSeqLength(fSeq) <= 0)
                 {
                     break;
-                }                
+                }
             }
         }
         else
@@ -1611,13 +1611,13 @@ vector<Sequence> Alignment::cutSelectedSequencesFromAlignment(vector<int>* selec
     vector<string>::iterator titlesIterator;
     vector<int>::iterator seqWeightIterator;
     vector<unsigned long>::iterator sequenceIdsIterator;
-     
+
     int newProfile1NumSeqs = profile1NumSeqs;
     int profNum = userParameters->getProfileNum();
-    int prof1NumSeqs = profile1NumSeqs; 
+    int prof1NumSeqs = profile1NumSeqs;
     int numCutSoFar = 0;
     int intialNumSeqs = numSeqs;
-      
+
     for(int i = 1; i < sizeOfSelected && i <= intialNumSeqs; i++)
     {
         if((*selected)[i] == 1)
@@ -1628,18 +1628,18 @@ vector<Sequence> Alignment::cutSelectedSequencesFromAlignment(vector<int>* selec
             titlesIterator = titles.begin() + i - numCutSoFar;
             seqWeightIterator = seqWeight.begin() + i - numCutSoFar;
             sequenceIdsIterator = sequenceIds.begin() + i - numCutSoFar;
-            Sequence SeqToCut(&seqArray[i - numCutSoFar], *namesIterator, *titlesIterator, 
+            Sequence SeqToCut(&seqArray[i - numCutSoFar], *namesIterator, *titlesIterator,
                               *sequenceIdsIterator);
-            
+
             numCutSoFar++;
-            
+
             seqArrayIterator->clear();
             seqArray.erase(seqArrayIterator);
             names.erase(namesIterator);
             titles.erase(titlesIterator);
             seqWeight.erase(seqWeightIterator);
             sequenceIds.erase(sequenceIdsIterator);
-            
+
             if(numSeqs > 0)
             {
                 numSeqs--;
@@ -1666,7 +1666,7 @@ vector<Sequence> Alignment::cutSelectedSequencesFromAlignment(vector<int>* selec
     profile1NumSeqs = newProfile1NumSeqs;
     setDefaultOutputIndex();
     resetAllSeqWeights();
-    return cutSequences; 
+    return cutSequences;
 }
 
 void Alignment::setDefaultOutputIndex()
@@ -1686,7 +1686,7 @@ bool Alignment::removeAllOutsideRange(int beginPos, int endPos)
     {
         return false; // cannot do it!!!!
     }
-    
+
     // trim the seqArray
     ok = keepPortionOfSeqArray(beginPos, endPos);
     if(!ok)
@@ -1694,13 +1694,13 @@ bool Alignment::removeAllOutsideRange(int beginPos, int endPos)
         cerr << "There was a problem removing a portion of the array\n";
         return false;
     }
-    
+
     // recalculate the maxLengths
     calculateMaxLengths();
-    
+
     // Clear the histogram columns
     histogramColumnHeights.clear();
-    
+
     // reset the weights
     resetAllSeqWeights();
 	return true;
@@ -1710,20 +1710,20 @@ bool Alignment::keepPortionOfSeqArray(int beginRangeIndex, int endRangeIndex)
 {
     SeqArray sectionToRealign;
     vector<int> emptyVec;
-    sectionToRealign.push_back(emptyVec); // EMPTY sequence 
-       
-    SeqArray::iterator posToAddTo = sectionToRealign.begin(); 
+    sectionToRealign.push_back(emptyVec); // EMPTY sequence
+
+    SeqArray::iterator posToAddTo = sectionToRealign.begin();
     // erase from all sequences the range specified here!!!!!
     if(beginRangeIndex < 0 || endRangeIndex < 0)
     {
         return false;
-    }  
-      
+    }
+
     SeqArray::iterator mainBeginIt = seqArray.begin() + 1;
     SeqArray::iterator mainEndIt = seqArray.end();
-    
+
     vector<int>::iterator begin, end, beginRange, endRange, beginCopyRange, endCopyRange;
-    
+
     for(; mainBeginIt != mainEndIt; mainBeginIt++)
     {
         vector<int> vecToAdd;
@@ -1733,7 +1733,7 @@ bool Alignment::keepPortionOfSeqArray(int beginRangeIndex, int endRangeIndex)
         endRange = begin + endRangeIndex + 1;
         beginCopyRange = beginRange;
         endCopyRange = endRange;
-        
+
         // We need to copy all of this into another vector.
         if(endCopyRange < end && beginCopyRange < end)
         {
@@ -1746,21 +1746,21 @@ bool Alignment::keepPortionOfSeqArray(int beginRangeIndex, int endRangeIndex)
         }
         else
         {
-            return false;        
+            return false;
         }
-        
+
         if(endRange < end && beginRange < end)
         {
             mainBeginIt->erase(beginRange, endRange);
         }
         else
         {
-            return false;       
+            return false;
         }
     }
     clearSeqArray();
-    seqArray = sectionToRealign;    
-    return true; 
+    seqArray = sectionToRealign;
+    return true;
 }
 
 void Alignment::debugPrintSeqArray(SeqArray* arrayToPrint)
@@ -1770,7 +1770,7 @@ void Alignment::debugPrintSeqArray(SeqArray* arrayToPrint)
     SeqArray::iterator mainEndIt = arrayToPrint->end();
     vector<int>::iterator begin, end;
     string aaCodes = userParameters->getAminoAcidCodes();
-    
+
     for(; mainBeginIt != mainEndIt; mainBeginIt++)
     {
         if(mainBeginIt->size() > 0)
@@ -1800,7 +1800,7 @@ void Alignment::debugPrintProfile1()
     SeqArray::iterator mainEndIt = mainBeginIt + profile1NumSeqs;
     vector<int>::iterator begin, end;
     string aaCodes = userParameters->getAminoAcidCodes();
-            
+
     for(; mainBeginIt != mainEndIt; mainBeginIt++)
     {
         cout << "PROFILE1 SEQ: ";
@@ -1820,7 +1820,7 @@ void Alignment::debugPrintProfile1()
                 }
             }
             cout << "\n";
-        }                                
+        }
     }
 }
 
@@ -1831,7 +1831,7 @@ void Alignment::debugPrintProfile2()
     SeqArray::iterator mainEndIt = seqArray.end();
     vector<int>::iterator begin, end;
     string aaCodes = userParameters->getAminoAcidCodes();
-            
+
     for(; mainBeginIt != mainEndIt; mainBeginIt++)
     {
         cout << "PROFILE2 SEQ: ";
@@ -1851,10 +1851,10 @@ void Alignment::debugPrintProfile2()
                 }
             }
             cout << "\n";
-        }                                
+        }
     }
 }
-                             
+
 bool Alignment::updateRealignedRange(SeqArray realignedSeqs, int beginPos, int endPos)
 {
     if(realignedSeqs.size() != seqArray.size())
@@ -1865,17 +1865,17 @@ bool Alignment::updateRealignedRange(SeqArray realignedSeqs, int beginPos, int e
     {
         return false;
     }
-    
-    // erase from all sequences the range specified here!!!!!  
-      
+
+    // erase from all sequences the range specified here!!!!!
+
     SeqArray::iterator mainBeginIt = seqArray.begin() + 1;
     SeqArray::iterator mainEndIt = seqArray.end();
 
     SeqArray::iterator pasteBeginIt = realignedSeqs.begin() + 1;
     SeqArray::iterator pasteEndIt = realignedSeqs.end();
-            
+
     vector<int>::iterator begin, end, beginRange, endRange;
-    
+
     for(; mainBeginIt != mainEndIt && pasteBeginIt != pasteEndIt; mainBeginIt++)
     {
         vector<int> vecToAdd;
@@ -1883,7 +1883,7 @@ bool Alignment::updateRealignedRange(SeqArray realignedSeqs, int beginPos, int e
         end = mainBeginIt->end();
         beginRange = begin + beginPos;
         endRange = begin + endPos + 1;
-        
+
         if(endRange < end && beginRange < end)
         {
             mainBeginIt->erase(beginRange, endRange);
@@ -1892,11 +1892,11 @@ bool Alignment::updateRealignedRange(SeqArray realignedSeqs, int beginPos, int e
         }
         else
         {
-            return false;        
+            return false;
         }
         pasteBeginIt++;
     }
-    return true;      
+    return true;
 }
 
 bool Alignment::reloadAlignment()
@@ -1928,18 +1928,18 @@ bool Alignment::reloadAlignment()
     vector<unsigned long> outputOrderSequenceIds;
     outputOrderSequenceIds.resize(getNumSeqs() + 1);
     outputOrderSequenceIds[0] = 0;
-    
+
     int size = seqArray.size();
     if((seqArray.size() != names.size()) || (seqArray.size() != titles.size()) ||
         sequenceIds.size() != names.size())
     {
         return false;
-    }    
-    
+    }
+
     int _outIndex;
     // Now for each seq,
     for(int i = 1; i < size; i++)
-    { 
+    {
         if(i < (int)outputOrderSeqArray.size() && i - 1 < (int)outputIndex.size() &&
            outputIndex[i - 1] < size)
         {
@@ -1954,7 +1954,7 @@ bool Alignment::reloadAlignment()
             return false;
         }
     }
-    
+
     // Now we have a copy in the correct order.
     // Remove all the elements from the old ones and set them to be these arrays
     clearSeqArray();
@@ -1964,7 +1964,7 @@ bool Alignment::reloadAlignment()
     titles.clear();
     titles = outputOrderTitles;
     sequenceIds.clear();
-    sequenceIds = outputOrderSequenceIds; 
+    sequenceIds = outputOrderSequenceIds;
 
     return true;
 }
@@ -1978,7 +1978,7 @@ const vector<int>* Alignment::getSequenceFromUniqueId(unsigned long id)
             return getSequence(i);
         }
     }
-    
+
     // We have not found it, throw an exception!!!
     throw SequenceNotFoundException();
 }
@@ -2033,11 +2033,11 @@ void Alignment::addSequences(SeqArray* seqVector)
         titles.push_back(string(""));
         sequenceIds.push_back(utilityObject->getUniqueSequenceIdentifier());
         name << "name" << numSeqs;
-        names.push_back(name.str());        
+        names.push_back(name.str());
     }
-    
+
     calculateMaxLengths();
-    seqWeight.resize(numSeqs + 1, 100);    
+    seqWeight.resize(numSeqs + 1, 100);
 }
 
 }

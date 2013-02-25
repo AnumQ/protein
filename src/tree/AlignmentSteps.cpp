@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -20,7 +20,7 @@ void AlignmentSteps::saveSet(int n, int *groups)
     for(int i = 1; i < n + 1; i++)
     {
         tempVec[i] = groups[i - 1];
-    } 
+    }
     steps.push_back(tempVec);
     numSteps++;
 }

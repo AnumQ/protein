@@ -5,7 +5,13 @@ using namespace std;
 
 InputFile::InputFile()
 {
+}
+
+void InputFile::run()
+{
+    // check if source file has been set
     determineSourceFile();
+
     getSearchInput();
     setCathCode( SearchCathCode );
 
@@ -36,7 +42,75 @@ InputFile::InputFile()
         }
     }
 
+    bool f = true;
+    checkToProceed(f);
+}
 
+void InputFile::checkToProceed( bool f )
+{
+    flag = f;
+    int sc = getSeqC();
+
+    if ( sc > 0 )
+    {
+        if ( flag == true )
+        {
+            cout << "Found " << sc << " sequence(s).\n" << endl;
+        }
+        processInput();
+    }
+    else
+    {
+        cout << "\nNo sequences found.\n";
+        checkToStartAgain();
+
+
+    }
+}
+
+void InputFile::checkToStartAgain()
+{
+    char c;
+    char y = 'y';
+    char n = 'n';
+
+    cout << "Do you wish to try again? (y/n) " << flush;
+    cin >> c;
+    if ( c == y)
+    {
+        run();
+    }
+    else
+    {
+        cout << "\n     Exiting the program..." << endl;
+        exit(1);
+    }
+
+}
+
+void InputFile::processInput()
+{
+    char c;
+    char y = 'y';
+    char n = 'n';
+
+    cout << "Do you wish to proceed? (y/n) " << flush;
+    cin >> c;
+    if ( c == y)
+    {
+        cout << "Proceding with the alignment..." << endl;
+    }
+    else if ( c == n )
+    {
+        cout << "Exiting the program..." << endl;
+        exit(1);
+    }
+    else
+    {
+        cout << "Invalid input. Please try again. (Y/N)" << endl;
+        flag = false;
+        checkToProceed( flag );
+    }
 }
 
 void InputFile::getSearchInput()
@@ -53,31 +127,34 @@ void InputFile::defineLevelOfHierarchy()
             "\t2. 60 %\n"
             "\t3. 95 %\n"
             "\t4. 100 %\n"
-            "\t5. No representatives\n" << endl;
-    int x;
+            "\t5. No representatives\n"
+            "\t6. Exit\n"<< endl;
+    char x;
     cin >> x;
 
     switch(x)
     {
-        case 1:
+        case '1':
             levelOfHierarchy = "D:/Documents/FinalYearProject/CathDomainList.S35.v3.5.c";
             break;
-        case 2:
+        case '2':
             levelOfHierarchy = "D:/Documents/FinalYearProject/CathDomainList.S60.v3.5.c";
             break;
-        case 3:
+        case '3':
             levelOfHierarchy = "D:/Documents/FinalYearProject/CathDomainList.S95.v3.5.c";
             break;
-        case 4:
+        case '4':
             levelOfHierarchy = "D:/Documents/FinalYearProject/CathDomainList.S100.v3.5.c";
             break;
-        case 5:
+        case '5':
             cout << "No hierarchy chosen\n";
             levelOfHierarchy = "";
             break;
+        case '6':
+            cout << "Exiting the program.\n" << endl;
+            exit(1);
         default:
-            cout << "No hierarchy chosen\n";
-            levelOfHierarchy = "";
+            defineLevelOfHierarchy();
             break;
     }
 }
@@ -163,35 +240,89 @@ string InputFile::getFileInput()
     return sourceFile;
 }
 
+bool InputFile::isValidInt(const std::string& str)
+{
+    std::string::const_iterator it;
+    for (it = str.begin(); it != str.end(); ++it)
+        if(!isdigit(*it))
+            return false;
+
+    return true;
+}
+
+int InputFile::toInt (const std::string &str)
+{
+    int x;
+    std::istringstream ss(str);
+    ss >> x;
+    return x;
+}
+
+int InputFile::getInteger ()
+{
+    std::string tmp;
+
+
+    while (tmp.empty() || !isValidInt(tmp))
+        std::getline(std::cin, tmp);
+
+    return toInt(tmp);
+}
+
+int InputFile::getUserInput()
+{
+    int x;
+    cin.clear();
+    cin >> x;
+
+    if(cin.fail())
+    {
+
+        cout << "Invalid input. Please try again." << endl;
+
+    }
+    else
+    {
+        return x;
+    }
+
+}
+
 void InputFile::determineSourceFile()
 {
-    cout << "   Which source file do you wish to use? \n"
+    cout << "\n   Which source file do you wish to use? \n"
             "\t1. Input2 (Test file )\n"
             "\t2. Cath Domain Description File V3.3.0 (Cath Database)\n"
             "\t3. Cath Domain Description File V3.5.0 (Cath Database)\n"
-            "\t4. Cath Domain Description File V3.5.0 (Simplified version)\n" << endl;
-    int x;
+            "\t4. Cath Domain Description File V3.5.0 (Simplified version)\n"
+            "\t5. Exit\n" << endl;
+    // changed from int x to char to handle the exception better
+    char x;
     cin >> x;
 
     switch(x)
     {
-        case 1:
+        case '1':
             sourceFile = "D:/Documents/FinalYearProject/Input2.txt";
             break;
-        case 2:
+        case '2':
             sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.c";
             break;
-        case 3:
+        case '3':
             sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.v3.5.c";
             break;
-        case 4:
+        case '4':
             sourceFile = "D:/Documents/FinalYearProject/CathDomainDescriptionFile.Simplified.c";
             break;
+        case '5':
+            cout << "Exiting the program.. \n" << endl;
+            exit(1);
         default:
-            cout << "Choosing default: Input2.txt" << endl;
-            sourceFile = "D:/Documents/FinalYearProject/Input2.txt";
+            cout << "Invalid option. Please try again.\n" << endl;
+            determineSourceFile();
             break;
     }
+
 
 }
 
@@ -232,9 +363,11 @@ void InputFile::writeInputFileForRepresentatives()
     seqC = 0;
     filename = "InputFile.txt";
     infile.open(filename.c_str());
+    filenames.push_back(filename);
 
     fsearch = "SearchResults.txt";
     searchResults.open(fsearch.c_str());
+    filenames.push_back(fsearch);
 
 
     ifstream& File = fileInput;
@@ -354,10 +487,11 @@ void InputFile::writeInputFile()
     seqC = 0;
     filename = "InputFile.txt";
     infile.open(filename.c_str());
+    filenames.push_back(filename);
 
     fsearch = "SearchResults.txt";
     searchResults.open(fsearch.c_str());
-
+    filenames.push_back(fsearch);
 
     ifstream& File = fileInput;
     string LINE;
@@ -430,7 +564,7 @@ void InputFile::writeInputFile()
 
 
                         seqC++;
-                        //convert.clear();
+                        //.clear();
                         //convert << seqC;
                         writeSearchResults( seqC, n );
                     }
@@ -480,50 +614,6 @@ int InputFile::getSeqC()
 vector<ProteinSequence> InputFile::getProteinData()
 {
     return p;
-}
-
-void InputFile::checkToProceed( bool f )
-{
-    flag = f;
-    int sc = getSeqC();
-
-    if ( sc > 0 )
-    {
-        if ( flag == true )
-        {
-            cout << "Found " << sc << " sequence(s).\n" << endl;
-        }
-        processInput();
-    }
-    else
-    {
-        cout << "No sequences found. Exiting..." << endl;
-    }
-}
-
-void InputFile::processInput()
-{
-    char c;
-    char y = 'y';
-    char n = 'n';
-
-    cout << "Do you wish to proceed? (Y/N) " << flush;
-    cin >> c;
-    if ( c == y)
-    {
-        cout << "Proceding with the alignment..." << endl;
-    }
-    else if ( c == n )
-    {
-        cout << "Exiting the program..." << endl;
-        exit(1);
-    }
-    else
-    {
-        cout << "Invalid input. Please try again. (Y/N)" << endl;
-        flag = false;
-        checkToProceed( flag );
-    }
 }
 
 void InputFile::createSimplifiedSourceFile()

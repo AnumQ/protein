@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * This file contains the implementation of the UserParameter functions
@@ -30,15 +30,15 @@
 namespace clustalw
 {
 using namespace std;
- 
+
 UserParameters::UserParameters(bool log)
 {
    // FIXME: huge parts should be merged/replaced with
    // setParamsToDefault (which is not used at all)
-   
+
     gapPos1 = NUMRES - 2; /* code for gaps inserted by clustalw */
     gapPos2 = NUMRES - 1; /* code for gaps already in alignment */
-    
+
     //revisionLevel = CLU_SHORT_VERSION_STRING;
     revisionLevel = CLUSTALW_VERSION;
     interactive = false;
@@ -133,16 +133,16 @@ UserParameters::UserParameters(bool log)
     newTree2File = false;
     aminoAcidCodes = "ABCDEFGHIKLMNOPQRSTUVWXYZ-";
     maxAA = aminoAcidCodes.length() - 2;
-    
+
     // Some variables need the alignment to be read in before they can be set.
     // I am putting the default as protein. Note: this should not make a difference
     // as they are not used before they have been set a value again!!
-    
+
     gapOpen = AAGapOpen;
     gapExtend = AAGapExtend;
     PWGapOpen = AAPWGapOpen;
     PWGapExtend = AAPWGapExtend;
-    
+
     gapPos1 = NUMRES - 2;
     gapPos2 = NUMRES - 1;
     profileNum = 0;
@@ -158,22 +158,22 @@ UserParameters::UserParameters(bool log)
     rangeFromToSet = false;
     QTscorePlotScale = 5;
     QTresExceptionCutOff = 5;
-    
+
     QTseqWeightCalculated = false;
     QTminLenLowScoreSegment = 1;
     QTlowScoreDNAMarkingScale = 5;
-    
+
     // Set defaults for iteration variables.
     numIterations = 3;
-    doRemoveFirstIteration = NONE; 
+    doRemoveFirstIteration = NONE;
     maxAllowedSeqLength = INT_MAX;
-    
+
     clusterAlgorithm = NJ;
     displayInfo = true;
     helpFlag = false;
     fullHelpFlag = false;
     quiet = false;
-    
+
 }
 
 // FIXME:never used
@@ -184,9 +184,9 @@ void UserParameters::setParamsToDefault()
     AAGapOpen = 10.0;
     AAGapExtend = 0.2;
     gapDist = 4;
-    outputOrder = ALIGNED; 
+    outputOrder = ALIGNED;
     divergenceCutoff = 30;
-    
+
     hydResidues = "GPSNDQEKR";
     noWeights = false;
     negMatrix = false;
@@ -259,13 +259,13 @@ void UserParameters::setParamsToDefault()
     rangeFromToSet = false;
     QTscorePlotScale = 5;
     QTresExceptionCutOff = 5;
-    
+
     QTminLenLowScoreSegment = 1;
     QTlowScoreDNAMarkingScale = 5;
     distanceTree = true; // MARK: I set to default value.
-    
+
     numIterations = 3;
-                
+
     if(getDNAFlag())
     {
         setDNAParams();
@@ -273,10 +273,10 @@ void UserParameters::setParamsToDefault()
     else
     {
         setProtParams();
-    }  
-    
-    clusterAlgorithm = NJ;   
-    displayInfo = true; 
+    }
+
+    clusterAlgorithm = NJ;
+    displayInfo = true;
     helpFlag = false;
     fullHelpFlag = false;
     quiet = false;
@@ -298,10 +298,10 @@ void UserParameters::createParameterOutput(void)
     string parname, temp;
     string path;
     string message;
-  
+
     utilityObject->getPath(seqName, &path);
     parname = path + "par";
-    if(menuFlag) 
+    if(menuFlag)
     {
         message = "\nEnter a name for the parameter output file [" + parname + "]";
         utilityObject->getStr(message, temp);
@@ -310,17 +310,17 @@ void UserParameters::createParameterOutput(void)
             parname = temp;
         }
     }
-      
+
     ofstream outfile;
     outfile.open(parname.c_str(), ofstream::out);
-    
+
     if(!outfile)
     {
         return; // Failed to open
     }
-    
+
     outfile << "clustalw \\\n";
-    if (!empty && profile1Empty) 
+    if (!empty && profile1Empty)
     {
         outfile << "-infile=" << seqName << " \\\n";
     }
@@ -333,94 +333,94 @@ void UserParameters::createParameterOutput(void)
         outfile << "-profile2=" << profile2Name << " \\\n";
     }
     if (DNAFlag == true)
-    { 
+    {
         outfile << "-type=dna \\\n";
     }
     else
     {
         outfile << "-type=protein \\\n";
     }
-    if (quickPairAlign) 
+    if (quickPairAlign)
     {
         outfile << "-quicktree \\\n";
         outfile << "-ktuple=" << ktup << " \\\n";
         outfile << "-window=" << window << " \\\n";
         outfile << "-pairgap=" << windowGap << " \\\n";
-        outfile << "-topdiags=" << signif << " \\\n";    
+        outfile << "-topdiags=" << signif << " \\\n";
         if (percent)
         {
             outfile << "-score=percent \\\n";
-        }      
+        }
         else
         {
             outfile << "-score=absolute \\\n";
-        }      
+        }
     }
-    else 
+    else
     {
-        if (!DNAFlag) 
+        if (!DNAFlag)
         {
             //outfile << "-pwmatrix=" << pwMatrixName << " \\\n";
-            outfile << "-pwgapopen=" << fixed << setprecision(2) << AAPWGapOpen 
+            outfile << "-pwgapopen=" << fixed << setprecision(2) << AAPWGapOpen
                     << " \\\n";
             outfile << "-pwgapext=" << AAPWGapExtend << " \\\n";
         }
-        else 
+        else
         {
             outfile << "-pwgapopen=" << fixed << setprecision(2) << PWGapOpen << " \\\n";
             outfile << "-pwgapext=" << PWGapExtend << " \\\n";
         }
     }
-  
-    if (!DNAFlag) 
+
+    if (!DNAFlag)
     {
         //outfile << "-matrix=" << matrixName << " \\\n";
         outfile << "-gapopen=" << fixed << setprecision(2) << AAGapOpen << " \\\n";
         outfile << "-gapext=" << AAGapExtend << " \\\n";
     }
-    else 
+    else
     {
         outfile << "-gapopen=" << fixed << setprecision(2) << DNAGapOpen << " \\\n";
         outfile << "-gapext=" << DNAGapExtend << " \\\n";
     }
-  
+
     outfile << "-maxdiv=" << divergenceCutoff << " \\\n";
-    if (!useEndGaps) 
+    if (!useEndGaps)
     {
         outfile << "-endgaps \\\n";
-    }    
-  
-    if (!DNAFlag) 
+    }
+
+    if (!DNAFlag)
     {
-        if (negMatrix) 
+        if (negMatrix)
         {
             outfile << "-negative \\\n";
-        }   
+        }
         if (noPrefPenalties)
-        { 
+        {
             outfile << "-nopgap \\\n";
-        }     
-        if (noHydPenalties) 
-        { 
+        }
+        if (noHydPenalties)
+        {
             outfile << "-nohgap \\\n";
-        }     
-        if (noVarPenalties) 
+        }
+        if (noVarPenalties)
         {
             outfile << "-novgap \\\n";
-        }     
+        }
         outfile << "-hgapresidues=" << hydResidues << " \\\n";
-        outfile << "-gapdist=" << gapDist << " \\\n";     
+        outfile << "-gapdist=" << gapDist << " \\\n";
     }
-    else 
+    else
     {
         outfile << "-transweight=" << transitionWeight << " \\\n";
     }
-  
-    if (outputGcg) 
+
+    if (outputGcg)
     {
         outfile << "-output=gcg \\\n";
     }
-    else if (outputGde) 
+    else if (outputGde)
     {
         outfile << "-output=gde \\\n";
     }
@@ -428,26 +428,26 @@ void UserParameters::createParameterOutput(void)
     {
         outfile << "-output=pir \\\n";
     }
-    else if (outputPhylip) 
+    else if (outputPhylip)
     {
         outfile << "-output=phylip \\\n";
     }
-    else if (outputNexus) 
+    else if (outputNexus)
     {
         outfile << "-output=nexus \\\n";
     }
     if (outfileName[0]!=EOS)
-    {    
+    {
         outfile << "-outfile=" << outfileName << " \\\n";
     }
     if (outputOrder==ALIGNED)
     {
         outfile << "-outorder=aligned \\\n";
-    }  
+    }
     else
     {
         outfile << "-outorder=input \\\n";
-    }  
+    }
     if (outputGde)
     {
         if (lowercase)
@@ -459,8 +459,8 @@ void UserParameters::createParameterOutput(void)
             outfile << "-case=upper \\\n";
         }
     }
-  
-  
+
+
     outfile << "-interactive\n";
 
     outfile.close();
@@ -565,7 +565,7 @@ void UserParameters::setPWDNAParam()
 /*
  * The rest of the functions are get, set and toggle functions for the variables.
  */
- 
+
 string UserParameters::getRevisionLevel()
 {
     return revisionLevel;
@@ -640,7 +640,7 @@ void UserParameters::setDNAFlag(bool value)
     else
     {
         setProtParams();
-    }    
+    }
     DNAFlag = value;
 }
 
@@ -707,11 +707,11 @@ void UserParameters::setHydResidues(string value)
     char hydResidue;
     string tempHydRes = "";
     int inputStringLength = value.length();
-    if(inputStringLength > 0) 
+    if(inputStringLength > 0)
     {
-    // NOTE this was causing an error, but I fixed it. Was giving an 
+    // NOTE this was causing an error, but I fixed it. Was giving an
     // out of range error.
-        for (int i = 0; i < MAXHYDRESIDUES && i < inputStringLength; i++) 
+        for (int i = 0; i < MAXHYDRESIDUES && i < inputStringLength; i++)
         {
             hydResidue = toupper(value.at(i));
 

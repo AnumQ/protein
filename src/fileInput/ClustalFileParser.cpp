@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * Changes:
@@ -9,10 +9,9 @@
  * 10-02-07,Nigel Brown(EMBL): changed ifstream to InFileStream to handle
  * cross-platform end-of-lines.
  *
- * 27-4-2007, Mark Larkin (UCD): Made 2 small changes to getSecStructure function. There 
+ * 27-4-2007, Mark Larkin (UCD): Made 2 small changes to getSecStructure function. There
  * was a problem with the secondary structure info in windows.
  */
-//#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
     #include "config.h"
 #endif
@@ -23,14 +22,14 @@ namespace clustalw
 
 ClustalFileParser::ClustalFileParser(string filePath)
 {
-    fileName = filePath; 
+    fileName = filePath;
     fillCharTab();
     _fileIn = 0;
 }
-        
+
 ClustalFileParser::~ClustalFileParser()
 {
-    
+
 }
 
 
@@ -40,7 +39,7 @@ ClustalFileParser::~ClustalFileParser()
     int i;
 
     for (i=0; i<no; i++)
-    { 
+    {
         Sequence tempSeq = getSeq(firstSeq + i, offendingSeq);
         if (parseExitCode!=OK) {
             seqRangeVector.clear();
@@ -71,15 +70,15 @@ Sequence ClustalFileParser::getSeq(int seqNum, string *offendingSeq)
     int i, j;
     unsigned char c;
     string blank = "";
-    
+
     try
     {
         _fileIn = new InFileStream;  //nige
         _fileIn->open(fileName.c_str());  //nige
         _fileIn->seekg(0, std::ios::beg); // start at the beginning
-             
+
         _fileIn->getline(line, MAXLINE + 1); // read the title line...ignore it
-    
+
         while (_fileIn->getline(line, MAXLINE + 1))  //nige
         {
             if (!clustalBlankline(line))
@@ -107,8 +106,8 @@ Sequence ClustalFileParser::getSeq(int seqNum, string *offendingSeq)
                 sname[j] = EOS;
                 utilityObject->rTrim(sname);
                 utilityObject->blankToUnderscore(sname); // replace blanks with '_'
-                name = string(sname);           
-               
+                name = string(sname);
+
                 for (i = 0; i <= MAXLINE; i++)
                 {
                     c = tseq[i];
@@ -116,7 +115,7 @@ Sequence ClustalFileParser::getSeq(int seqNum, string *offendingSeq)
                     {
                         break;
                     }
-                    // EOL 
+                    // EOL
                     c = chartab[c];
                     if (c)
                     {
@@ -148,7 +147,7 @@ Sequence ClustalFileParser::getSeq(int seqNum, string *offendingSeq)
         }
         freeFileResources(_fileIn);
 
-	// getSecStructure(vector<char>& gapPenaltyMask, 
+	// getSecStructure(vector<char>& gapPenaltyMask,
 	//      vector<char>& secStructMask, string& secStructName, int &structPenalties, int length)
 
         if ((int)characterSeq.length() > userParameters->getMaxAllowedSeqLength())
@@ -170,7 +169,7 @@ Sequence ClustalFileParser::getSeq(int seqNum, string *offendingSeq)
         exit(1);
     }
 }
-        
+
 /*
  * The function countSeqs tells us how many sequences are in a clustal format file.
  * Need to check if the file is open!
@@ -179,15 +178,15 @@ int ClustalFileParser::countSeqs()
 {
     char line[MAXLINE + 1];
     int _nseqs;
-    
+
     try
     {
         _fileIn = new InFileStream;  //nige
         _fileIn->open(fileName.c_str());  //nige
-    
+
         if(!_fileIn->is_open())
         {
-            freeFileResources(_fileIn);            
+            freeFileResources(_fileIn);
             return 0; // No sequences found!
         }
 
@@ -199,7 +198,7 @@ int ClustalFileParser::countSeqs()
                 break;
             }
         }
-    
+
         // This gets us to the begining of the sequence lines!
         while (_fileIn->getline(line, MAXLINE + 1))
         {
@@ -227,8 +226,8 @@ int ClustalFileParser::countSeqs()
         freeFileResources(_fileIn);
         cerr << "An exception has occured in the function ClustalFileParser::countSeqs()\n"
              << "Program needs to terminate.\nPlease contact the Clustal developers\n";
-        exit(1);    
-    }    
+        exit(1);
+    }
 }
 
 /*
@@ -236,8 +235,8 @@ int ClustalFileParser::countSeqs()
  * I am aware that I am using some C and some C++ here, and this may seem like
  * bad style, but I think it is better to use the C functions for processing the
  * strings as they are already working.
- */        
-void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask, 
+ */
+void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
       vector<char>& secStructMask, string& secStructName, int &structPenalties, int length)
 {
     bool guigetss = false;
@@ -256,15 +255,15 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
     tseq[0] = '\0';
     char sname[MAXNAMES + 1];
     sname[0] = '\0';
-    
+
     for(int i = 1; i < MAXNAMES + 1; i++)
     {
         title[i] = line[i] = lin2[i] = tseq[i] = sname[i] ='0';
     }
-    
+
     int i, j, len, ix, struct_index = 0;
     char c;
-    
+
     try
     {
         _fileIn = new InFileStream;  //nige
@@ -274,15 +273,15 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
         // NOTE clear out the masks
         gapPenaltyMask.clear();
         secStructMask.clear();
-        
-        len = 0; // initialise length to zero 
-    
+
+        len = 0; // initialise length to zero
+
         if (!_fileIn->getline(line, MAXLINE + 1))
         {
             freeFileResources(_fileIn);
             return ;
         }
-        // read the title line...ignore it 
+        // read the title line...ignore it
 
         if (!_fileIn->getline(line, MAXLINE + 1))
         {
@@ -290,12 +289,12 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
             return ;
         }
         // read the next line...
-        // skip any blank lines 
+        // skip any blank lines
         for (;;)
         {
             if (!_fileIn->getline(line, MAXLINE + 1))
             {
-                freeFileResources(_fileIn);   
+                freeFileResources(_fileIn);
                 return ;
             }
             if (!utilityObject->blankLine(line))
@@ -326,7 +325,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                 sname[j] = EOS;
                 utilityObject->rTrim(sname);
                 utilityObject->blankToUnderscore(sname);
-            
+
                 if (userParameters->getInteractive() && !userParameters->getGui())
                 {
                     strcpy(title, "Found secondary structure in alignment file: ");
@@ -347,9 +346,9 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                         secStructMask.push_back('.');
                         gapPenaltyMask.push_back('.');
                     }
-                
+
                     secStructName = string(sname);
-                
+
                     for (i = 0; len < length; i++)
                     {
                         c = tseq[i];
@@ -382,7 +381,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                 sname[j] = EOS;
                 utilityObject->rTrim(sname);
                 utilityObject->blankToUnderscore(sname);
-            
+
                 if (userParameters->getInteractive() && !userParameters->getGui())
                 {
                     strcpy(title, "Found gap penalty mask in alignment file: ");
@@ -402,9 +401,9 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                     {
                         gapPenaltyMask.push_back('1');
                     }
-                
+
                     secStructName = string(sname);
-                
+
                     for (i = 0; len < length; i++)
                     {
                         c = tseq[i];
@@ -416,7 +415,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                         if (!isspace(c))
                         {
                             if(len < (int)gapPenaltyMask.size())
-                            {                            
+                            {
                                 gapPenaltyMask[len++] = c;
                             }
                         }
@@ -429,13 +428,13 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
             }
             if (!_fileIn->getline(line, MAXLINE + 1))
             {
-                freeFileResources(_fileIn);   
+                freeFileResources(_fileIn);
                 return ;
             }
         }
         if (structPenalties == NONE)
         {
-            freeFileResources(_fileIn);    
+            freeFileResources(_fileIn);
             return ;
         }
 
@@ -444,12 +443,12 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
         {
             if (!_fileIn->getline(line, MAXLINE + 1))
             {
-                freeFileResources(_fileIn);   
+                freeFileResources(_fileIn);
                 return ;
             }
         }
 
-        // skip the sequence lines and any comments after the alignment 
+        // skip the sequence lines and any comments after the alignment
         for (;;)
         {
             if (isspace(line[0]) || line[0] == '\0') // Mark change 27-4-2007
@@ -458,7 +457,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
             }
             if (!_fileIn->getline(line, MAXLINE + 1))
             {
-                freeFileResources(_fileIn);   
+                freeFileResources(_fileIn);
                 return ;
             }
         }
@@ -477,11 +476,11 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                 }
                 if (!_fileIn->getline(line, MAXLINE + 1))
                 {
-                    freeFileResources(_fileIn);    
+                    freeFileResources(_fileIn);
                     return ;
                 }
             }
-            // get structure table line 
+            // get structure table line
             for (ix = 0; ix < struct_index; ix++)
             {
                 if (line[0] != '!')
@@ -495,12 +494,12 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                         utilityObject->error("bad gap penalty mask format\n");
                     }
                     structPenalties = NONE;
-                    freeFileResources(_fileIn);    
+                    freeFileResources(_fileIn);
                     return ;
                 }
                 if (!_fileIn->getline(line, MAXLINE + 1))
                 {
-                    freeFileResources(_fileIn);    
+                    freeFileResources(_fileIn);
                     return ;
                 }
             }
@@ -510,7 +509,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                 {
                     utilityObject->error("bad secondary structure format\n");
                     structPenalties = NONE;
-                    freeFileResources(_fileIn);    
+                    freeFileResources(_fileIn);
                     return ;
                 }
                 sscanf(line + 4, "%s%s", sname, tseq);
@@ -534,7 +533,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
                 {
                     utilityObject->error("bad gap penalty mask format\n");
                     structPenalties = NONE;
-                    freeFileResources(_fileIn);    
+                    freeFileResources(_fileIn);
                     return ;
                 }
                 sscanf(line + 4, "%s%s", sname, tseq);
@@ -558,7 +557,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
         {
             if (!_fileIn->getline(line, MAXLINE + 1))
             {
-                freeFileResources(_fileIn);   
+                freeFileResources(_fileIn);
                 return ;
             }
         }
@@ -584,7 +583,7 @@ void ClustalFileParser::getSecStructure(vector<char>& gapPenaltyMask,
         freeFileResources(_fileIn);
         cerr << "An exception has occured in the function ClustalFileParser::getSecStructure()\n"
              << "Program needs to terminate.\nPlease contact the Clustal developers\n";
-        exit(1);    
+        exit(1);
     }
 }
 

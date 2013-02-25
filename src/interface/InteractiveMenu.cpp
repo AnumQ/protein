@@ -1,14 +1,14 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * Mark Larkin Dec 12 2005.
  * This provides the implementation of the interactive menu functions.
  * Changes:
- * 15-5-07: Added changes to clustering algorithm choice in function phylogenticTreeMenu 
- *          Added iteration to the multipleAlignMenu function.  
+ * 15-5-07: Added changes to clustering algorithm choice in function phylogenticTreeMenu
+ *          Added iteration to the multipleAlignMenu function.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -26,17 +26,17 @@
 namespace clustalw
 {
 using namespace std;
- 
+
 InteractiveMenu::InteractiveMenu()
 {
     try
     {
         clustalObj = new Clustal();
         lin1 = "";
-        
+
         secStructOutputTxt[0] = string("Secondary Structure");
-        secStructOutputTxt[1] = string("Gap Penalty Mask"); 
-        secStructOutputTxt[2] = string("Structure and Penalty Mask"); 
+        secStructOutputTxt[1] = string("Gap Penalty Mask");
+        secStructOutputTxt[2] = string("Structure and Penalty Mask");
         secStructOutputTxt[3] = string("None");
     }
     catch(bad_alloc)
@@ -44,7 +44,7 @@ InteractiveMenu::InteractiveMenu()
         cerr<<"The memory heap is exhausted. The program must terminate now\n";
         exit(1);
     }
-    
+
     /* Initialise the menu structs */
     matrixMenu.noptions = 5;
     strcpy(matrixMenu.opt[AABLOSUM].title, "BLOSUM series");
@@ -64,8 +64,8 @@ InteractiveMenu::InteractiveMenu()
     strcpy(dnaMatrixMenu.opt[DNACLUSTALW].title, "CLUSTALW(1.6)");
     strcpy(dnaMatrixMenu.opt[DNACLUSTALW].string, "clustalw");
     strcpy(dnaMatrixMenu.opt[DNAUSERDEFINED].title, "User defined");
-    strcpy(dnaMatrixMenu.opt[DNAUSERDEFINED].string, ""); 
-    
+    strcpy(dnaMatrixMenu.opt[DNAUSERDEFINED].string, "");
+
     pwMatrixMenu.noptions = 5;
     strcpy(pwMatrixMenu.opt[PWAABLOSUM].title, "BLOSUM 30");
     strcpy(pwMatrixMenu.opt[PWAABLOSUM].string, "blosum");
@@ -77,7 +77,7 @@ InteractiveMenu::InteractiveMenu()
     strcpy(pwMatrixMenu.opt[PWAAIDENTITY].string, "id");
     strcpy(pwMatrixMenu.opt[PWAAUSER].title, "User defined");
     strcpy(pwMatrixMenu.opt[PWAAUSER].string, "");
-    
+
 }
 
 InteractiveMenu::~InteractiveMenu()
@@ -107,12 +107,12 @@ void InteractiveMenu::mainMenu()
         cout<<"     X. EXIT (leave program)\n\n\n";
 
         choice = utilityObject->getChoice(string("Your choice"));
-        
+
         string offendingSeq; // unused here
         switch (toupper(choice))
         {
             case '1':
-                clustalObj->sequenceInput(false, &offendingSeq); 
+                clustalObj->sequenceInput(false, &offendingSeq);
                 break;
             case '2':
                 multipleAlignMenu();
@@ -124,11 +124,11 @@ void InteractiveMenu::mainMenu()
                 phylogeneticTreeMenu();
                 break;
             case 'S':
-                doSystem(); 
+                doSystem();
                 break;
             case '?':
             case 'H':
-                clustalObj->getHelp('1'); 
+                clustalObj->getHelp('1');
                 break;
             case 'Q':
             case 'X':
@@ -174,7 +174,7 @@ void InteractiveMenu::multipleAlignMenu()
             <<"\n";
         cout<<"    9.  Output format options\n";
         cout<<"    I. Iteration = ";
-        
+
         if(userParameters->getDoRemoveFirstIteration() == ALIGNMENT)
         {
             cout << "ALIGNMENT\n\n";
@@ -187,7 +187,7 @@ void InteractiveMenu::multipleAlignMenu()
         {
             cout << "NONE\n\n";
         }
-        
+
         cout<<"    S.  Execute a system command\n";
         cout<<"    H.  HELP\n";
         cout<<"    or press [RETURN] to go back to main menu\n\n\n";
@@ -204,7 +204,7 @@ void InteractiveMenu::multipleAlignMenu()
                 clustalObj->align(&phylipName);
                 break;
             case '2':
-                clustalObj->doGuideTreeOnly(&phylipName); 
+                clustalObj->doGuideTreeOnly(&phylipName);
                 break;
             case '3':
                 clustalObj->doAlignUseOldTree(&phylipName);
@@ -233,7 +233,7 @@ void InteractiveMenu::multipleAlignMenu()
                 break;
             case 'I':
                 iterationMenu();
-                break;    
+                break;
             case 'S':
                 doSystem();
                 break;
@@ -277,21 +277,21 @@ void InteractiveMenu::profileAlignMenu(void)
 
         cout<<"\n\n";
         cout<<"    3.  Align 2nd. profile to 1st. profile\n";
-        
+
         cout<<"    4.  Align sequences to 1st. profile "
-            <<((!userParameters->getQuickPairAlign()) 
+            <<((!userParameters->getQuickPairAlign())
                 ? "(Slow/Accurate)\n\n" : "(Fast/Approximate)\n\n");
-                
+
         cout<<"    5.  Toggle Slow/Fast pairwise alignments = "
-            <<((!userParameters->getQuickPairAlign()) 
+            <<((!userParameters->getQuickPairAlign())
                    ? "SLOW\n\n" : "FAST\n\n");
-                   
+
         cout<<"    6.  Pairwise alignment parameters\n";
         cout<<"    7.  Multiple alignment parameters\n\n";
-        
+
         cout<<"    8.  Toggle screen display                = "
             <<((!userParameters->getShowAlign()) ? "OFF\n" : "ON\n");
-            
+
         cout<<"    9.  Output format options\n";
         cout<<"    0.  Secondary structure options\n\n";
         cout<<"    S.  Execute a system command\n";
@@ -313,7 +313,7 @@ void InteractiveMenu::profileAlignMenu(void)
                 clustalObj->profile2Input();
                 break;
             case '3':
-                clustalObj->profileAlign(&p1TreeName, &p2TreeName); 
+                clustalObj->profileAlign(&p1TreeName, &p2TreeName);
                 break;
             case '4':
                 /* align new sequences to profile 1 */
@@ -363,7 +363,7 @@ void InteractiveMenu::ssOptionsMenu()
         cout<<"\n\n\n";
         cout<<" ********* SECONDARY STRUCTURE OPTIONS *********\n\n\n";
 
-        cout<<"     1. Use profile 1 secondary structure / penalty mask  ";       
+        cout<<"     1. Use profile 1 secondary structure / penalty mask  ";
         if (userParameters->getUseSS1())
         {
             cout<<"= YES\n";
@@ -372,7 +372,7 @@ void InteractiveMenu::ssOptionsMenu()
         {
             cout<<"= NO\n";
         }
-        
+
         cout<<"     2. Use profile 2 secondary structure / penalty mask  ";
         if (userParameters->getUseSS2())
         {
@@ -399,8 +399,8 @@ void InteractiveMenu::ssOptionsMenu()
             <<"      outside : "
             <<userParameters->getHelixEndPlus()<<"\n";
         cout<<"     9. Strand terminal positions      within : "
-            <<userParameters->getStrandEndMinus()   
-            <<"      outside : " 
+            <<userParameters->getStrandEndMinus()
+            <<"      outside : "
             <<userParameters->getStrandEndPlus()<<"\n\n\n";
         cout<<"     H. HELP\n\n\n";
 
@@ -409,7 +409,7 @@ void InteractiveMenu::ssOptionsMenu()
         {
             return ;
         }
-        
+
         switch (toupper(choice))
         {
             case '1':
@@ -421,7 +421,7 @@ void InteractiveMenu::ssOptionsMenu()
             case '3':
                 userParameters->setOutputStructPenalties(secStrOutputOptions());
                 break;
-            case '4': 
+            case '4':
                 cout<<"Helix Penalty Currently: "
                     << userParameters->getHelixPenalty()<<"\n";
                 userParameters->setHelixPenalty(utilityObject->getInt("Enter number",
@@ -436,7 +436,7 @@ void InteractiveMenu::ssOptionsMenu()
             case '6':
                 cout<<"Loop Gap Penalty Currently: "
                     << userParameters->getLoopPenalty() <<"\n";
-                userParameters->setLoopPenalty(utilityObject->getInt("Enter number", 
+                userParameters->setLoopPenalty(utilityObject->getInt("Enter number",
                                                  1, 9, userParameters->getLoopPenalty()));
                 break;
             case '7':
@@ -450,11 +450,11 @@ void InteractiveMenu::ssOptionsMenu()
                 cout<<"Helix Terminal Positions Currently: \n";
                 cout<<"        within helix: "
                     << userParameters->getHelixEndMinus()
-                    << "      outside helix: " 
+                    << "      outside helix: "
                     << userParameters->getHelixEndPlus() <<"\n";
-                    
+
                 userParameters->setHelixEndMinus(utilityObject->getInt(
-                                 "Enter number of residues within helix", 
+                                 "Enter number of residues within helix",
                                  0, 3, userParameters->getHelixEndMinus()));
                 userParameters->setHelixEndPlus(utilityObject->getInt(
                                  "Enter number of residues outside helix", 0, 3,
@@ -572,7 +572,7 @@ void InteractiveMenu::phylogeneticTreeMenu()
         else
         {
             cout << "UPGMA\n\n";
-        }        
+        }
         cout<<"    S.  Execute a system command\n";
         cout<<"    H.  HELP\n";
         cout<<"    or press [RETURN] to go back to main menu\n\n\n";
@@ -582,12 +582,12 @@ void InteractiveMenu::phylogeneticTreeMenu()
         {
             return ;
         }
-        
+
         string offendingSeq; // unused here
         switch (toupper(choice))
         {
             case '1':
-                clustalObj->sequenceInput(false, &offendingSeq); 
+                clustalObj->sequenceInput(false, &offendingSeq);
                 break;
             case '2':
                 userParameters->toggleTossGaps();
@@ -645,7 +645,7 @@ void InteractiveMenu::treeFormatOptionsMenu()
             <<((userParameters->getBootstrapFormat() == BS_NODE_LABELS) ? "NODE LABELS" :
             "BRANCH LABELS") <<"\n\n\n";
         cout<<"     H. HELP\n\n\n";
-        
+
         choice = utilityObject->getChoice(string("Enter number (or [RETURN] to exit)"));
         if (choice == '\n')
         {
@@ -682,7 +682,7 @@ void InteractiveMenu::treeFormatOptionsMenu()
 
 void InteractiveMenu::formatOptionsMenu()
 {
-    
+
     while (true)
     {
         lin1 = "";
@@ -773,9 +773,9 @@ void InteractiveMenu::formatOptionsMenu()
                 cout<<"\n\nUnrecognised Command\n\n";
                 break;
         }
-    }    
+    }
 }
- 
+
 void InteractiveMenu::pairwiseMenu()
 {
     if (userParameters->getDNAFlag())
@@ -800,10 +800,10 @@ void InteractiveMenu::pairwiseMenu()
         cout<<"     2. Gap Extension Penalty  : "
             << fixed << setprecision(2) << userParameters->getPWGapExtend() << "\n";
         cout<< "     3. Protein weight matrix  :"
-            << matrixMenu.opt[subMatrix->getPWMatrixNum() - 1].title 
+            << matrixMenu.opt[subMatrix->getPWMatrixNum() - 1].title
             << "\n";
         cout<<"     4. DNA weight matrix      :"
-            << dnaMatrixMenu.opt[subMatrix->getPWDNAMatrixNum() - 1].title 
+            << dnaMatrixMenu.opt[subMatrix->getPWDNAMatrixNum() - 1].title
             << "\n\n";
 
         cout<<"     Fast/Approximate alignments:\n\n";
@@ -861,17 +861,17 @@ void InteractiveMenu::pairwiseMenu()
                               (float)utilityObject->getReal("Enter number", (double)0.0,
                               (double)10.0, (double)userParameters->getPWGapExtend()));
                 break;
-            case '3':            
+            case '3':
                 readMatrix(Protein, Pairwise, pwMatrixMenu);
                 break;
-            case '4': 
+            case '4':
                 readMatrix(DNA, Pairwise, dnaMatrixMenu);
                 break;
             case '5':
                 cout<<"Gap Penalty Currently: "
                     << userParameters->getWindowGap() << "\n";
                 userParameters->setWindowGap(
-                                 utilityObject->getInt("Enter number", 1, 500, 
+                                 utilityObject->getInt("Enter number", 1, 500,
                                                 userParameters->getWindowGap()));
                 break;
             case '6':
@@ -890,28 +890,28 @@ void InteractiveMenu::pairwiseMenu()
                 }
                 else
                 {
-                    int _ktup = utilityObject->getInt("Enter number", 1, 2, 
+                    int _ktup = utilityObject->getInt("Enter number", 1, 2,
                                                       userParameters->getKtup());
                     userParameters->setKtup(_ktup);
                     // see bug 185
                     userParameters->setAAKtup(_ktup);
                     userParameters->setWindowGap(_ktup + 3);
                     userParameters->setAAWindowGap(_ktup + 3);
-                     
+
                 }
                 break;
             case '7':
                 cout<<"Top diagonals Currently: "
                     << userParameters->getSignif() << "\n";
                 userParameters->setSignif(
-                                utilityObject->getInt("Enter number", 1, 50, 
+                                utilityObject->getInt("Enter number", 1, 50,
                                           userParameters->getSignif()));
                 break;
             case '8':
                 cout<<"Window size Currently: "
                     << userParameters->getWindow() << "\n";
                 userParameters->setWindow(
-                                utilityObject->getInt("Enter number", 1, 50, 
+                                utilityObject->getInt("Enter number", 1, 50,
                                            userParameters->getWindow()));
                 break;
             case '9':
@@ -954,10 +954,10 @@ void InteractiveMenu::multiMenu()
         cout<<"     4. DNA Transitions Weight           :"
             << fixed << setprecision(2) << userParameters->getTransitionWeight() << "\n\n";
         cout<<"     5. Protein weight matrix            :"
-            << matrixMenu.opt[subMatrix->getMatrixNum() - 1].title 
+            << matrixMenu.opt[subMatrix->getMatrixNum() - 1].title
             << "\n";
         cout<<"     6. DNA weight matrix                :"
-            << dnaMatrixMenu.opt[subMatrix->getDNAMatrixNum() - 1].title 
+            << dnaMatrixMenu.opt[subMatrix->getDNAMatrixNum() - 1].title
             << "\n";
         cout<<"     7. Use negative matrix              :"
             << ((!userParameters->getUseNegMatrix()) ? "OFF" : "ON") << "\n\n";
@@ -989,7 +989,7 @@ void InteractiveMenu::multiMenu()
                 cout<<"Gap Opening Penalty Currently: "
                     << userParameters->getGapOpen() << "\n";
                 userParameters->setGapOpen(
-                                  (float)utilityObject->getReal("Enter number", (double)0.0, 
+                                  (float)utilityObject->getReal("Enter number", (double)0.0,
                                   (double)100.0, (double)userParameters->getGapOpen()));
                 break;
             case '2':
@@ -1036,10 +1036,10 @@ void InteractiveMenu::multiMenu()
         }
     }
 }
- 
+
 void InteractiveMenu::gapPenaltiesMenu()
 {
-    
+
     while (true)
     {
         lin1 = "";
@@ -1084,7 +1084,7 @@ void InteractiveMenu::gapPenaltiesMenu()
                 cout<<"Gap Separation Distance Currently: "
                     << userParameters->getGapDist() << "\n";
                 userParameters->setGapDist(
-                                utilityObject->getInt("Enter number", 0, 100, 
+                                utilityObject->getInt("Enter number", 0, 100,
                                 userParameters->getGapDist()));
                 break;
             case '5':
@@ -1112,7 +1112,7 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
     int i, option;
     char title[10];
     int matn; // Used to show which is the current matrix.
-    
+
     if(alignResidueType == Protein)
     {
         strcpy(title, "PROTEIN");
@@ -1121,15 +1121,15 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
     {
         strcpy(title, "DNA");
     }
-    
+
     while (true)
     {
         lin1 = "";
         cout<<"\n\n\n ********* "<< title <<" WEIGHT MATRIX MENU *********\n\n\n";
-        
+
         // Find out what the currently selected matrix is.
         matn = subMatrix->getMatrixNumForMenu(alignResidueType, alignType);
-        
+
         for (i = 0; i < menu.noptions; i++)
         {
             cout<< "     " << i + 1 << ". " << menu.opt[i].title << "\n";
@@ -1138,7 +1138,7 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
         cout<<"     H. HELP\n\n";
         cout<<"     -- Current matrix is the "
             << menu.opt[matn -1].title << " ";
-        
+
         if (matn == menu.noptions)
         {
             cout<<"(file = "<< userFile <<")";;
@@ -1152,10 +1152,10 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
         }
 
         option = toupper(choice) - '0';
-        // Select the matrix series to be using 
+        // Select the matrix series to be using
         if (option > 0 && option < menu.noptions)
         {
-            subMatrix->setCurrentNameAndNum(string(menu.opt[i - 1].string), option, 
+            subMatrix->setCurrentNameAndNum(string(menu.opt[i - 1].string), option,
                                             alignResidueType, alignType);
         }
         else if (option == menu.noptions) // Read in a User defined matrix.
@@ -1163,7 +1163,7 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
             // NOTE this will be changed to deal with matrix series.
             if (subMatrix->getUserMatFromFile(userFile, alignResidueType, alignType))
             {
-                subMatrix->setCurrentNameAndNum(userFile, option, 
+                subMatrix->setCurrentNameAndNum(userFile, option,
                                             alignResidueType, alignType);
             }
         }
@@ -1179,7 +1179,7 @@ int InteractiveMenu::readMatrix(int alignResidueType, int alignType, MatMenu men
                 break;
         }
     }
-} 
+}
 
 void InteractiveMenu::doSystem()
 {
@@ -1214,7 +1214,7 @@ void InteractiveMenu::clusteringAlgorithmMenu()
         cout<<"     2. UPGMA \n";
         cout << "-- Current algorithm is "<< currentAlgorithm << " --\n\n\n";
 
-        
+
         choice = utilityObject->getChoice(string("Enter number (or [RETURN] to exit)"));
         if (choice == '\n')
         {
@@ -1232,7 +1232,7 @@ void InteractiveMenu::clusteringAlgorithmMenu()
                 cout<< "\n\nUnrecognised Command\n\n";
                 break;
         }
-    }    
+    }
 }
 
 void InteractiveMenu::iterationMenu()
@@ -1261,7 +1261,7 @@ void InteractiveMenu::iterationMenu()
         cout<<"     3. Alignment iteration (iterates final alignment only) \n\n";
         cout << "-- Current selection is "<< currentIteration << " --\n\n\n";
 
-        
+
         choice = utilityObject->getChoice(string("Enter number (or [RETURN] to exit)"));
         if (choice == '\n')
         {
@@ -1277,7 +1277,7 @@ void InteractiveMenu::iterationMenu()
                 break;
             case '3':
                 userParameters->setDoRemoveFirstIteration(ALIGNMENT);
-                break;    
+                break;
             default:
                 cout<< "\n\nUnrecognised Command\n\n";
                 break;

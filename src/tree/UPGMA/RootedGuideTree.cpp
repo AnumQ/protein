@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #define OS_WINDOWS 1
@@ -30,10 +30,10 @@ RootedGuideTree::~RootedGuideTree()
 void RootedGuideTree::setRoot(Node* r)
 {
     makeEmpty();
-    
+
     root = r;
 }
- 
+
 void RootedGuideTree::makeEmpty()
 {
     root->makeEmpty();
@@ -56,7 +56,7 @@ int RootedGuideTree::calcOrderNode(Node* node)
         else // Internal node
         {
             node->setOrder(calcOrderNode(node->getLeft()) + calcOrderNode(node->getRight()));
-            return node->getOrder();            
+            return node->getOrder();
         }
     }
     return 0;
@@ -68,14 +68,14 @@ void RootedGuideTree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* seq
     {
         seqWeights->resize(lastSeq - 1);
     }
-    
+
     int i = 0, _nSeqs = 0;
     int temp = 0, sum = 0;
     //
     // If there are more than three sequences....
     //
     _nSeqs = lastSeq - firstSeq;
-    if ((_nSeqs >= 2) && (userParameters->getDistanceTree() == true) && 
+    if ((_nSeqs >= 2) && (userParameters->getDistanceTree() == true) &&
         (userParameters->getNoWeights() == false))
     {
         //
@@ -124,7 +124,7 @@ void RootedGuideTree::calcSeqWeights(int firstSeq, int lastSeq, vector<int>* seq
         if (temp < 1)
             temp = 1;
 
-        
+
         for (i = firstSeq; i < lastSeq; i++)
         {
             (*seqWeights)[i] = temp;
@@ -137,12 +137,12 @@ void RootedGuideTree::calcWeights(vector<int>* seqWeights)
     vector<float> weights;
     int sizeSeqWeights = seqWeights->size();
     weights.resize(sizeSeqWeights, 0.0);
-    
+
     doWeightCalc(0.0, &weights, root);
 
     for(int i = 0; i < sizeSeqWeights; i++)
     {
-        (*seqWeights)[i] = static_cast<int>(weights[i] * 100);        
+        (*seqWeights)[i] = static_cast<int>(weights[i] * 100);
     }
 }
 
@@ -158,7 +158,7 @@ void RootedGuideTree::doWeightCalc(float weightSoFar, vector<float>* weights, No
         {
             float w = weightSoFar + (t->getHeight() / t->getOrder());
             doWeightCalc(w, weights, t->getLeft());
-            doWeightCalc(w, weights, t->getRight());            
+            doWeightCalc(w, weights, t->getRight());
         }
     }
 }

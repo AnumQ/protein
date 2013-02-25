@@ -21,8 +21,8 @@ class VerticalPosition
         void createColumns(vector<ProteinSequence>);
         void processColumns();
         vector<AlignmentColumn> getColumns();
-        void createVerticalPosition();
-        void createVerticalPositionColour();
+        void createVerticalPosition(string);
+        void createVerticalPositionColour(string);
         /* Attributes */
 
         vector<AlignmentColumn> Columns;

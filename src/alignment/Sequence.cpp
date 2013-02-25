@@ -1,9 +1,8 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
-//#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
     #include "config.h"
 #endif
@@ -16,11 +15,11 @@ namespace clustalw
 {
 
 /**
- * 
- * @param seq 
- * @param name 
- * @param title 
- * @return 
+ *
+ * @param seq
+ * @param name
+ * @param title
+ * @return
  */
 Sequence::Sequence(string& seq, string& name, string& title)
 {
@@ -43,11 +42,11 @@ Sequence::Sequence(std::string& seq, std::string& name, std::string& title, unsi
 /**
  * This is an overloaded contructor that is used to construct a seq object from an
  * encoded sequenced instead of a string.
- * @param encodedSequence 
- * @param name 
- * @param title 
+ * @param encodedSequence
+ * @param name
+ * @param title
  * @param id The unique identifier from the previous sequence!!!
- * @return 
+ * @return
  */
 Sequence::Sequence(std::vector<int>* encodedSequence, std::string& name, std::string& title,
                    unsigned long id)
@@ -55,11 +54,11 @@ Sequence::Sequence(std::vector<int>* encodedSequence, std::string& name, std::st
     _encodedSequence = *encodedSequence;
     _name = name;
     _title = title;
-    identifier = id;        
+    identifier = id;
 }
 
 /**
- * 
+ *
  */
 void Sequence::encodeSequence()
 {
@@ -67,8 +66,8 @@ void Sequence::encodeSequence()
     std::vector<char>::iterator it;
 
     _encodedSequence.push_back(0);
-    
-    for(it = _sequence.begin(); it != _sequence.end(); ++it) 
+
+    for(it = _sequence.begin(); it != _sequence.end(); ++it)
     {
         if (*it == '-')
         {
@@ -83,9 +82,9 @@ void Sequence::encodeSequence()
 }
 
 /**
- * 
- * @param _vectorTo 
- * @param _stringFrom 
+ *
+ * @param _vectorTo
+ * @param _stringFrom
  */
 void Sequence::copyStringIntoVector(vector<char>* _vectorTo, string* _stringFrom)
 {
@@ -95,7 +94,7 @@ void Sequence::copyStringIntoVector(vector<char>* _vectorTo, string* _stringFrom
     {
         _vectorTo->push_back(_stringFrom->at(i));
     }
-    
+
     if(_vectorTo->size() != _stringFrom->size())
     {
         std::cerr << "Error: In function copyStringIntoVector. Strings different length!\n";
@@ -104,29 +103,29 @@ void Sequence::copyStringIntoVector(vector<char>* _vectorTo, string* _stringFrom
 }
 
 /**
- * 
+ *
  */
 void Sequence::printSequence()
 {
     std::cout << "This is the sequence and the encoded sequence " << _name << std::endl;
-    
-    std::vector<char>::iterator itChar;    
+
+    std::vector<char>::iterator itChar;
     for(itChar = _sequence.begin(); itChar != _sequence.end(); ++itChar)
     {
         cout << *itChar;
-    } 
+    }
     cout << std::endl;
-        
+
     std::vector<int>::iterator itInt;
     for(itInt = _encodedSequence.begin(); itInt != _encodedSequence.end(); ++itInt)
     {
         cout << "  " << *itInt;
-    } 
+    }
     cout << std::endl;
 }
 
 /**
- * 
+ *
  */
 void Sequence::checkIntegrity()
 {
@@ -139,7 +138,7 @@ void Sequence::checkIntegrity()
 }
 
 /**
- * 
+ *
  * @return the encoded sequence, this is what is used in the pairwise!
  */
 std::vector<int>* Sequence::getSequence()
@@ -148,8 +147,8 @@ std::vector<int>* Sequence::getSequence()
 }
 
 /**
- * 
- * @return 
+ *
+ * @return
  */
 std::string Sequence::getName()
 {
@@ -157,8 +156,8 @@ std::string Sequence::getName()
 }
 
 /**
- * 
- * @return 
+ *
+ * @return
  */
 std::string Sequence::getTitle()
 {
@@ -166,8 +165,8 @@ std::string Sequence::getTitle()
 }
 
 /**
- * 
- * @return 
+ *
+ * @return
  */
 bool Sequence::isEmpty()
 {
@@ -179,26 +178,26 @@ bool Sequence::isEmpty()
     {
         return false;
     }
-   
+
 }
 
 /**
- * 
- * @return 
+ *
+ * @return
  */
 bool Sequence::checkDNAFlag()
 // check if DNA or Protein
 // The decision is based on counting all A,C,G,T,U or N.
-// If >= 85% of all characters (except -) are as above => DNA 
+// If >= 85% of all characters (except -) are as above => DNA
 {
     int c, numResidues, numBases;
     float ratio;
     string dna_codes = "ACGTUN";
 
     numResidues = numBases = 0;
-    
+
     vector<char>::iterator seqIterator = _sequence.begin();
-    
+
     while (seqIterator != _sequence.end())
     {
         if (*seqIterator != '-')
@@ -219,7 +218,7 @@ bool Sequence::checkDNAFlag()
         }
         seqIterator++;
     }
-    
+
     if ((numBases == 0) || (numResidues == 0))
     {
         return false;

@@ -1,7 +1,7 @@
 /**
  * Author: Mark Larkin
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -13,11 +13,11 @@ namespace clustalw
 {
 
 /**
- * 
- * @param prfLen 
- * @param firstS 
- * @param lastS 
- * @return 
+ *
+ * @param prfLen
+ * @param firstS
+ * @param lastS
+ * @return
  */
 ProfileStandard::ProfileStandard(int prfLen, int firstS, int lastS)
  : ProfileBase(prfLen, firstS, lastS)
@@ -26,7 +26,7 @@ ProfileStandard::ProfileStandard(int prfLen, int firstS, int lastS)
 }
 
 /**
- * 
+ *
  */
 void ProfileStandard::resetPrf2()
 {
@@ -35,14 +35,14 @@ void ProfileStandard::resetPrf2()
 
 
 /**
- * 
- * @param seqArray 
- * @param seqWeight 
+ *
+ * @param seqArray
+ * @param seqWeight
  */
 void ProfileStandard::calcStandardProfile(SeqArray* seqArray, vector<int>* seqWeight)
 {
     /** DONT FORGET TO CHECK THE SIZES ARE CORRECT */
-    
+
     int sum1, sum2;
     int i, d;
     int r;
@@ -50,7 +50,7 @@ void ProfileStandard::calcStandardProfile(SeqArray* seqArray, vector<int>* seqWe
     profile.resize(prfLength + 2, vector<int>(LENCOL + 2));
     int _gapPos1 = userParameters->getGapPos1();
     int _gapPos2 = userParameters->getGapPos2();
-    
+
     for (r = 0; r < prfLength; r++)
     {
         /*
@@ -113,6 +113,6 @@ void ProfileStandard::calcStandardProfile(SeqArray* seqArray, vector<int>* seqWe
     }
 
 }
-                      
+
 
 }

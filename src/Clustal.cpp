@@ -735,7 +735,7 @@ void Clustal::doAlignUseOldTree(string* phylipName)
         utilityObject->error("No sequences in memory. Load sequences first.\n");
         return;
     }
-    
+
     userParameters->setStructPenalties1(NONE);
     userParameters->setStructPenalties2(NONE);
 
@@ -872,7 +872,7 @@ void Clustal::doAlignUseOldTree(string* phylipName)
             cout << "Finished iteration\n";
     }
 
-    
+
     alignOutput.createAlignmentOutput(&alignmentObj, 1, _numSeqs);
 
     phylipName = new string("");

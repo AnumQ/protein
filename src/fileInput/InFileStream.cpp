@@ -1,7 +1,7 @@
 /**
  * Author: Nigel Brown
- * 
- * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.  
+ *
+ * Copyright (c) 2007 Des Higgins, Julie Thompson and Toby Gibson.
  */
 /**
  * InFileStream subclasses std::ifstream, adding a check for the end-of-line
@@ -15,9 +15,9 @@
  * 'istream' aggregating a 'filebuf' under control of istream::seekg().
  *
  * Created: 09-02-07,Nigel Brown(EMBL)
- * 
+ *
  * Changes:
- * Mark Larkin 13-2-07: I removed the dynamic cast from the getline functions. 
+ * Mark Larkin 13-2-07: I removed the dynamic cast from the getline functions.
  ***************************************************************************/
 //#include "stdafx.h"
 #ifdef HAVE_CONFIG_H
@@ -54,7 +54,7 @@ InFileStream::InFileStream(const char *filename) :
 //-     delim = copy.delim;
 //- }
 
-void InFileStream::open(const char *filename) 
+void InFileStream::open(const char *filename)
 {
 
     this->filename = filename;
@@ -65,20 +65,20 @@ void InFileStream::open(const char *filename)
 }
 
 //not necessary, but for symmetry to open()
-void InFileStream::close() 
+void InFileStream::close()
 {
-    ifstream::close();   
+    ifstream::close();
 }
 
 
 //getline with stored delimiter
-std::istream& InFileStream::getline(char *s, streamsize n) 
+std::istream& InFileStream::getline(char *s, streamsize n)
 {
     return ifstream::getline(s, n, delim);
 }
 
 //getline with caller supplied delimiter
-std::istream& InFileStream::getline(char *s, streamsize n, char delim) 
+std::istream& InFileStream::getline(char *s, streamsize n, char delim)
 {
     return ifstream::getline(s, n, delim);
 }
@@ -100,11 +100,11 @@ char InFileStream::findDelimiter()
 {
     ifstream in;
     int type = 0;
-    
+
     in.open(filename.c_str(), ios::in);
     if (in.fail())
         return delim;
-    
+
     in.seekg(0, ios::beg);
 
     //look for CR or LF or CRLF (or LFCR)

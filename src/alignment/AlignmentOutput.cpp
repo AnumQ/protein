@@ -26,6 +26,7 @@
     #include "config.h"
 #endif
 #include "AlignmentOutput.h"
+#include "stdafx.h"
 
 namespace clustalw
 {
@@ -335,6 +336,7 @@ bool AlignmentOutput::openAlignmentOutput(string path)
          return false;
     }
     path = "TEST-OutputFile";
+    filenames.push_back(path);
     string _fileNameToOutput = path;
     if(_fileNameToOutput == "")
     {
