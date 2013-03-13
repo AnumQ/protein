@@ -204,7 +204,7 @@ void UnRootedClusterTree::treeFromDistMatrix(DistMatrix* distMat,
 
         if(nSeqs >= 2)
         {
-            phylipName = "TEST-OutputGUIDETREE";
+            phylipName = "outFiles//AlignmentGUIDETREE";
             filenames.push_back(phylipName);
             string name = phylipName;
           /*  if(!phylipPhyTreeFile.openFile(&name,

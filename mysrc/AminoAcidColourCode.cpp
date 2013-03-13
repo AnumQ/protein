@@ -9,6 +9,8 @@ AminoAcidColourCode::AminoAcidColourCode()
 
 void AminoAcidColourCode::setColour(string c )
 {
+    distribution = 0;
+    composition = 0;
     colour = c;
 }
 
@@ -25,6 +27,26 @@ void AminoAcidColourCode::setCount(int c)
 double AminoAcidColourCode::getCount()
 {
     return count;
+}
+
+void AminoAcidColourCode::addDistributionCount(int d)
+{
+    distribution = distribution + d;
+}
+
+int AminoAcidColourCode::getDistribution()
+{
+    return distribution;
+}
+
+void AminoAcidColourCode::setComposition(double c)
+{
+    composition = composition + c;
+}
+
+double AminoAcidColourCode::getComposition()
+{
+    return composition;
 }
 
 void AminoAcidColourCode::createColourCodes()

@@ -52,6 +52,15 @@ string ScoreMatrix::number_to_string(int number)
 	return dynamic_cast<std::stringstream *> (&(std::stringstream() << number))->str();
 }
 
+double ScoreMatrix::string_to_double(const std::string& s)
+{
+  std::istringstream i(s);
+   double x;
+   if (!(i >> x))
+     return 0;
+   return x;
+}
+
 string ScoreMatrix::double_to_string(double number)
 {
 	return dynamic_cast<std::stringstream *> (&(std::stringstream() << number))->str();
@@ -61,15 +70,26 @@ string ScoreMatrix::RoundToString(int precision, double val )
 {
    // cout << setprecision(precision) << val << endl;
     //return dynamic_cast<std::stringstream *> (&(std::stringstream() setprecision(presicion) << value;
-    std::stringstream s;
-    s << std::setprecision(precision) << val;
-    std::string num = s.str();
-    return num;
+    if ( val > 1 )
+    {
+        std::stringstream s;
+        s << std::setprecision(precision) << val;
+        std::string num = s.str();
+        return num;
+    }
+    else
+    {
+        std::stringstream s;
+        s << std::setprecision(precision-1) << val;
+        std::string num = s.str();
+        return num;
+    }
+
 }
 /* Generate score matrix from the results of the alignment */
 void ScoreMatrix::generateScoreMatrix( vector<ScoreMatrix> m )
 {
-    string filename = "ScoreMatrix.txt";
+    string filename = "outFiles//ScoreMatrix.txt";
     filenames.push_back(filename);
     ofstream outfile;
     outfile.open(filename.c_str()); // open the file "ScoreMatrix.txt"

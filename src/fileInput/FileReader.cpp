@@ -142,7 +142,7 @@ bool FileReader::noEmptySequence(vector<Sequence> seqVector, string *offendingSe
     int FileReader::readSeqs(Alignment *alignPtr, int firstSeq, string *offendingSeq)
 {
     // here I have defined the input file in pearson format
-    string line = "InputFile.txt";
+    string line = "outFiles//InputFile.txt";
     string fileName;
     string linuxFilePath = "file://";
     //    static char *seq1, sname1[MAXNAMES + 1], title[MAXTITLES + 1];

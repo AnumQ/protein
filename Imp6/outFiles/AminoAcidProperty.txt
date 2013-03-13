@@ -1,0 +1,8 @@
+outFiles//AminoAcidProperty.txt
+     	RE	BL	MA	GR	GY	Total
+1oaiA00	39	12	8.5	41	0	100
+1oksA00	35	12	22	31	0	100
+3glfE02	55	7.5	5	32	0	100
+1vq1A01	42	16	16	26	0	100
+Total	42	12	13	32	0	100
+CompD	43	12	11	34	0	100

@@ -335,8 +335,7 @@ bool AlignmentOutput::openAlignmentOutput(string path)
          utilityObject->error("You must select an alignment output format\n");
          return false;
     }
-    path = "TEST-OutputFile";
-    filenames.push_back(path);
+    path = "outFiles//Alignment";
     string _fileNameToOutput = path;
     if(_fileNameToOutput == "")
     {
@@ -359,6 +358,7 @@ bool AlignmentOutput::openAlignmentOutput(string path)
         {
             clustalOutName = openOutputFile(clustalOutFile, "Creating a CLUSTAL output file ",
                                             _fileNameToOutput, ".aln");
+            filenames.push_back(clustalOutName);
             cout << "\n\n" << endl;
             /*
             clustalOutName = openOutputFile(clustalOutFile,
@@ -497,9 +497,14 @@ bool AlignmentOutput::openAlignmentOutput(string path)
         }
         else
         {
-            fastaOutName = openOutputFile(fastaOutFile,
+            fastaOutName = openOutputFile(fastaOutFile, "Creating a FASTA output file ",
+                                            _fileNameToOutput, ".fasta");
+            cout << "\n" << endl;
+
+            filenames.push_back(fastaOutName);
+           /* fastaOutName = openOutputFile(fastaOutFile,
                              "\nEnter a name for the Fasta output file ",
-                             _fileNameToOutput, "fasta");
+                             _fileNameToOutput, "fasta"); */
 
             if(fastaOutName == "")
             {
@@ -566,11 +571,11 @@ string AlignmentOutput::openOutputFile(auto_ptr<ofstream>& outFile, string promp
     {
 
         message = prompt + " [" + _fileName + "]";
-        utilityObject->getStr(message, temp);
+        /*utilityObject->getStr(message, temp);
         if(temp != "")
         {
             _fileName = temp;
-        }
+        } */
     }
 
     outFile.reset(new ofstream(_fileName.c_str(), ofstream::trunc));

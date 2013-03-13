@@ -20,7 +20,7 @@ void DistanceMatrix::createSimilarityMatrixCodes( vector<ProteinSequence> p )
     string lbreak = "\n";
     // Create a file
     outFile = new FileCreator();
-    string file = "SimilarityMatrix-AminoAcidCodes.txt";
+    string file = "outFiles//SimilarityMatrix-AminoAcidCodes.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();
@@ -113,7 +113,7 @@ void DistanceMatrix::createSimilarityMatrixColours( vector<ProteinSequence> p )
     string lbreak = "\n";
     // Create a file
     outFile = new FileCreator();
-    string file = "SimilarityMatrix-AminoAcidColours.txt";
+    string file = "outFiles//SimilarityMatrix-AminoAcidColours.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();
@@ -212,7 +212,7 @@ void DistanceMatrix::createDistanceTableColours( vector<ProteinSequence> p )
 
     // Create a file
     outFile = new FileCreator();
-    string file = "DistanceTable-AminoAcidColours.txt";
+    string file = "outFiles//DistanceTable-AminoAcidColours.txt";
     filenames.push_back(file);
 
     outFile->createFile(file);
@@ -338,7 +338,7 @@ void DistanceMatrix::createDistanceTableCodes( vector<ProteinSequence> p )
 
     // Create a file
     outFile = new FileCreator();
-    string file = "DistanceTable-AminoAcidCodes.txt";
+    string file = "outFiles//DistanceTable-AminoAcidCodes.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();

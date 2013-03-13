@@ -15,7 +15,13 @@ class AminoAcidCode
         string getColour();
         void addCodeCount(int);
         int getCount();
+        void addDistributionCount(int);
+        int getDistribution();
+        void setComposition(double );
+        double getComposition();
         vector<AminoAcidCode> createAminoAcidCounters();
+        void assignAminoAcidComposition();
+        vector<AminoAcidCode> getAminoAcidComposition();
 
         virtual ~AminoAcidCode();
     protected:
@@ -24,12 +30,10 @@ class AminoAcidCode
     string colour;
     int codeCount;
     string AminoAcidCodes;
+    vector<AminoAcidCode> composition;
     vector<AminoAcidCode> AminoAcidCounters;
-
-
-
-
-
+    double comp;
+    int distribution;
 };
 
 #endif // AMINOACIDCODE_H

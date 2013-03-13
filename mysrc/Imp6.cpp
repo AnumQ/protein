@@ -20,7 +20,7 @@
 #include "../include/AminoAcidCode.h"
 #include "../include/DistanceMatrix.h"
 #include "../include/VerticalPosition.h"
-
+#include <windows.h>
 namespace clustalw
 {
     UserParameters* userParameters;
@@ -72,11 +72,15 @@ void defineverbose()
 void welcome()
 {
     cout << "/*****************************************************************************/\n"
-            "/* ##     ## ##### ##     ####   ####  ###  ### ####                         */\n"
-            "/*  ## # ##  ##    ##    ##     ##  ## ## ## ## ##                           */\n"
-            "/*   ## ##   ##### #####  ####   ####  ##    ## ####                         */\n"
-            "/*                                                                           */\n"
-            "/*                                                                           */\n"
+            "/*  ####  ####  ###### ##  ##  #                                             */\n"
+            "/* ##    ##  ##   ##   ##  ##  #                                             */\n"
+            "/* ##    ######   ##   ######  #                                             */\n"
+            "/* ##    ##  ##   ##   ##  ##  #                          #                  */\n"
+            "/*  #### ##  ##   ##   ##  ##  #   ###  #/##  ###    ###  ##                 */\n"
+            "/*                             #  #  #  #    #  #   #     #                  */\n"
+            "/*                             #   ## # #     ## #   ###   ##                */\n"
+            "/*                             #                                             */\n"
+
             "/*****************************************************************************/" << endl;
 }
 
@@ -86,12 +90,15 @@ int main(int argc, char **argv)
     welcome();
     verbose = false;
 
-    filenames.clear();
+    CreateDirectory ("outFiles", NULL);
 
     ClustalWInitializers();
     clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
     resources->setPathToExecutable(string(argv[0]));
+    userParameters->toggleOutputFasta();
+    //userParameters->getOutputFasta();
     setUserParameters();
+
 
     InputFile start;// object reads from an input file and creates a new file
     start.run();
@@ -104,7 +111,7 @@ int main(int argc, char **argv)
 	clustalObj->align(&phylipName);
 
     AminoAcidFrequency Table;
-    Table.openFile("TEST-OutputFile.aln");
+    Table.openFile("outFiles//Alignment.aln");
 
     vector<ProteinSequence> p1;
     p1 = start.getProteinData();
@@ -128,7 +135,8 @@ int main(int argc, char **argv)
         cout << "\t" << i+1 << ". " << filenames[i] << endl;
     }
 
-        delete userParameters;
+
+    delete userParameters;
     delete utilityObject;
     delete subMatrix;
 
@@ -136,5 +144,6 @@ int main(int argc, char **argv)
     {
         delete logObject;
     }
+    //system("pause");
     return 0;
 }

@@ -46,14 +46,14 @@ void VerticalPosition::createColumns( vector<ProteinSequence> p )
     string tab = "\t";
     string lbreak = "\n";
     outFile = new FileCreator();
-    string file = "VerticalColumns.txt";
+    string file = "outFiles//VerticalColumns.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();
 
     oFile.write( file.c_str(), file.size() );
     oFile.write( lbreak.c_str(), lbreak.size() );
-
+    oFile.write( lbreak.c_str(), lbreak.size() );
     size_t column = 0;
 
     AlignmentColumn currentColumn;
@@ -191,7 +191,7 @@ void VerticalPosition::createVerticalPosition(string input)
     string tab = "\t";
     string lbreak = "\n";
     outFile = new FileCreator();
-    string file = "ColumnCalculationsCodes.txt";
+    string file = "outFiles//ColumnCalculationsCodes.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();
@@ -203,6 +203,7 @@ void VerticalPosition::createVerticalPosition(string input)
 
 
     ScoreMatrix convert;
+    double inputnum = convert.string_to_double(input);
     double percentage;
     double hundred = 100;
     double total = 0;
@@ -255,13 +256,14 @@ void VerticalPosition::createVerticalPosition(string input)
                 //string num;
                 //num.push_back(c);
                 //num = num + ":" + n;
-                if ( n >= input )
+                double nNum = convert.string_to_double(n);
+                if ( nNum >= inputnum )
                 {
                   oFile.write(n.c_str(), n.size());
                 }
                 else
                 {
-                    n = "\\";
+                    n = "-";
                     oFile.write(n.c_str(), n.size());
 
                 }
@@ -272,13 +274,14 @@ void VerticalPosition::createVerticalPosition(string input)
         //count the dashes here
         double dashcount = hundred - total;
         string d = convert.RoundToString(3, dashcount);
-        if ( d >= input )
+        double dNum = convert.string_to_double(d);
+        if ( dNum >= inputnum )
         {
           oFile.write(d.c_str(), d.size());
         }
         else
         {
-            d = "\\";
+            d = "-";
             oFile.write(d.c_str(), d.size());
         }
 
@@ -300,7 +303,7 @@ void VerticalPosition::createVerticalPositionColour(string input)
     string tab = "\t";
     string lbreak = "\n";
     outFile = new FileCreator();
-    string file = "ColumnCalculationsColours.txt";
+    string file = "outFiles//ColumnCalculationsColours.txt";
     filenames.push_back(file);
     outFile->createFile(file);
     ofstream& oFile = outFile->getFile();
@@ -309,6 +312,7 @@ void VerticalPosition::createVerticalPositionColour(string input)
     oFile.write( lbreak.c_str(), lbreak.size() );
     //oFile.write( tab.c_str(), tab.size() );
     ScoreMatrix convert;
+    double inputnum = convert.string_to_double(input);
     double percentage;
     double total = 0;
     double hundred = 100;
@@ -359,13 +363,14 @@ void VerticalPosition::createVerticalPositionColour(string input)
                 percentage = ((double)count/(double)colSize)*100;;
                 //percentage = ((double)count/(double)colSize);
                 string n = convert.RoundToString(3, percentage);
-                if ( n >= input )
+                double nNum = convert.string_to_double(n);
+                if ( nNum >= inputnum )
                 {
                   oFile.write(n.c_str(), n.size());
                 }
                 else
                 {
-                    n = "\\";
+                    n = "-";
                     oFile.write(n.c_str(), n.size());
 
                 }
@@ -376,13 +381,14 @@ void VerticalPosition::createVerticalPositionColour(string input)
         //count the dashes here
         double dashcount = hundred - total;
         string d = convert.RoundToString(3, dashcount);
-        if ( d >= input )
+        double dNum = convert.string_to_double(d);
+        if ( dNum >= inputnum )
         {
           oFile.write(d.c_str(), d.size());
         }
         else
         {
-            d = "\\";
+            d = "-";
             oFile.write(d.c_str(), d.size());
         }
 

@@ -1,20 +1,13 @@
 # depslib dependency file v1.0
-1353030767 source:d:\documents\finalyearproject\codeblocksimp\imp6\main.cpp
-	<iostream>
-	"alignment/Alignment.h"
-	"alignment/Sequence.h"
-	"general/clustalw.h"
-	"general/UserParameters.h"
-	"substitutionMatrix/SubMatrix.h"
-	"general/Utility.h"
-	"fileInput/FileReader.h"
-	"interface/InteractiveMenu.h"
-	"interface/CommandLineParser.h"
-	"general/DebugLog.h"
-	"general/ClustalWResources.h"
-	"general/Stats.h"
+1361335934 source:d:\documents\finalyearproject\codeblocksimp\mysrc\alignmentcolumn.cpp
+	"../include/AlignmentColumn.h"
 
-1361759740 d:\documents\finalyearproject\codeblocksimp\imp6\stdafx.h
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\alignmentcolumn.h
+	"stdafx.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1361759740 d:\documents\finalyearproject\codeblocksimp\include\stdafx.h
 	<iostream>
 	<string>
 	<fstream>
@@ -39,72 +32,91 @@
 	<sys/stat.h>
 	<dirent.h>
 
-1353029488 d:\documents\finalyearproject\codeblocksimp\imp6\targetver.h
+1353029488 d:\documents\finalyearproject\codeblocksimp\include\targetver.h
 
-1361764382 source:d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.cpp
-	"config.h"
+1362665090 d:\documents\finalyearproject\codeblocksimp\include\scorematrix.h
+	"stdafx.h"
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\proteinsequence.h
+	"stdafx.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1363098559 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcode.h
+	"stdafx.h"
+
+1363100584 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcolourcode.h
+	"stdafx.h"
+
+1363098537 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcode.cpp
+	"../include/AminoAcidCode.h"
+
+1363100997 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcolourcode.cpp
+	"../include/AminoAcidColourCode.h"
+
+1363179968 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidfrequency.cpp
+	"../include/AminoAcidFrequency.h"
 	<stdio.h>
+	<math.h>
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\aminoacidfrequency.h
+	"stdafx.h"
+	"../include/FileCreator.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\filecreator.h
+	"stdafx.h"
+
+1362650132 source:d:\documents\finalyearproject\codeblocksimp\mysrc\distancematrix.cpp
+	"../include/DistanceMatrix.h"
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\distancematrix.h
+	"stdafx.h"
+	<math.h>
+	"../include/FileReader.h"
+	"../include/FileCreator.h"
+	"../include/ProteinSequence.h"
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\filereader.h
+	"stdafx.h"
 	<string>
-	<cstdlib>
-	<exception>
-	<iostream>
-	<limits>
-	<climits>
-	<iomanip>
 	<fstream>
-	"UserParameters.h"
-	"../clustalw_version.h"
-	"config.h"
-
-1285078620 d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.h
-	<string>
 	<iostream>
-	"utils.h"
-	"general.h"
-	"clustalw.h"
+	<memory>
 
-1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\utils.h
-	"Utility.h"
+1362666350 source:d:\documents\finalyearproject\codeblocksimp\mysrc\filecreator.cpp
+	"../include/FileCreator.h"
 
-1286323468 d:\documents\finalyearproject\codeblocksimp\src\general\utility.h
-	<cstdlib>
-	<stdio.h>
-	<string.h>
-	<errno.h>
-	<stdarg.h>
-	<ctype.h>
-	"clustalw.h"
+1360172432 source:d:\documents\finalyearproject\codeblocksimp\mysrc\filereader.cpp
+	"../include/FileReader.h"
 
-1359337656 d:\documents\finalyearproject\codeblocksimp\src\general\clustalw.h
-	"general.h"
-	"Array2D.h"
-	"SquareMat.h"
-	"SymMatrix.h"
-	<stdio.h>
-	<vector>
-	<string>
+1362650184 source:d:\documents\finalyearproject\codeblocksimp\mysrc\inputfile.cpp
+	"../include/InputFile.h"
+	"../include/ProteinSequence.h"
 
-1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\general.h
-
-1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\array2d.h
+1361771746 d:\documents\finalyearproject\codeblocksimp\include\inputfile.h
+	"stdafx.h"
 	<iostream>
-	<vector>
 
-1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\squaremat.h
-	<iostream>
-	<vector>
-	<iomanip>
+1360893029 source:d:\documents\finalyearproject\codeblocksimp\mysrc\proteinsequence.cpp
+	"../include/ProteinSequence.h"
+	"../include/AminoAcidCode.h"
 
-1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\symmatrix.h
-	<iostream>
-	<vector>
-	<iomanip>
-	<cmath>
-	<stdexcept>
-	<new>
-	<cstdlib>
+1363101433 source:d:\documents\finalyearproject\codeblocksimp\mysrc\scorematrix.cpp
+	"../include/ScoreMatrix.h"
 
-1289580562 d:\documents\finalyearproject\codeblocksimp\src\clustalw_version.h
+1362665804 source:d:\documents\finalyearproject\codeblocksimp\mysrc\verticalposition.cpp
+	"../include/VerticalPosition.h"
+
+1361764381 d:\documents\finalyearproject\codeblocksimp\include\verticalposition.h
+	"stdafx.h"
+	"../include/FileCreator.h"
+	"../include/ScoreMatrix.h"
+	"../include/ProteinSequence.h"
+	"../include/AlignmentColumn.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
 
 1361764381 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
 	"config.h"
@@ -135,8 +147,56 @@
 	"alignment/AlignmentOutput.h"
 	"pairwise/FastPairwiseAlign.h"
 
+1359337656 d:\documents\finalyearproject\codeblocksimp\src\general\clustalw.h
+	"general.h"
+	"Array2D.h"
+	"SquareMat.h"
+	"SymMatrix.h"
+	<stdio.h>
+	<vector>
+	<string>
+
+1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\general.h
+
+1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\array2d.h
+	<iostream>
+	<vector>
+
+1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\squaremat.h
+	<iostream>
+	<vector>
+	<iomanip>
+
+1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\symmatrix.h
+	<iostream>
+	<vector>
+	<iomanip>
+	<cmath>
+	<stdexcept>
+	<new>
+	<cstdlib>
+
+1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\utils.h
+	"Utility.h"
+
+1286323468 d:\documents\finalyearproject\codeblocksimp\src\general\utility.h
+	<cstdlib>
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdarg.h>
+	<ctype.h>
+	"clustalw.h"
+
 1284042362 d:\documents\finalyearproject\codeblocksimp\src\general\userparams.h
 	"UserParameters.h"
+
+1285078620 d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.h
+	<string>
+	<iostream>
+	"utils.h"
+	"general.h"
+	"clustalw.h"
 
 1284042362 d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.h
 	<vector>
@@ -243,17 +303,17 @@
 	<cassert>
 	"Alignment.h"
 
-1361764383 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.h
+1356207104 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.h
 	"PairwiseAlignBase.h"
-	"stdafx.h"
-	"../../include/ScoreMatrix.h"
 
 1356201252 d:\documents\finalyearproject\codeblocksimp\src\pairwise\pairwisealignbase.h
 	<vector>
 	"../alignment/Alignment.h"
 
-1356207104 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fastpairwisealign.h
+1361764383 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.h
 	"PairwiseAlignBase.h"
+	"stdafx.h"
+	"../../include/ScoreMatrix.h"
 
 1284042362 d:\documents\finalyearproject\codeblocksimp\src\multiplealign\msa.h
 	<iomanip>
@@ -319,6 +379,8 @@
 	"clustalw_version.h"
 	"Help.h"
 
+1289580562 d:\documents\finalyearproject\codeblocksimp\src\clustalw_version.h
+
 1361764381 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignment.cpp
 	"config.h"
 	<exception>
@@ -326,7 +388,7 @@
 	<sstream>
 	"Alignment.h"
 
-1361764381 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.cpp
+1363178533 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.cpp
 	"config.h"
 	"AlignmentOutput.h"
 	"stdafx.h"
@@ -356,7 +418,7 @@
 	"config.h"
 	"FileParser.h"
 
-1361764382 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.cpp
+1362650243 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.cpp
 	"config.h"
 	"FileReader.h"
 
@@ -432,6 +494,21 @@
 	"config.h"
 	"SymMatrix.h"
 
+1361764382 source:d:\documents\finalyearproject\codeblocksimp\src\general\userparameters.cpp
+	"config.h"
+	<stdio.h>
+	<string>
+	<cstdlib>
+	<exception>
+	<iostream>
+	<limits>
+	<climits>
+	<iomanip>
+	<fstream>
+	"UserParameters.h"
+	"../clustalw_version.h"
+	"config.h"
+
 1361764382 source:d:\documents\finalyearproject\codeblocksimp\src\general\utility.cpp
 	"config.h"
 	<iostream>
@@ -485,23 +562,6 @@
 	"../general/userparams.h"
 	"../general/utils.h"
 	"../substitutionMatrix/globalmatrix.h"
-
-1350472986 source:d:\documents\finalyearproject\codeblocksimp\src\main.cpp
-	"config.h"
-	<iostream>
-	"alignment/Alignment.h"
-	"alignment/Sequence.h"
-	"general/clustalw.h"
-	"general/UserParameters.h"
-	"substitutionMatrix/SubMatrix.h"
-	"general/Utility.h"
-	"fileInput/FileReader.h"
-	"interface/InteractiveMenu.h"
-	"interface/CommandLineParser.h"
-	"general/DebugLog.h"
-	"general/ClustalWResources.h"
-	"general/Stats.h"
-	<ctime>
 
 1361764382 source:d:\documents\finalyearproject\codeblocksimp\src\multiplealign\iteration.cpp
 	"config.h"
@@ -749,7 +809,7 @@
 	"../../general/clustalw.h"
 	"upgmadata.h"
 
-1361770294 source:d:\documents\finalyearproject\codeblocksimp\src\tree\unrootedclustertree.cpp
+1362651276 source:d:\documents\finalyearproject\codeblocksimp\src\tree\unrootedclustertree.cpp
 	"stdafx.h"
 	"config.h"
 	"UnRootedClusterTree.h"
@@ -759,7 +819,7 @@
 	<sstream>
 	"../general/OutputFile.h"
 
-1361764381 source:d:\documents\finalyearproject\codeblocksimp\imp6\imp6.cpp
+1363177028 source:d:\documents\finalyearproject\codeblocksimp\mysrc\imp6.cpp
 	"stdafx.h"
 	"conio.h"
 	"alignment/Alignment.h"
@@ -782,226 +842,5 @@
 	"../include/AminoAcidCode.h"
 	"../include/DistanceMatrix.h"
 	"../include/VerticalPosition.h"
-
-1353061135 source:d:\documents\finalyearproject\codeblocksimp\src\inputfile.cpp
-	"../include/InputFile.h"
-
-1361771746 d:\documents\finalyearproject\codeblocksimp\include\inputfile.h
-	"stdafx.h"
-	<iostream>
-
-1361761405 source:d:\documents\finalyearproject\codeblocksimp\imp6\inputfile.cpp
-	"../include/InputFile.h"
-	"../include/ProteinSequence.h"
-
-1353667432 source:d:\documents\finalyearproject\codeblocksimp\src\proteinsequence.cpp
-	"../include/ProteinSequence.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\proteinsequence.h
-	"stdafx.h"
-	"../include/AminoAcidCode.h"
-	"../include/AminoAcidColourCode.h"
-
-1360893029 source:d:\documents\finalyearproject\codeblocksimp\imp6\proteinsequence.cpp
-	"../include/ProteinSequence.h"
-	"../include/AminoAcidCode.h"
-
-1361760603 source:d:\documents\finalyearproject\codeblocksimp\imp6\scorematrix.cpp
-	"../include/ScoreMatrix.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\scorematrix.h
-	"stdafx.h"
-
-1356109751 d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
-	"config.h"
-	"FullPairwiseAlign.h"
-	"../../include/ScoreMatrix.h"
-	<math.h>
-
-1361760460 source:d:\documents\finalyearproject\codeblocksimp\imp6\aminoacidfrequency.cpp
-	"../include/AminoAcidFrequency.h"
-	<stdio.h>
-	<math.h>
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\aminoacidfrequency.h
-	"stdafx.h"
-	"../include/FileCreator.h"
-	"../include/AminoAcidCode.h"
-	"../include/AminoAcidColourCode.h"
-
-1360886472 source:d:\documents\finalyearproject\codeblocksimp\imp6\aminoacidcode.cpp
-	"../include/AminoAcidCode.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcode.h
-	"stdafx.h"
-
-1360172432 source:d:\documents\finalyearproject\codeblocksimp\imp6\filereader.cpp
-	"../include/FileReader.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\filereader.h
-	"stdafx.h"
-	<string>
-	<fstream>
-	<iostream>
-	<memory>
-
-1361760552 source:d:\documents\finalyearproject\codeblocksimp\imp6\distancematrix.cpp
-	"../include/DistanceMatrix.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\distancematrix.h
-	"stdafx.h"
-	<math.h>
-	"../include/FileReader.h"
-	"../include/FileCreator.h"
-	"../include/ProteinSequence.h"
-
-1360178201 source:d:\documents\finalyearproject\codeblocksimp\imp6\filecreator.cpp
-	"../include/FileCreator.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\filecreator.h
-	"stdafx.h"
-
-1360928923 source:d:\documents\finalyearproject\codeblocksimp\imp6\aminoacidcolourcode.cpp
-	"../include/AminoAcidColourCode.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcolourcode.h
-	"stdafx.h"
-
-1361761520 source:d:\documents\finalyearproject\codeblocksimp\imp6\verticalposition.cpp
-	"../include/VerticalPosition.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\verticalposition.h
-	"stdafx.h"
-	"../include/FileCreator.h"
-	"../include/ScoreMatrix.h"
-	"../include/ProteinSequence.h"
-	"../include/AlignmentColumn.h"
-	"../include/AminoAcidCode.h"
-	"../include/AminoAcidColourCode.h"
-
-1361764381 d:\documents\finalyearproject\codeblocksimp\include\alignmentcolumn.h
-	"stdafx.h"
-	"../include/AminoAcidCode.h"
-	"../include/AminoAcidColourCode.h"
-
-1360939661 source:d:\documents\finalyearproject\codeblocksimp\src\alignmentcolumn.cpp
-	"../include/AlignmentColumn.h"
-
-1361335934 source:d:\documents\finalyearproject\codeblocksimp\imp6\alignmentcolumn.cpp
-	"../include/AlignmentColumn.h"
-
-1361759740 d:\documents\finalyearproject\codeblocksimp\mysrc\stdafx.h
-	<iostream>
-	<string>
-	<fstream>
-	<vector>
-	<istream>
-	<stdarg.h>
-	<wchar.h>
-	<sstream>
-	<iomanip>
-	<tchar.h>
-	<stdio.h>
-	<string.h>
-	"targetver.h"
-	"string.h"
-	"conio.h"
-	"stdlib.h"
-	"../include/ScoreMatrix.h"
-	"../include/ProteinSequence.h"
-	<memory>
-	<ctime>
-	<string.h>
-	<sys/stat.h>
-	<dirent.h>
-
-1353029488 d:\documents\finalyearproject\codeblocksimp\mysrc\targetver.h
-
-1361335934 source:d:\documents\finalyearproject\codeblocksimp\mysrc\alignmentcolumn.cpp
-	"../include/AlignmentColumn.h"
-
-1360886472 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcode.cpp
-	"../include/AminoAcidCode.h"
-
-1360928923 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcolourcode.cpp
-	"../include/AminoAcidColourCode.h"
-
-1361760460 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidfrequency.cpp
-	"../include/AminoAcidFrequency.h"
-	<stdio.h>
-	<math.h>
-
-1361760552 source:d:\documents\finalyearproject\codeblocksimp\mysrc\distancematrix.cpp
-	"../include/DistanceMatrix.h"
-
-1360178201 source:d:\documents\finalyearproject\codeblocksimp\mysrc\filecreator.cpp
-	"../include/FileCreator.h"
-
-1360172432 source:d:\documents\finalyearproject\codeblocksimp\mysrc\filereader.cpp
-	"../include/FileReader.h"
-
-1361772641 source:d:\documents\finalyearproject\codeblocksimp\mysrc\imp6.cpp
-	"stdafx.h"
-	"conio.h"
-	"alignment/Alignment.h"
-	"alignment/Sequence.h"
-	"general/clustalw.h"
-	"general/UserParameters.h"
-	"substitutionMatrix/SubMatrix.h"
-	"general/Utility.h"
-	"fileInput/FileReader.h"
-	"interface/InteractiveMenu.h"
-	"interface/CommandLineParser.h"
-	"general/DebugLog.h"
-	"general/ClustalWResources.h"
-	"general/Stats.h"
-	"pairwise/FullPairwiseAlign.h"
-	"../include/InputFile.h"
-	"../include/ProteinSequence.h"
-	"../include/ScoreMatrix.h"
-	"../include/AminoAcidFrequency.h"
-	"../include/AminoAcidCode.h"
-	"../include/DistanceMatrix.h"
-	"../include/VerticalPosition.h"
-
-1361771962 source:d:\documents\finalyearproject\codeblocksimp\mysrc\inputfile.cpp
-	"../include/InputFile.h"
-	"../include/ProteinSequence.h"
-
-1360893029 source:d:\documents\finalyearproject\codeblocksimp\mysrc\proteinsequence.cpp
-	"../include/ProteinSequence.h"
-	"../include/AminoAcidCode.h"
-
-1361760603 source:d:\documents\finalyearproject\codeblocksimp\mysrc\scorematrix.cpp
-	"../include/ScoreMatrix.h"
-
-1361761520 source:d:\documents\finalyearproject\codeblocksimp\mysrc\verticalposition.cpp
-	"../include/VerticalPosition.h"
-
-1361759740 d:\documents\finalyearproject\codeblocksimp\include\stdafx.h
-	<iostream>
-	<string>
-	<fstream>
-	<vector>
-	<istream>
-	<stdarg.h>
-	<wchar.h>
-	<sstream>
-	<iomanip>
-	<tchar.h>
-	<stdio.h>
-	<string.h>
-	"targetver.h"
-	"string.h"
-	"conio.h"
-	"stdlib.h"
-	"../include/ScoreMatrix.h"
-	"../include/ProteinSequence.h"
-	<memory>
-	<ctime>
-	<string.h>
-	<sys/stat.h>
-	<dirent.h>
-
-1353029488 d:\documents\finalyearproject\codeblocksimp\include\targetver.h
+	<windows.h>
 

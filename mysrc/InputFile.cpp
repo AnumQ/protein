@@ -354,11 +354,11 @@ void InputFile::writeInputFileForRepresentatives()
     p.clear();
 
     seqC = 0;
-    filename = "InputFile.txt";
+    filename = "outFiles//InputFile.txt";
     infile.open(filename.c_str());
     filenames.push_back(filename);
 
-    fsearch = "SearchResults.txt";
+    fsearch = "outFiles//Labels.txt";
     searchResults.open(fsearch.c_str());
     filenames.push_back(fsearch);
 
@@ -478,11 +478,11 @@ void InputFile::writeInputFile()
     p.clear();
 
     seqC = 0;
-    filename = "InputFile.txt";
+    filename = "outFiles//InputFile.txt";
     infile.open(filename.c_str());
     filenames.push_back(filename);
 
-    fsearch = "SearchResults.txt";
+    fsearch = "outFiles//Labels.txt";
     searchResults.open(fsearch.c_str());
     filenames.push_back(fsearch);
 

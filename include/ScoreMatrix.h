@@ -19,6 +19,7 @@ class ScoreMatrix
         string number_to_string(int number);
         string double_to_string(double number);
         string RoundToString(int, double );
+        double string_to_double(const std::string& s);
         virtual ~ScoreMatrix();
     protected:
     private:

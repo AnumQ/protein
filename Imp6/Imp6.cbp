@@ -15,7 +15,11 @@
 					<Add option="-g" />
 					<Add directory="..\Imp6" />
 					<Add directory="D:\Documents\FinalYearProject\CodeBlocksIMP\src" />
+					<Add directory="..\include" />
 				</Compiler>
+				<Linker>
+					<Add directory="D:\Documents\FinalYearProject\CodeBlocksIMP\Imp6\" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin\Release\Imp6" prefix_auto="1" extension_auto="1" />
@@ -24,6 +28,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="..\include" />
+					<Add directory="..\src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,6 +40,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="resources.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
 		<Unit filename="..\include\AlignmentColumn.h" />
 		<Unit filename="..\include\AminoAcidCode.h" />
 		<Unit filename="..\include\AminoAcidColourCode.h" />

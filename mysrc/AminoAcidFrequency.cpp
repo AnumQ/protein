@@ -23,7 +23,7 @@ void AminoAcidFrequency::generateAminoAcidTables( vector<ProteinSequence> p )
 
 void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
 {
-    filename = "AminoAcidProperty.txt";
+    filename = "outFiles//AminoAcidProperty.txt";
     fileOut.open(filename.c_str());
     filenames.push_back(filename);
     fileOut.write( filename.c_str(), filename.size() );
@@ -39,6 +39,8 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
     // get the vector with the colours
     vector<AminoAcidColourCode> ColourCodes;
     ColourCodes = c.getColourCodes();
+    vector<AminoAcidColourCode> Distribution;
+    Distribution = c.getColourCodes();
 
 
     for ( size_t i = 0; i < ColourCodes.size(); i++ )
@@ -61,6 +63,7 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
     fileOut.write( lbreak.c_str(), lbreak.size() );
 
     vector<AminoAcidCode> AminoAcidCount;
+    int DistributionTotal = 0;
 
     ScoreMatrix conversion;
     double percentage;
@@ -73,6 +76,7 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
 
         int t = 0;
         int ct = p[i].getSeqLength();
+        DistributionTotal += ct;
 
         for ( size_t n = 0; n < ColourCodes.size(); n++ )
         {
@@ -93,6 +97,7 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
             }
             t = t + count;
             percentage = ((double)count/(double)ct)*100;;
+            Distribution[n].addDistributionCount(count);
             /*cout << pdb << " - " << ColourCodes[n].getColour() << " - "
             << ColourCodes[n].getCount() << endl;
             cout << "    " << pdb << " - " << ColourCodes[n].getColour() << " - "
@@ -118,13 +123,79 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
 
     }
 
+    double pDistribution;
+    for ( size_t i = 0; i < Distribution.size(); i++ )
+    {
+        if ( i == 0 )
+        {
+            string es = "Total";
+            fileOut.write( es.c_str(), es.size() );
+        }
+        fileOut.write( tab.c_str(), tab.size() );
+        int AminoAcidD = Distribution[i].getDistribution();
+        //cout << AminoAcidD << endl;
+        pDistribution = ((double)AminoAcidD/(double)DistributionTotal)*100;;
+        string d = conversion.RoundToString(2, pDistribution);
+        //string d = conversion.number_to_string(AminoAcidD);
+        fileOut.write( d.c_str(), d.size() );
+
+    }
+
+    fileOut.write( tab.c_str(), tab.size() );
+    int pt = (DistributionTotal/DistributionTotal) * 100;
+    string DistributionTotalNum = conversion.number_to_string(pt);
+    fileOut.write( DistributionTotalNum.c_str(), DistributionTotalNum.size() );
+
+    fileOut.write( lbreak.c_str(), lbreak.size() );
+
+    //Get the Amino Acid Composition
+    j.assignAminoAcidComposition();
+    vector<AminoAcidCode> composition = j.getAminoAcidComposition();
+    double t = 0;
+
+    for ( size_t i = 0; i < ColourCodes.size(); i++ )
+    {
+        if ( i == 0 )
+        {
+            string es = "CompD";
+            fileOut.write( es.c_str(), es.size() );
+        }
+
+        string u = ColourCodes[i].getColour();
+        for ( size_t j = 0; j < composition.size(); j++ )
+        {
+            string h = composition[j].getColour();
+
+            if ( u == h )
+            {
+                double distr = composition[j].getComposition();
+                ColourCodes[i].setComposition(distr);
+            }
+
+        }
+        //cout << ColourCodes[i].getComposition() << endl;
+        fileOut.write( tab.c_str(), tab.size() );
+        double k = ColourCodes[i].getComposition();
+        t = t+k;
+        string comp = conversion.RoundToString(2,k);
+
+        fileOut.write( comp.c_str(), comp.size() );
+
+    }
+    int y = (int)round(t);
+    string tnum = conversion.number_to_string(y);
+    fileOut.write( tab.c_str(), tab.size() );
+    fileOut.write( tnum.c_str(), tnum.size() );
+
+
+
     fileOut.close();
 
 }
 /* Create the display in the Table */
 void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
 {
-    filename = "AminoAcidFrequency.txt";
+    filename = "outFiles//AminoAcidFrequency.txt";
     fileOut.open(filename.c_str());
     filenames.push_back(filename);
     fileOut.write( filename.c_str(), filename.size() );
@@ -155,6 +226,9 @@ void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
     fileOut.write( lbreak.c_str(), lbreak.size() );
 
     vector<AminoAcidCode> AminoAcidCount;
+    vector<AminoAcidCode> Distribution;
+    Distribution = j.createAminoAcidCounters();
+    int DistributionTotal = 0;
 
     ScoreMatrix conversion;
     double percentage;
@@ -167,7 +241,7 @@ void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
         //fileOut.write( tab.c_str(), tab.size() );
 
         int t = p[i].getSeqLength();
-
+        DistributionTotal += t;
         // perhaps add the code to create the dat for the colours here as well?
 
         double testtotal = 0;
@@ -178,6 +252,9 @@ void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
             int n = AminoAcidCount[j].getCount();
 
             percentage = ((double)n/(double)t)*100;;
+            //cout << percentage << endl;
+            Distribution[j].addDistributionCount(n);
+
             testtotal += percentage;
 
             string rnum = conversion.RoundToString(2, percentage);
@@ -196,6 +273,57 @@ void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
         fileOut.write( lbreak.c_str(), lbreak.size() );
 
     }
+
+    double pDistribution;
+    for ( size_t i = 0; i < Distribution.size(); i++ )
+    {
+        if ( i == 0 )
+        {
+            string es = "Total";
+            fileOut.write( es.c_str(), es.size() );
+        }
+        fileOut.write( tab.c_str(), tab.size() );
+        int AminoAcidD = Distribution[i].getDistribution();
+
+        pDistribution = ((double)AminoAcidD/(double)DistributionTotal)*100;;
+        string d = conversion.RoundToString(2, pDistribution);
+
+        fileOut.write( d.c_str(), d.size() );
+
+    }
+    fileOut.write( tab.c_str(), tab.size() );
+    int pt = (DistributionTotal/DistributionTotal) * 100;
+    string DistributionTotalNum = conversion.number_to_string(pt);
+    fileOut.write( DistributionTotalNum.c_str(), DistributionTotalNum.size() );
+
+
+    fileOut.write( lbreak.c_str(), lbreak.size() );
+
+    //Get the Amino Acid Composition
+    j.assignAminoAcidComposition();
+    vector<AminoAcidCode> composition = j.getAminoAcidComposition();
+    double t = 0;
+    for ( size_t i = 0; i < composition.size(); i++ )
+    {
+        if ( i == 0 )
+        {
+            string es = "CompD";
+            fileOut.write( es.c_str(), es.size() );
+        }
+        fileOut.write( tab.c_str(), tab.size() );
+        double k = composition[i].getComposition();
+        t = t+k;
+        string comp = conversion.RoundToString(2,k);
+
+        fileOut.write( comp.c_str(), comp.size() );
+
+    }
+    int y = (int)round(t);
+    string tnum = conversion.number_to_string(y);
+    fileOut.write( tab.c_str(), tab.size() );
+    fileOut.write( tnum.c_str(), tnum.size() );
+
+
 
     fileOut.close();
 
@@ -423,7 +551,6 @@ vector<ProteinSequence> AminoAcidFrequency::processSeq( vector<ProteinSequence> 
 
     return processedP;
 }
-
 
 /* RemoveSpaces() removes spaces in a string */
 string AminoAcidFrequency::RemoveSpaces( string s )
