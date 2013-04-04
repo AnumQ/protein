@@ -2,7 +2,7 @@
 #define DISTANCEMATRIX_H
 #include "stdafx.h"
 #include <math.h>
-#include "../include/FileReader.h"
+#include "../include/FileRead.h"
 #include "../include/FileCreator.h"
 #include "../include/ProteinSequence.h"
 

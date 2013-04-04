@@ -142,7 +142,7 @@ void AminoAcidFrequency::createPropertyTable( vector<ProteinSequence> p )
     }
 
     fileOut.write( tab.c_str(), tab.size() );
-    int pt = (DistributionTotal/DistributionTotal) * 100;
+    int pt = 100;
     string DistributionTotalNum = conversion.number_to_string(pt);
     fileOut.write( DistributionTotalNum.c_str(), DistributionTotalNum.size() );
 
@@ -292,7 +292,7 @@ void AminoAcidFrequency::createAminoAcidFrequency( vector<ProteinSequence> p )
 
     }
     fileOut.write( tab.c_str(), tab.size() );
-    int pt = (DistributionTotal/DistributionTotal) * 100;
+    int pt = 100;
     string DistributionTotalNum = conversion.number_to_string(pt);
     fileOut.write( DistributionTotalNum.c_str(), DistributionTotalNum.size() );
 
@@ -370,6 +370,7 @@ several lines depending on how it was aligned during multiple sequence alignment
 AssembleSeq assembles the sequence into one. */
 vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence> p )
 {
+    // This is the MSA file
     ifstream& File = readFile;
 
     string LINE;
@@ -385,25 +386,27 @@ vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence>
 
     for ( size_t i = 0; i < p.size(); i++ )
     {
+        // sequence without dashes
         //cout << "p is " << p[i].getPDB() << endl;
         count = 0;
         clearFile();
         while ( !File.eof() )
         {
             getline(File, LINE);
-
             size_t check1 = LINE.find(PDB, 0);
             if ( check1 != string::npos )
             {
                 linePDB = LINE.substr(0,11); // pdb number from the line
-
+                //cout << "linePDB: " << linePDB << " " << linePDB.size() << endl;
                 currentPDB = p[i].getPDB(); // pdb number from the current vector object
-
+                //cout << "currentPDB: " << currentPDB << " " << currentPDB.size() << endl;
                 genSeq = LINE.substr(11, LINE.size());
+                //cout << "genSeq: " << genSeq << endl;
                 string currentSeq = RemoveSpaces(genSeq);
 
                 if ( LINE.compare(0,11, currentPDB, 1, 11) == 0 )
                 {
+                    //cout << "currentSeq " << currentSeq << endl;
                     if ( count == 0 )
                         {
                             Seq = currentSeq;
@@ -419,11 +422,12 @@ vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence>
             }
 
         }
-
+        // mergedSeq is the merged sequence including spaces
         string mergedSeq = Seq;
+        //cout << "mergedSeq is " << mergedSeq << endl;
         Seq.clear(); // clear Seq for so the new sequence is not added in the same line as the previous one
 
-        string finalSeq;
+        string finalSeq; // mergedSeq WITHOUT spaces
 
         //Remove spaces
         for ( size_t i = 0; i < mergedSeq.size(); i++ )
@@ -436,8 +440,8 @@ vector<ProteinSequence> AminoAcidFrequency::assembleSeq( vector<ProteinSequence>
         }
 
         p[i].setSeq(finalSeq);
-        // string gSeq = p[i].getSeq();
-        // cout << gSeq << endl;
+         string gSeq = p[i].getSeq();
+        //cout << "Final: " << gSeq << endl;
 
     }
     return p;

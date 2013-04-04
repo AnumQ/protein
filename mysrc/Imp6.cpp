@@ -85,6 +85,8 @@ void welcome()
 }
 
 vector<string> filenames;
+string alignment_file;
+bool checker;
 int main(int argc, char **argv)
 {
     welcome();
@@ -103,22 +105,51 @@ int main(int argc, char **argv)
     InputFile start;// object reads from an input file and creates a new file
     start.run();
 
-	string offendingSeq;
-	Clustal* clustalObj;
-	clustalObj = new clustalw::Clustal();
-	clustalObj->sequenceInput(false, &offendingSeq);
-	string phylipName;
-	clustalObj->align(&phylipName);
+    vector<ProteinSequence> p1;
+
+    if ( checker == true )
+    {
+        string offendingSeq;
+        Clustal* clustalObj;
+        clustalObj = new clustalw::Clustal();
+        clustalObj->sequenceInput(false, &offendingSeq);
+        string phylipName;
+        clustalObj->align(&phylipName);
+
+        alignment_file = "outFiles//Alignment.aln";
+        p1 = start.getProteinData();
+    }
+    else
+    {
+        // get p1 from the alignment file
+        p1 = start.getAlignmentData();
+                    // do nothing
+    }
+
 
     AminoAcidFrequency Table;
-    Table.openFile("outFiles//Alignment.aln");
-
-    vector<ProteinSequence> p1;
-    p1 = start.getProteinData();
-    Table.generateAminoAcidTables(p1);
+    if ( Table.openFile(alignment_file) == true ) // open the specified alignment file
+    {
+    }
+    Table.generateAminoAcidTables(p1); // from the alignment file
+    /* Calls the following:
+        vector<ProteinSequence> p2 = assembleSeq(p);
+        p3 = processSeq(p2);
+        createPropertyTable(p3);
+        createAminoAcidFrequency(p3);
+    */
 
     p1.clear();
     p1 = Table.getFinalSeqs();
+    /* cout << "size of p1 : " << p1.size() << endl;
+    for ( size_t i = 0; i < p1.size(); i++ )
+    {
+        string s = p1[i].getPDB();
+        cout << s << endl;
+        s = p1[i].getSeq();
+        cout << s << endl;
+    } */
+
 
     DistanceMatrix dm;
     dm.createDistanceTableCodes(p1);
@@ -144,6 +175,7 @@ int main(int argc, char **argv)
     {
         delete logObject;
     }
+
     //system("pause");
     return 0;
 }

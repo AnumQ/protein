@@ -5,6 +5,7 @@
 		<Option title="Imp6" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="mysrc\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin\Debug\Imp6" prefix_auto="1" extension_auto="1" />
@@ -40,27 +41,25 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="resources.rc">
-			<Option compilerVar="WINDRES" />
-		</Unit>
 		<Unit filename="..\include\AlignmentColumn.h" />
 		<Unit filename="..\include\AminoAcidCode.h" />
 		<Unit filename="..\include\AminoAcidColourCode.h" />
 		<Unit filename="..\include\AminoAcidFrequency.h" />
 		<Unit filename="..\include\DistanceMatrix.h" />
 		<Unit filename="..\include\FileCreator.h" />
-		<Unit filename="..\include\FileReader.h" />
+		<Unit filename="..\include\FileRead.h" />
 		<Unit filename="..\include\InputFile.h" />
 		<Unit filename="..\include\ProteinSequence.h" />
 		<Unit filename="..\include\ScoreMatrix.h" />
 		<Unit filename="..\include\VerticalPosition.h" />
+		<Unit filename="..\include\stdafx.h" />
 		<Unit filename="..\mysrc\AlignmentColumn.cpp" />
 		<Unit filename="..\mysrc\AminoAcidCode.cpp" />
 		<Unit filename="..\mysrc\AminoAcidColourCode.cpp" />
 		<Unit filename="..\mysrc\AminoAcidFrequency.cpp" />
 		<Unit filename="..\mysrc\DistanceMatrix.cpp" />
 		<Unit filename="..\mysrc\FileCreator.cpp" />
-		<Unit filename="..\mysrc\FileReader.cpp" />
+		<Unit filename="..\mysrc\FileRead.cpp" />
 		<Unit filename="..\mysrc\Imp6.cpp" />
 		<Unit filename="..\mysrc\InputFile.cpp" />
 		<Unit filename="..\mysrc\ProteinSequence.cpp" />

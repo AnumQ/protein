@@ -27,7 +27,7 @@
     #include "config.h"
 #endif
 #include "FileReader.h"
-
+#include "../../include/stdafx.h"
 
 namespace clustalw
 {
@@ -141,8 +141,20 @@ bool FileReader::noEmptySequence(vector<Sequence> seqVector, string *offendingSe
  */
     int FileReader::readSeqs(Alignment *alignPtr, int firstSeq, string *offendingSeq)
 {
-    // here I have defined the input file in pearson format
-    string line = "outFiles//InputFile.txt";
+    // here I have defined the input file in pearson format - Anum
+   // string line = "outFiles//InputFile.txt";
+    string line;
+
+    if ( file_name != "" )
+    {
+        line = file_name;
+    }
+    else
+    {
+        cout << "filename is empty" << endl;
+        line = "outFiles//InputFile.txt";
+    }
+
     string fileName;
     string linuxFilePath = "file://";
     //    static char *seq1, sname1[MAXNAMES + 1], title[MAXTITLES + 1];
@@ -160,7 +172,7 @@ bool FileReader::noEmptySequence(vector<Sequence> seqVector, string *offendingSe
 
     if (userParameters->getMenuFlag())
     {
-       // utilityObject->getStr(string("Enter the name of the sequence file "), line);
+       //utilityObject->getStr(string("Enter the name of the sequence file "), line);
     }
     else
     {

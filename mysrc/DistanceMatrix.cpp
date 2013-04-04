@@ -2,8 +2,6 @@
 
 using namespace std;
 
-FileReader *currentFile;
-
 DistanceMatrix::DistanceMatrix()
 {
     //ctor
@@ -95,7 +93,6 @@ void DistanceMatrix::createSimilarityMatrixCodes( vector<ProteinSequence> p )
 
 
        }
-           //count++;
         oFile.write( lbreak.c_str(), lbreak.size() );
     }
 
@@ -201,11 +198,13 @@ void DistanceMatrix::createDistanceTableColours( vector<ProteinSequence> p )
     double prevNum;
     double currentNum;
     double total;
+    double t2;
     size_t j = 0;
     size_t i = 0;
     size_t count = 0;
     double percentage1;
     double percentage2;
+    double sqrTotal;
 
     string tab = "\t";
     string lbreak = "\n";
@@ -239,7 +238,7 @@ void DistanceMatrix::createDistanceTableColours( vector<ProteinSequence> p )
     {
         i = 0;
         total = 0;
-        double t2 = 0;
+        t2 = 0;
         while ( i < p.size() )
         {
             if ( i > 0 && count < i )
@@ -259,18 +258,22 @@ void DistanceMatrix::createDistanceTableColours( vector<ProteinSequence> p )
 
                     double distance = pow((prevNum - currentNum), 2);
                     double d2 = pow((percentage1 - percentage2), 2);
-                   // cout << prevNum << " - " << currentNum << " = Distance: " << distance << endl;
-                   // cout << percentage1 << " - " << percentage2 << " = D2: " << d2 << endl;
+                    //cout << prevNum << " - " << currentNum << " = Distance: " << distance << endl;
+                    //cout << percentage1 << " - " << percentage2 << " = D2: " << d2 << endl;
                     total = total + distance; // calculating the total of actual numbers
                     t2 = t2 + d2; // calculating the total of percentages
                     j = j + 1;
                 }
                     //cout << "       Total is " << total << endl; //displaying the total of actual numbers
-                    // cout << "       T2 is " << t2 << endl; // displaying the total of the percentages
-                    double sqrTotal = sqrt(total);
-                //cout << "       Kvadrat av det er " << sqrTotal << endl;
+                    //sqrTotal = sqrt(total);
+                    total = 0;
+
+                    //cout << "       T2 is " << t2 << endl; // displaying the total of the percentages
                     sqrTotal = sqrt(t2);
-                   // cout << "       Square root of t2 er " << sqrTotal << endl;
+                    //cout << "       Kvadrat av T2  er " << sqrTotal << endl;
+                    t2 = 0;
+
+                   //cout << "       Square root of t2 er " << sqrTotal << endl;
                     //add t2 to the vector
                     currentDScore.setSequenceX(count);
                     currentDScore.setSequenceY(i);
@@ -291,6 +294,7 @@ void DistanceMatrix::createDistanceTableColours( vector<ProteinSequence> p )
                 //string sqrRoot = convert.double_to_string(sqrTotal);
                 string sqrRoot = convert.RoundToString(3, sqrTotal);
                 oFile.write( sqrRoot.c_str(), sqrRoot.size() );
+
             }
 
             if ( i == j || count == i )
@@ -401,8 +405,10 @@ void DistanceMatrix::createDistanceTableCodes( vector<ProteinSequence> p )
                 //cout << "       Total is " << total << endl;
                   // cout << "       T2 is " << t2 << endl;
                 double sqrTotal = sqrt(total);
+                total = 0;
                 //cout << "       Kvadrat av det er " << sqrTotal << endl;
                     sqrTotal = sqrt(t2);
+                    t2 = 0;
                     //cout << "       Square root of t2 er " << sqrTotal << endl;
                     //add t2 to the vector
                     currentDScore.setSequenceX(count);

@@ -2,9 +2,13 @@
 #define INPUTFILE_H
 #include "stdafx.h"
 #include <iostream>
+#include "FileCreator.h"
+#include "FileRead.h"
 using namespace std;
 
 extern vector<ProteinSequence> p;
+
+class ProteinSequence;
 
 class InputFile
 {
@@ -21,16 +25,20 @@ class InputFile
         void closeInputFile();
         void closeFile();
         bool openFile( string file );
-        void writeInputFile();
+        void writeInputFile2(string);
+        void writeInputFile(string);
         int getSeqC();
         void checkToProceed(bool f);
         void processInput();
         void determineSourceFile();
-        void determineSourceFile2();
+        bool determineSourceFile2();
+        string getUserInputFile();
         void createSimplifiedSourceFile();
         void writeInputFileForRepresentatives();
         vector<ProteinSequence> getProteinData();
+        vector<ProteinSequence> getAlignmentData();
         void writeSearchResults(int, string );
+        void createSourceFile();
 
         /* Attributes */
         bool flag;
@@ -48,11 +56,13 @@ class InputFile
     vector<string> pdblist;
     vector<string> Lines;
     string fsearch;
+    ofstream sourceFil;
     ofstream infile;
     ofstream searchResults;
     stringstream convert;
     ProteinSequence currentSequence;
     vector<ProteinSequence> p;
+    FileCreator* outFile;
 };
 
 

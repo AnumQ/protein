@@ -1,6 +1,6 @@
 #include "../include/InputFile.h"
 #include "../include/ProteinSequence.h"
-
+string file_name;
 using namespace std;
 
 InputFile::InputFile()
@@ -10,40 +10,148 @@ InputFile::InputFile()
 void InputFile::run()
 {
     // check if source file has been set
-    determineSourceFile2();
-
-    getSearchInput();
-    setCathCode( SearchCathCode );
-
-    defineLevelOfHierarchy();
-    if ( !levelOfHierarchy.empty() )
+ // check if source file has been set
+    file_name = "";
+    string sourceFile1 = "sourceFiles/CathDomainDescriptionFile.Simplified.c";
+    string sourceFile2 = "sourceFiles/Input2.txt";
+    string file;
+    if ( determineSourceFile2() == false )
     {
-        if ( openFile( levelOfHierarchy ) == true )
+        checker = true;
+        if ( (sourceFile != sourceFile1) && (sourceFile != sourceFile2) )
         {
-            getPDBfromClassifiedList();
-            closeFile();
-            if ( (openFile( sourceFile )) == true )
+            if ( openFile(sourceFile) == true )
             {
-                writeInputFileForRepresentatives();
-                closeInputFile();
+                file_name = sourceFile;
+                createSourceFile();
+                file = "outFiles//SourceFile.txt";
+                filenames.push_back(file);
                 closeFile();
+
+                if ( openFile( file ) == true )
+                {
+                    file = "outFiles//SourceFileOutPut.txt";
+                    writeInputFile2(file);
+                    closeInputFile();
+                    closeFile();
+                }
+            }
+            else
+            {
+                run();
+            }
+        }
+        else
+        {
+            getSearchInput();
+            setCathCode( SearchCathCode );
+
+            defineLevelOfHierarchy();
+            if ( !levelOfHierarchy.empty() )
+            {
+                if ( openFile( levelOfHierarchy ) == true )
+                {
+                    getPDBfromClassifiedList();
+                    closeFile();
+                    if ( (openFile( sourceFile )) == true )
+                    {
+                        writeInputFileForRepresentatives();
+                        closeInputFile();
+                        closeFile();
+                    }
+
+                }
+            }
+            else
+            {
+                if ( (openFile( sourceFile )) == true )
+                {
+                   getCathCode();
+                   file = "outFiles//InputFile.txt";
+                   writeInputFile(file);
+                   closeInputFile();
+                   closeFile();
+                }
             }
 
+            bool f = true;
+            checkToProceed(f);
         }
+
     }
     else
     {
-        if ( (openFile( sourceFile )) == true )
-        {
-           getCathCode();
-           writeInputFile();
-           closeInputFile();
-           closeFile();
-        }
+        alignment_file = getUserInputFile();
+        checker = false;
+        //do something about the alignment
     }
 
-    bool f = true;
-    checkToProceed(f);
+
+}
+
+vector<ProteinSequence> InputFile::getAlignmentData()
+{
+    vector<ProteinSequence> ProteinData;
+
+    FileRead* inFile;
+    inFile = new FileRead();
+    /* Reading file */
+    FileRead* inputFile;
+    inputFile = new FileRead();
+    string file1 = alignment_file;
+    inputFile->openFile(file1);
+    ifstream& File = inputFile->getFile();
+
+    string LINE;
+    string PDB = "pdb|";
+    string linePDB;
+    bool h = false;
+    int counter = 0;
+
+    char c;
+
+    while ( !File.eof() )
+    {
+            getline(File, LINE);
+
+            size_t check1 = LINE.find(PDB, 0);
+            if ( check1 != string::npos )
+            {
+                linePDB = LINE.substr(0,11);
+
+            }
+
+            if ( LINE[0] == 'p')
+            {
+                h = true;
+
+            }
+
+             if ( h == true )
+            {
+                if ( LINE[0] == ' ')
+                {
+                    //stop adding it to the vector;
+                    h = false;
+                    counter++;
+                }
+
+            }
+
+            // add it to the vector
+            if ( h == true )
+            {
+                if ( counter == 0 )
+                {
+
+                    linePDB = ">" + linePDB;
+                    currentSequence.setPDB(linePDB);
+                    ProteinData.push_back(currentSequence);
+                }
+            }
+    }
+
+    return ProteinData;
 }
 
 void InputFile::checkToProceed( bool f )
@@ -63,8 +171,6 @@ void InputFile::checkToProceed( bool f )
     {
         cout << "\nNo sequences found.\n";
         checkToStartAgain();
-
-
     }
 }
 
@@ -246,11 +352,21 @@ string InputFile::getFileInput()
     return sourceFile;
 }
 
-void InputFile::determineSourceFile2()
+string InputFile::getUserInputFile()
+{
+    string UserInput;
+        cout << "   Please enter the filepath: ";
+        cin >> UserInput;
+    return UserInput;
+}
+
+bool InputFile::determineSourceFile2()
 {
     cout << "\n   Please choose a source file \n"
             "\t1. CATH Database - V3.5.0 (Simplified)\n"
             "\t2. Input2 (Test file)\n"
+            "\t3. Enter your Input File (FASTA format)\n"
+            "\t4. Enter your Alignment (CLUSTAL FORMAT - .aln) File\n"
             "\n"
             "\tX. EXIT\n" << endl;
     // changed from int x to char to handle the exception better
@@ -261,9 +377,18 @@ void InputFile::determineSourceFile2()
     {
         case '1':
             sourceFile = "sourceFiles/CathDomainDescriptionFile.Simplified.c";
+            return false;
             break;
         case '2':
             sourceFile = "sourceFiles/Input2.txt";
+            return false;
+            break;
+        case '3':
+            sourceFile = getUserInputFile();
+            return false;
+            break;
+        case '4':
+            return true;
             break;
         case 'X':
         case 'x':
@@ -275,6 +400,7 @@ void InputFile::determineSourceFile2()
         default:
             cout << "Invalid option. Please try again.\n" << endl;
             determineSourceFile2();
+            return false;
             break;
     }
 }
@@ -347,6 +473,52 @@ void InputFile::closeFile()
 void InputFile::closeInputFile()
 {
     infile.close();
+}
+
+void InputFile::createSourceFile()
+{
+    ifstream& File = fileInput;
+    string LINE;
+
+    string tab = "\t";
+    string lbreak = "\n";
+    outFile = new FileCreator();
+    filename = "outFiles//SourceFile.txt";
+    outFile->createFile(filename);
+    ofstream& oFile = outFile->getFile();
+    //string pdb = ">pdb";
+    char c;
+    size_t check1;
+    int counter = 0;
+    string sequence;
+    bool h;
+    string pdb = "DSEQH     ";
+    string seq = "DSEQS     ";
+
+    while ( !File.eof() )
+    {
+        getline(File, LINE );
+
+
+        if ( LINE[0] == '>')
+        {
+            //cout << LINE << endl;
+            LINE = pdb + LINE;
+            oFile.write( LINE.c_str(), LINE.size() );
+            oFile.write( lbreak.c_str(), lbreak.size() );
+        }
+        else
+        {
+            //cout << LINE << endl;
+            LINE = seq + LINE;
+            oFile.write( LINE.c_str(), LINE.size() );
+            oFile.write( lbreak.c_str(), lbreak.size() );
+        }
+
+
+    }
+    oFile.close();
+    outFile->closeFile();
 }
 
 void InputFile::writeInputFileForRepresentatives()
@@ -472,13 +644,127 @@ void InputFile::writeInputFileForRepresentatives()
     }
 }
 
+void InputFile::writeInputFile2(string inputfilename)
+{
+    p.clear();
 
-void InputFile::writeInputFile()
+    string tab = "\t";
+    string lbreak = "\n";
+
+    seqC = 0;
+
+    filename = inputfilename;
+
+    /* Writing file */
+    outFile = new FileCreator();
+    outFile->createFile(filename);
+    ofstream& oFile = outFile->getFile();
+    filenames.push_back(filename);
+
+    /* Reading file */
+    FileRead* inputFile;
+    inputFile = new FileRead();
+    string file1 = "outFiles//SourceFile.txt";
+    inputFile->openFile(file1);
+    ifstream& File = inputFile->getFile();
+
+    string LINE;
+
+    string pdb;
+    string pdbWord = "DSEQH";
+    string seq;
+    string seqWord = "DSEQS";
+    char c;
+    size_t check1, check2, check3;
+    cout << "Fetching the sequences... ";
+    while ( !File.eof() )
+    {
+        while ( File.get(c) )
+        {
+            if ( c != '\n')
+            {
+                LINE.push_back(c);
+            }
+            else
+            {
+                //cout << LINE << endl;
+                Lines.push_back(LINE);
+                check2 = LINE.find( pdbWord, 0 );
+                check3 = LINE.find( seqWord, 0 );
+
+                if ( check2 != string::npos )
+                {
+                    int position = pdbWord.size();
+                    for ( size_t i = position; i < LINE.size(); i++)
+                    {
+                        if ( LINE[i] == ' ')
+                        {
+                            //don't do anything
+                        }
+                        else
+                        {
+                            pdb.push_back(LINE[i]);
+                            currentSequence.setPDB(pdb + '\n');
+                        }
+                    }
+                    string n = currentSequence.getPDB();
+
+                   //cout << "PDB size is " << n.size() << "-" << n << "-" << endl;
+                    //if ( (currentSequence.getCathCode()) == SearchCathCode )
+                    {
+                        //cout << currentSequence->getCathCode() << endl;
+                        oFile.write( (n.c_str()), n.size() );
+                        seqC++;
+                        //.clear();
+                        //convert << seqC;
+                    }
+                    pdb.clear();
+                    //cout << LINE << endl;
+                }
+                if ( check3 != string::npos )
+                {
+                    int position = seqWord.size();
+                    for ( size_t i = position; i < LINE.size(); i++)
+                    {
+                        if ( LINE[i] == ' ')
+                        {
+                            //don't do anything
+                        }
+                        else
+                        {
+                            seq.push_back(LINE[i]);
+                            currentSequence.setSeq(seq + '\n');
+                        }
+                    }
+                    string o = currentSequence.getSeq();
+
+                    {
+
+                        oFile.write( (o.c_str()), o.size() );
+                        string c = o;
+                        p.push_back(currentSequence);
+                        //seqC++;
+                    }
+
+                    seq.clear();
+                }
+                //cout << LINE << endl;
+                LINE.clear();
+            }
+        }
+    }
+    outFile->closeFile();
+    inputFile->closeFile();
+    oFile.close();
+}
+
+
+void InputFile::writeInputFile(string inputfilename)
 {
     p.clear();
 
     seqC = 0;
-    filename = "outFiles//InputFile.txt";
+    filename = inputfilename;
     infile.open(filename.c_str());
     filenames.push_back(filename);
 
@@ -550,6 +836,8 @@ void InputFile::writeInputFile()
                         }
                     }
                     string n = currentSequence.getPDB();
+
+                   // cout << "PDB size is " << n.size() << "-" << n << "-" << endl;
                     if ( (currentSequence.getCathCode()) == SearchCathCode )
                     {
                         //cout << currentSequence->getCathCode() << endl;

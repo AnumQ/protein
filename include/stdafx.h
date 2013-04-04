@@ -34,9 +34,9 @@
 #include <dirent.h>
 extern bool verbose;
 extern vector<string> filenames;
-
-
-
+extern string file_name;
+extern string alignment_file;
+extern bool checker;
 
 // TODO: reference additional headers your program requires here
 
