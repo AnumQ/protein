@@ -1,0 +1,160 @@
+#---------------------------------------------------------------------
+# FILE NAME:    CathDomainDescriptionFile.v3.3.0
+# FILE DATE:    24.06.2009
+#
+# CATH VERSION: v3.3.0
+# VERSION DATE: 24.06.2009
+#
+# FILE FORMAT:  Cath Domain Description File (CDDF) Format 2.0
+#
+# FILE DESCRIPTION:
+# Contains a description of each protein domain in CATH (classes 1-4).
+#
+# This includes the overall PDB name and source information (from PDB file),
+# CATH superfamily number, CATH name of class, architecture and topology
+# (CATH homologous superfamily name is only included if it has been defined).
+# Also included is domain and segment information such as length, amino acid
+# sequence and domain boundary PDB residue identifiers.
+#
+# See 'README.file_formats' for file format information
+#---------------------------------------------------------------------
+FORMAT    CDDF1.0
+DOMAIN    1oaiA00
+VERSION   3.3.0
+
+VERDATE   24-Jun-2009
+NAME      Nuclear RNA export factor. Chain: a. Fragment: uba domain, residues 56
+
+NAME      1-619. Synonym: tap, tip associating protein, mRNA export factor tap.
+NAME      Engineered: yes. Fxfg nucleoporin peptide. Chain: b. Fragment: nucleop
+SOURCE    Homo sapiens. Human.  Expressed in: escherichia coli.
+CATHCODE  1.10.8.10
+
+CLASS     Mainly Alpha
+
+ARCH      Orthogonal Bundle
+TOPOL     Helicase, Ruva Protein; domain 3	
+
+HOMOL     DNA helicase RuvA subunit, C-terminal domain
+
+DLENGTH   59
+DSEQH     >pdb|1oaiA00
+DSEQS     PTLSPEQQEMLQAFSTQSGMNLEWSQKCLQDNNWDYTRSAQAFTHLKAKGEIPEVAFMK
+NSEGMENTS 1
+SEGMENT   1oaiA00:1:1
+SRANGE    START=561  STOP=619
+SLENGTH   59
+SSEQH     >pdb|1oaiA00:1:1
+SSEQS     PTLSPEQQEMLQAFSTQSGMNLEWSQKCLQDNNWDYTRSAQAFTHLKAKGEIPEVAFMK
+ENDSEG
+//
+FORMAT    CDDF1.0
+DOMAIN    3b7nA01
+VERSION   3.3.0
+VERDATE   24-Jun-2009
+NAME      Uncharacterized protein ykl091c. Chain: a. Engineered: yes
+SOURCE    Saccharomyces cerevisiae. Baker's yeast. Strain: by4741.  Expressed in
+SOURCE    : escherichia coli.
+CATHCODE  1.10.8.20
+CLASS     Mainly Alpha
+ARCH      Orthogonal Bundle
+TOPOL     Helicase, Ruva Protein; domain 3	
+HOMOL     N-terminal domain of phosphatidylinositol transfer protein sec14p
+DLENGTH   79
+DSEQH     >pdb|3b7nA01
+DSEQS     SILDTYPQICSPNALPGTPGNLTKEQEEALLQFRSILLEKNYKERLDDSTLLRFLRARKFDINASVEMFV
+DSEQS     ETERWREEY
+NSEGMENTS 1
+SEGMENT   3b7nA01:1:1
+SRANGE    START=4  STOP=82
+SLENGTH   79
+SSEQH     >pdb|3b7nA01:1:1
+SSEQS     SILDTYPQICSPNALPGTPGNLTKEQEEALLQFRSILLEKNYKERLDDSTLLRFLRARKFDINASVEMFV
+SSEQS     ETERWREEY
+ENDSEG
+//
+FORMAT    CDDF1.0
+DOMAIN    1oksA00
+VERSION   3.3.0
+VERDATE   24-Jun-2009
+NAME      Rna polymerase alpha subunit. Chain: a. Fragment: xd-domain, residues 
+NAME      459-507. Synonym: phosphoprotein, nucleocapsid phosphoprotein. Enginee
+NAME      red: yes
+SOURCE    Measles virus. Strain: edmonston.  Expressed in: escherichia coli.
+CATHCODE  1.10.8.10
+CLASS     Mainly Alpha
+ARCH      Orthogonal Bundle
+TOPOL     Helicase, Ruva Protein; domain 3	
+HOMOL     DNA helicase RuvA subunit, C-terminal domain
+DLENGTH   51
+DSEQH     >pdb|1oksA00
+DSEQS     ASRSVIRSIIKSSRLEEDRKRYLTLLDDIKGANDLAKFHQLVKIIKHHHHH
+NSEGMENTS 1
+SEGMENT   1oksA00:1:1
+SRANGE    START=2  STOP=55
+SLENGTH   51
+SSEQH     >pdb|1oksA00:1:1
+SSEQS     ASRSVIRSIIKSSRLEEDRKRYLTLLDDIKGANDLAKFHQLVKIIKHHHHH
+ENDSEG
+//
+FORMAT    CDDF1.0
+DOMAIN    3glfE02
+VERSION   3.5.0
+VERDATE   21-Sep-2011
+NAME      Dna polymerase iii subunit delta. Chain: a, f. Engineered: yes. Dna po
+NAME      lymerase iii subunit tau. Chain: b, c, d, g, h, i. Fragment: unp resid
+NAME      ues 1-373. Synonym: DNA polymerase iii subunit gamma. Engineered: yes.
+NAME       Dna polymerase iii subunit delta'. Chain: e, j. Engineered: yes. Dna 
+NAME      (5'- d(*tp*tp*tp*tp*tp*tp*ap*tp*ap*gp*gp*cp*cp*ap*g)-3'). Chain: k, m.
+NAME       Engineered: yes. Dna (5'-d(*cp*tp*gp*gp*cp*cp*tp*ap*tp*a)-3'). Chain:
+NAME       l, n. Engineered: yes
+SOURCE    Escherichia coli. Organism_taxid: 83333. Strain: k-12. Gene: hola, b06
+SOURCE    40, jw0635.  Expressed in: escherichia coli. Expression_system_taxid: 
+SOURCE    562. Escherichia coli. Organism_taxid: 83333. Strain: k-12. Gene: DNAx
+SOURCE    , DNAz, DNAzx, b0470, jw0459.  Expressed in: escherichia coli. Express
+SOURCE    ion_system_taxid: 562. Escherichia coli. Organism_taxid: 83333. Strain
+SOURCE    : k-12. Gene: holb, b1099, jw1085.  Expressed in: escherichia coli. Ex
+SOURCE    pression_system_taxid: 562. Yes.
+CATHCODE  1.10.8.10
+CLASS     Mainly Alpha
+ARCH      Orthogonal Bundle
+TOPOL     Helicase, Ruva Protein; domain 3	
+HOMOL     DNA helicase RuvA subunit, C-terminal domain
+DLENGTH   40
+DSEQH     >pdb|3glfE02
+DSEQS     PEQYAVTWLSREVTMSQDALLAALRLSAGSPGAALALFQG
+NSEGMENTS 1
+SEGMENT   3glfE02:1:1
+SRANGE    START=168  STOP=207
+SLENGTH   40
+SSEQH     >pdb|3glfE02:1:1
+SSEQS     PEQYAVTWLSREVTMSQDALLAALRLSAGSPGAALALFQG
+ENDSEG
+//
+FORMAT    CDDF1.0
+DOMAIN    1vq1A01
+VERSION   3.5.0
+VERDATE   21-Sep-2011
+NAME      N5-glutamine methyltransferase, hemk. Chain: a, b. Engineered: yes
+SOURCE    Thermotoga maritima. Organism_taxid: 243274. Strain: msb8. Gene: tm048
+SOURCE    8.  Expressed in: escherichia coli. Expression_system_taxid: 562. Expr
+SOURCE    ession_system_vector_type: plasmid
+CATHCODE  1.10.8.10
+CLASS     Mainly Alpha
+ARCH      Orthogonal Bundle
+TOPOL     Helicase, Ruva Protein; domain 3	
+HOMOL     DNA helicase RuvA subunit, C-terminal domain
+DLENGTH   74
+DSEQH     >pdb|1vq1A01
+DSEQS     RKIWSLIRDCSGKLEGVTETSVLEVLLIVSRVLGIRKEDLFLKDLGVSPTEEKRILELVEKRASGYPLHY
+DSEQS     ILGE
+NSEGMENTS 1
+SEGMENT   1vq1A01:1:1
+SRANGE    START=12  STOP=85
+SLENGTH   74
+SSEQH     >pdb|1vq1A01:1:1
+SSEQS     RKIWSLIRDCSGKLEGVTETSVLEVLLIVSRVLGIRKEDLFLKDLGVSPTEEKRILELVEKRASGYPLHY
+SSEQS     ILGE
+ENDSEG
+//
+

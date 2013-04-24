@@ -982,6 +982,7 @@ int Clustal::sequenceInput(bool append, string *offendingSeq)
 
     FileReader readSeqFile;
     code = readSeqFile.seqInput(&alignmentObj, append, offendingSeq);
+
     return code;
 }
 

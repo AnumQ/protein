@@ -335,6 +335,7 @@ bool AlignmentOutput::openAlignmentOutput(string path)
          utilityObject->error("You must select an alignment output format\n");
          return false;
     }
+    /* Setting the file name of the alignment output - Anum */
     path = "outFiles//Alignment";
     string _fileNameToOutput = path;
     if(_fileNameToOutput == "")

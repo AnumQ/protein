@@ -15,6 +15,45 @@ void InputFile::run()
     string sourceFile1 = "sourceFiles/CathDomainDescriptionFile.Simplified.c";
     string sourceFile2 = "sourceFiles/Input2.txt";
     string file;
+    //the old way - iteration 1
+    /*
+    determineSourceFile();
+     if ( openFile(sourceFile) == true )
+     {
+            getSearchInput();
+            setCathCode( SearchCathCode );
+            defineLevelOfHierarchy();
+            if ( !levelOfHierarchy.empty() )
+            {
+                if ( openFile( levelOfHierarchy ) == true )
+                {
+                    getPDBfromClassifiedList();
+                    closeFile();
+                    if ( (openFile( sourceFile )) == true )
+                    {
+                        writeInputFileForRepresentatives();
+                        closeInputFile();
+                        closeFile();
+                    }
+
+                }
+                else
+                {
+                    if ( (openFile( sourceFile )) == true )
+                    {
+                       getCathCode();
+                       file = "outFiles//InputFile.txt";
+                       writeInputFile(file);
+                       closeInputFile();
+                       closeFile();
+                    }
+                }
+
+            bool f = true;
+            checkToProceed(f);
+            }
+
+     } */
     if ( determineSourceFile2() == false )
     {
         checker = true;
@@ -236,22 +275,23 @@ void InputFile::defineLevelOfHierarchy()
             "\t5. No representatives\n"
             "\n"
             "\tX. Exit\n"<< endl;
+
     char x;
     cin >> x;
 
     switch(x)
     {
         case '1':
-            levelOfHierarchy = "sourceFiles/CathDomainList.S35.v3.5.c";
+            levelOfHierarchy = "sourceFiles//CathDomainList.S35.v3.5.c";
             break;
         case '2':
-            levelOfHierarchy = "sourceFiles/CathDomainList.S60.v3.5.c";
+            levelOfHierarchy = "sourceFiles//CathDomainList.S60.v3.5.c";
             break;
         case '3':
-            levelOfHierarchy = "sourceFiles/CathDomainList.S95.v3.5.c";
+            levelOfHierarchy = "sourceFiles//CathDomainList.S95.v3.5.c";
             break;
         case '4':
-            levelOfHierarchy = "sourceFiles/CathDomainList.S100.v3.5.c";
+            levelOfHierarchy = "sourceFiles//CathDomainList.S100.v3.5.c";
             break;
         case '5':
             cout << "No hierarchy chosen\n";
@@ -265,15 +305,18 @@ void InputFile::defineLevelOfHierarchy()
             exit(0);
             break;
         default:
+            cout << "Invalid option. Please try again.\n" << endl;
             defineLevelOfHierarchy();
             break;
     }
 }
 
-
+/* This function is gathering the PDB numbers by reading the selected representative file.
+The PDB numbers will be used to gather the desired sequences from CATH */
 void InputFile::getPDBfromClassifiedList()
 {
-    ifstream& File = fileInput;
+
+    ifstream& File = fileInput; // the selected levelOfHierarchy file
     char c;
     string LINE;
     pdblist.clear();
@@ -453,7 +496,10 @@ bool InputFile::openFile( string file )
     if (!fileInput.is_open() )
 	{
 		cerr << "Error opening file: " << i << endl;
+		cout << "Exiting the program..." << endl;
+		exit(1);
 		return false;
+
 	}
 	else
 	{
@@ -520,7 +566,11 @@ void InputFile::createSourceFile()
     oFile.close();
     outFile->closeFile();
 }
-
+/* This function is used once the correct PDB numbers are selected from the levelofHiearchy file and formatted
+to look like PDB numbers in CATH database. This was done in getPDBFromClassifiedList(). The pdblist is iterated
+and the sequences belonging to the pdb number are selelcted and written in InputFile.txt (file will used to create
+an MSA in ClustalW)
+*/
 void InputFile::writeInputFileForRepresentatives()
 {
     p.clear();
@@ -535,7 +585,7 @@ void InputFile::writeInputFileForRepresentatives()
     filenames.push_back(fsearch);
 
 
-    ifstream& File = fileInput;
+    ifstream& File = fileInput; // sourceFile == the database file
     string LINE;
     int count = 0;
     string cathCode;
@@ -758,7 +808,10 @@ void InputFile::writeInputFile2(string inputfilename)
     oFile.close();
 }
 
-
+/* This function creates an InputFile.txt in FASTA format to be used for generation of an MSA in ClustalW.
+This function is called when NO REPRESENTATIVES is selected.
+It takes the name of the input file for ClustalW alignment as an argument.
+*/
 void InputFile::writeInputFile(string inputfilename)
 {
     p.clear();
@@ -976,4 +1029,5 @@ void InputFile::writeSearchResults(int seqC, string n )
 
 InputFile::~InputFile()
 {
+    //cout << "Destructor for this: " << sourceFile << endl;
 }

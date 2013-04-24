@@ -34,20 +34,6 @@ FullPairwiseAlign::FullPairwiseAlign()
 
 }
 
-FullPairwiseAlign::FullPairwiseAlign( int y )
-{
-    //sample = &ScoringMatrix;
-    //vector<ScoreMatrix> s   = getScoringVector();
-    cout << "Size of the Scoringmatrix " << ScoringMatrix.size() << endl;
-    for ( size_t i = 0; i < ScoringMatrix1.size(); i++ )
-    {
-        cout << "Setting x: " << ScoringMatrix1[i].getSequenceX()
-        << " y: " << ScoringMatrix1[i].getSequenceY()
-        << " Score is : " << ScoringMatrix1[i].getScore() << endl;
-
-    }
-}
-
 void FullPairwiseAlign::pairwiseAlign(Alignment *alignPtr, DistMatrix *distMat, int iStart, int iEnd, int jStart, int jEnd)
 {
     int si, sj, i;

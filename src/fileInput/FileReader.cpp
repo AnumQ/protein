@@ -128,6 +128,7 @@ bool FileReader::noEmptySequence(vector<Sequence> seqVector, string *offendingSe
     {
         return code;
     }
+    cout << "Anum: code is " << code << endl;
     return code;
 }
 
@@ -151,7 +152,6 @@ bool FileReader::noEmptySequence(vector<Sequence> seqVector, string *offendingSe
     }
     else
     {
-        cout << "filename is empty" << endl;
         line = "outFiles//InputFile.txt";
     }
 

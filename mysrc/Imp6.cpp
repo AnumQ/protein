@@ -16,10 +16,10 @@
 #include "../include/InputFile.h"
 #include "../include/ProteinSequence.h"
 #include "../include/ScoreMatrix.h"
-#include "../include/AminoAcidFrequency.h"
+#include "../include/AminoAcidComposition.h"
 #include "../include/AminoAcidCode.h"
-#include "../include/DistanceMatrix.h"
-#include "../include/VerticalPosition.h"
+#include "../include/DistanceAndSimilarity.h"
+#include "../include/VerticalColumn.h"
 #include <windows.h>
 namespace clustalw
 {
@@ -92,20 +92,25 @@ int main(int argc, char **argv)
     welcome();
     verbose = false;
 
+    //defineverbose();
+
     CreateDirectory ("outFiles", NULL);
 
-    ClustalWInitializers();
-    clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
-    resources->setPathToExecutable(string(argv[0]));
-    userParameters->toggleOutputFasta();
-    //userParameters->getOutputFasta();
-    setUserParameters();
+
 
 
     InputFile start;// object reads from an input file and creates a new file
     start.run();
 
     vector<ProteinSequence> p1;
+
+    ClustalWInitializers(); // this wont work without void ClustalWInitializers() above
+    clustalw::ClustalWResources *resources = clustalw::ClustalWResources::Instance();
+    resources->setPathToExecutable(string(argv[0]));
+    userParameters->toggleOutputFasta();
+    //userParameters->getOutputFasta();
+    setUserParameters(); // this wont work without void setUserParameters()
+
 
     if ( checker == true )
     {
@@ -115,6 +120,7 @@ int main(int argc, char **argv)
         clustalObj->sequenceInput(false, &offendingSeq);
         string phylipName;
         clustalObj->align(&phylipName);
+        delete clustalObj;
 
         alignment_file = "outFiles//Alignment.aln";
         p1 = start.getProteinData();
@@ -127,7 +133,7 @@ int main(int argc, char **argv)
     }
 
 
-    AminoAcidFrequency Table;
+    AminoAcidComposition Table;
     if ( Table.openFile(alignment_file) == true ) // open the specified alignment file
     {
     }
@@ -136,7 +142,7 @@ int main(int argc, char **argv)
         vector<ProteinSequence> p2 = assembleSeq(p);
         p3 = processSeq(p2);
         createPropertyTable(p3);
-        createAminoAcidFrequency(p3);
+        createAminoAcidComposition(p3);
     */
 
     p1.clear();
@@ -151,14 +157,14 @@ int main(int argc, char **argv)
     } */
 
 
-    DistanceMatrix dm;
+    DistanceAndSimilarity dm;
     dm.createDistanceTableCodes(p1);
     dm.createSimilarityMatrixCodes(p1);
     dm.createDistanceTableColours(p1);
     dm.createSimilarityMatrixColours(p1);
 
-    VerticalPosition vp;
-    vp.run(p1);
+    VerticalColumn vp;
+    vp.generateVerticalColumnComposition(p1);
 
     cout<< "\nPROCESS COMPLETED! \nThe following files were created:\n" << endl;
     for ( size_t i = 0; i < filenames.size(); i++ )
@@ -175,6 +181,8 @@ int main(int argc, char **argv)
     {
         delete logObject;
     }
+
+
 
     //system("pause");
     return 0;

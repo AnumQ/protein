@@ -54,7 +54,7 @@
 1363104597 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcolourcode.cpp
 	"../include/AminoAcidColourCode.h"
 
-1364866848 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidfrequency.cpp
+1365003865 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidfrequency.cpp
 	"../include/AminoAcidFrequency.h"
 	<stdio.h>
 	<math.h>
@@ -81,7 +81,7 @@
 	<iostream>
 	<memory>
 
-1364934852 source:d:\documents\finalyearproject\codeblocksimp\mysrc\imp6.cpp
+1366651833 source:d:\documents\finalyearproject\codeblocksimp\mysrc\imp6.cpp
 	"stdafx.h"
 	"conio.h"
 	"alignment/Alignment.h"
@@ -339,7 +339,7 @@
 	"../include/AminoAcidCode.h"
 	"../include/AminoAcidColourCode.h"
 
-1364997197 source:d:\documents\finalyearproject\codeblocksimp\mysrc\inputfile.cpp
+1366764461 source:d:\documents\finalyearproject\codeblocksimp\mysrc\inputfile.cpp
 	"../include/InputFile.h"
 	"../include/ProteinSequence.h"
 
@@ -353,7 +353,7 @@
 1362669404 source:d:\documents\finalyearproject\codeblocksimp\mysrc\verticalposition.cpp
 	"../include/VerticalPosition.h"
 
-1361767981 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
+1366660489 source:d:\documents\finalyearproject\codeblocksimp\src\clustal.cpp
 	"config.h"
 	<iostream>
 	<fstream>
@@ -430,7 +430,7 @@
 	<sstream>
 	"Alignment.h"
 
-1363182133 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.cpp
+1366651458 source:d:\documents\finalyearproject\codeblocksimp\src\alignment\alignmentoutput.cpp
 	"config.h"
 	"AlignmentOutput.h"
 	"stdafx.h"
@@ -460,7 +460,7 @@
 	"config.h"
 	"FileParser.h"
 
-1364943172 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.cpp
+1366660221 source:d:\documents\finalyearproject\codeblocksimp\src\fileinput\filereader.cpp
 	"config.h"
 	"FileReader.h"
 	"../../include/stdafx.h"
@@ -645,7 +645,7 @@
 	<math.h>
 	"FastPairwiseAlign.h"
 
-1361767983 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
+1366646936 source:d:\documents\finalyearproject\codeblocksimp\src\pairwise\fullpairwisealign.cpp
 	"config.h"
 	"FullPairwiseAlign.h"
 	<math.h>
@@ -846,4 +846,25 @@
 
 1365003464 source:d:\documents\finalyearproject\codeblocksimp\mysrc\distancematrix.cpp
 	"../include/DistanceMatrix.h"
+
+1366767074 source:d:\documents\finalyearproject\codeblocksimp\mysrc\aminoacidcomposition.cpp
+	"../include/AminoAcidComposition.h"
+	<stdio.h>
+	<math.h>
+
+1366764746 d:\documents\finalyearproject\codeblocksimp\include\aminoacidcomposition.h
+	"stdafx.h"
+	"../include/FileCreator.h"
+	"../include/AminoAcidCode.h"
+	"../include/AminoAcidColourCode.h"
+
+1366768691 source:d:\documents\finalyearproject\codeblocksimp\mysrc\distanceandsimilarity.cpp
+	"../include/DistanceAndSimilarity.h"
+
+1366768803 d:\documents\finalyearproject\codeblocksimp\include\distanceandsimilarity.h
+	"stdafx.h"
+	<math.h>
+	"../include/FileRead.h"
+	"../include/FileCreator.h"
+	"../include/ProteinSequence.h"
 
